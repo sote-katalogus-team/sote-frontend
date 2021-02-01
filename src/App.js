@@ -2,9 +2,11 @@ import './App.css';
 import Routes from './routes';
 
 function App() {
-  return (
+    const url = process.env.REACT_APP_URL;
+
+    return (
     <div className="App">
-        <h1>itt valami tortenni fog</h1>
+        <h1>current backend url:{url}</h1>
       <Routes />
     </div>
   );
