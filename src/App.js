@@ -6,7 +6,6 @@ function App() {
 
     return (
     <div className="App">
-        <h1>current backend url:{url}</h1>
       <Routes />
     </div>
   );

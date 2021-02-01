@@ -1,0 +1,149 @@
+.main__mainContainer {
+    background-color: rgba(41, 139, 229, 1);
+}
+
+.main__loginButton {
+    /* Button Secondary */
+
+
+    /* Auto Layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 11px 15px;
+    width: 150px;
+
+
+    position: absolute;
+    left: 24.8%;
+    right: 24.8%;
+    top: 78.33%;
+    bottom: 15.52%;
+
+    background: #FFFFFF;
+    /* Color 1 */
+
+    border: 3px solid #2958E6;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 10px;
+
+}
+
+.main__usernameInput {
+    width: 200px;
+    height: 30px;
+
+    /* Body Bold */
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    /* identical to box height, or 156% */
+
+
+    /* Color 2 */
+
+    color: #A5B5E6;
+}
+
+.main__registerButton {
+    /* Button Secondary */
+
+
+    /* Auto Layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 11px 15px;
+    width: 150px;
+
+    position: absolute;
+    left: 24.8%;
+    right: 24.8%;
+    top: 86.08%;
+    bottom: 7.76%;
+
+    background: #FFFFFF;
+    /* Color 1 */
+
+    border: 3px solid #2958E6;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 10px;
+}
+
+.home__image {
+    width: 117px;
+    height: 126px;
+    margin-top: 70px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.home__image img {
+    width: inherit;
+    border-radius: 50%;
+}
+
+
+.main__passwordInput {
+    width: 200px;
+    height: 30px;
+   margin-top: 2%;
+
+    font-family: Montserrat, serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    /* identical to box height, or 156% */
+
+
+    /* Color 2 */
+
+    color: #A5B5E6;
+
+}
+
+
+.main__LoginContainer {
+    position: fixed;
+    text-align:center;
+
+    margin-top: 100px;
+}
+
+.main__loginButton text {
+    position: static;
+    height: 28px;
+    left: 56.5px;
+    right: 56.5px;
+    top: calc(50% - 28px/2);
+
+    /* Body Bold */
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+}
