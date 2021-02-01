@@ -1,0 +1,27 @@
+.main__mainContainer {
+    background-color: rgba(41, 139, 229, 1);
+}
+
+.main__loginButton {
+    border: 4px solid blue;
+
+}
+
+.main__registerButton {
+    border: 4px solid blue;
+}
+
+.home__image {
+    width: 117px;
+    height: 126px;
+    margin-top: 70px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.home__image img {
+    width: inherit;
+    border-radius: 50%;
+}
+
