@@ -4,7 +4,7 @@
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 6vw;
     line-height: 120%;
 
     /* identical to box height, or 29px */
@@ -14,23 +14,46 @@
     color: #FFFFFF;
 }
 
+.student__mainContainer {
+    width: auto;
+}
 
-.student__icon {
-    position: absolute;
-    height: 57px;
-    left: 883px;
-    right: 1910px;
-    top: 223px;
+.student__header {
+    display: flex;
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-around;
+
+}
+
+
+.student__userLogo {
+    height: 14vh;
 
     /* Icon M */
-    font-family: Font Awesome 5 Free;
     font-style: normal;
     font-weight: 900;
-    font-size: 32px;
+    font-size: 6vw;
     line-height: 37px;
     display: flex;
     align-items: center;
     text-align: center;
 
     color: #FFFFFF;
+}
+
+.student__buttonContainer {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60vh;
+}
+
+
+
+@media (max-height: 569px)  {
+    .student__buttonContainer {
+        margin-top: 40vh;
+    }
+
 }

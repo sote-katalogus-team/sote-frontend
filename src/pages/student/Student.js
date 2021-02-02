@@ -7,14 +7,24 @@ import { faCheckSquare, faUser } from '@fortawesome/fontawesome-free-solid'
 const Student = () => {
 
     fontawesome.library.add(faUser);
-    const name = "test name"
+    const name = "test name";
+    const  neptunCode = "123ABC"
     return <div className="student__mainContainer">
         <div className="student__header">
             <p className={"student__welcome"}>welcome</p>
-            <p className="student__name">{name}</p>
-
-            <FontAwesomeIcon icon="user" />
+            <p className="student__name">{name} #{neptunCode}</p>
+            <FontAwesomeIcon icon="user"  className={"student__userLogo"}/>
         </div>
+        <div className="main__LoginContainer">
+            <form >
+                <input placeholder={"code"} type="text" className="main__usernameInput"/><br/>
+            </form>
+        </div>
+        <div className="student__buttonContainer">
+            <button className={'main__loginButton'} >send</button>
+            <button  className={'main__registerButton'}>statistics</button>
+        </div>
+
     </div>
 }
 
