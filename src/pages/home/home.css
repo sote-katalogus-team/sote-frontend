@@ -142,3 +142,11 @@
     align-items: center;
     margin-top: 50%;
 }
+
+
+@media (max-height: 569px)  {
+    .main__buttonContainer {
+        margin-top: 35%;
+    }
+    
+}
