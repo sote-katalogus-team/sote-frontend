@@ -7,6 +7,10 @@ const StudentStatistics = () => {
     const stat2 = 40;
     const stat3 = 75;
 
+    const back = () => {
+        window.location = "/student"
+    }
+
     return <div className="student__statisticsMain">
         <p className="student__title">Practice:</p>
         <Diagram stat={stat1} />
@@ -15,7 +19,7 @@ const StudentStatistics = () => {
         <p className="student__title">Consultation:</p>
         <Diagram stat={stat3} />
         <div className="student__statisticsButtonContainer">
-            <button className="student__back">back</button>
+            <button onClick={back} className="student__back">back</button>
         </div>
 
     </div>
