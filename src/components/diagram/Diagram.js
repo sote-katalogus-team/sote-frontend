@@ -4,8 +4,21 @@ import React from "react";
 const Diagram = (props) => {
     const stat = props.stat
 
+    let className = "";
+    if (stat > 80) {
+        className = "circular-chart green"
+    }
+    else {
+        if (stat > 74) {
+            className = "circular-chart orange"
+        }
+        else {
+            className = "circular-chart blue"
+        }
+    }
+
     return <div className="single-chart">
-        <svg viewBox="0 0 36 36" className="circular-chart orange">
+        <svg viewBox="0 0 36 36" className={className}>
             <path className="circle-bg"
                   d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
