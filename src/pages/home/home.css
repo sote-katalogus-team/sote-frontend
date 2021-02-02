@@ -14,13 +14,6 @@
     padding: 11px 15px;
     width: 150px;
 
-
-    position: absolute;
-    left: 24.8%;
-    right: 24.8%;
-    top: 78.33%;
-    bottom: 15.52%;
-
     background: #FFFFFF;
     /* Color 1 */
 
@@ -69,11 +62,7 @@
     padding: 11px 15px;
     width: 150px;
 
-    position: absolute;
-    left: 24.8%;
-    right: 24.8%;
-    top: 86.08%;
-    bottom: 7.76%;
+
 
     background: #FFFFFF;
     /* Color 1 */
@@ -145,4 +134,11 @@
     font-weight: bold;
     font-size: 18px;
     line-height: 28px;
+}
+
+.main__buttonContainer {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50%;
 }
