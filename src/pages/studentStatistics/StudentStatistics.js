@@ -8,12 +8,16 @@ const StudentStatistics = () => {
     const stat3 = 75;
 
     return <div className="student__statisticsMain">
-        <p className="student__gyakorlat">Practice:</p>
+        <p className="student__title">Practice:</p>
         <Diagram stat={stat1} />
-        <p className="student__eloadas">Lecture:</p>
+        <p className="student__title">Lecture:</p>
         <Diagram stat={stat2} />
-        <p className="student__konzultacio">Consultation:</p>
+        <p className="student__title">Consultation:</p>
         <Diagram stat={stat3} />
+        <div className="student__statisticsButtonContainer">
+            <button className="student__back">back</button>
+        </div>
+
     </div>
 }
 
