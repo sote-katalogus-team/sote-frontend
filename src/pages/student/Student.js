@@ -6,6 +6,10 @@ import { faCheckSquare, faUser } from '@fortawesome/fontawesome-free-solid'
 
 const Student = () => {
 
+    const toStatistics = () => {
+        window.location = "/student/statistics"
+    }
+
     fontawesome.library.add(faUser);
     const name = "test name";
     const  neptunCode = "123ABC"
@@ -22,7 +26,7 @@ const Student = () => {
         </div>
         <div className="student__buttonContainer">
             <button className={'main__loginButton'} >send</button>
-            <button  className={'main__registerButton'}>statistics</button>
+            <button onClick={toStatistics}  className={'main__registerButton'}>statistics</button>
         </div>
 
     </div>

@@ -1,0 +1,95 @@
+.flex-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.single-chart {
+    width: 100%;
+}
+
+.circular-chart {
+    display: block;
+    margin: 10px auto;
+    max-width: 36%;
+    max-height: 250px;
+}
+
+
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+.circular-chart.orange .circle {
+    stroke: #ff9f00;
+}
+
+.circular-chart.green .circle {
+    stroke: #4CC790;
+}
+
+.circular-chart.blue .circle {
+    stroke: #ff0000;
+}
+
+.percentage {
+    fill: #666;
+    font-family: sans-serif;
+    font-size: 0.5em;
+    text-anchor: middle;
+}
+
+
+.student__statisticsMain {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.student__title {
+    font-size: 3vh;
+    color: white;
+}
+
+.student__back {
+    /* Button Secondary */
+
+
+    /* Auto Layout */
+
+    flex-direction: column;
+    align-items: center;
+    padding: 11px 15px;
+    width: 150px;
+
+    background: #FFFFFF;
+    /* Color 1 */
+
+    border: 3px solid #2958E6;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 10px;
+
+}
