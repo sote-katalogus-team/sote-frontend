@@ -32,7 +32,7 @@
 }
 
 .main__usernameInput {
-    width: 200px;
+    width: 20vw;
     height: 30px;
 
     /* Body Bold */
@@ -61,7 +61,6 @@
     align-items: center;
     padding: 11px 15px;
     width: 150px;
-
 
 
     background: #FFFFFF;
@@ -95,9 +94,9 @@
 
 
 .main__passwordInput {
-    width: 200px;
+    width: 20vw;
     height: 30px;
-   margin-top: 2%;
+    margin-top: 2%;
 
     font-family: Montserrat, serif;
     font-style: normal;
@@ -115,7 +114,7 @@
 
 
 .main__LoginContainer {
-    text-align:center;
+    text-align: center;
 
     margin-top: 100px;
 }
@@ -125,7 +124,7 @@
     height: 28px;
     left: 56.5px;
     right: 56.5px;
-    top: calc(50% - 28px/2);
+    top: calc(50% - 28px / 2);
 
     /* Body Bold */
 
@@ -140,5 +139,56 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    margin-top: 50%;
+    margin-top: 50vh;
+}
+
+
+@media (max-height: 569px) {
+    .main__buttonContainer {
+        margin-top: 18vh;
+    }
+    .main__passwordInput, .main__usernameInput {
+        width: 36vh;
+    }
+    .home__image {
+        margin-top: 25px;
+    }
+
+}
+
+@media (max-height: 701px) and (min-height: 651px) {
+    .main__buttonContainer {
+        margin-top: 29vh;
+    }
+    .main__passwordInput, .main__usernameInput {
+        width: 43vh;
+    }
+
+
+}
+
+@media (max-height: 651px) and (min-height: 569px) {
+    .main__buttonContainer {
+        margin-top: 20vh;
+    }
+    .main__passwordInput, .main__usernameInput {
+        width: 50vh;
+    }
+
+}
+
+@media (max-height: 1080px) and (min-height: 702px) {
+    .main__buttonContainer {
+        margin-top: 35vh;
+    }
+    .main__passwordInput, .main__usernameInput {
+        width: 30vh;
+    }
+}
+
+
+@media (max-width: 281px) {
+    .main__passwordInput, .main__usernameInput {
+        width: 28vh;
+    }
 }
