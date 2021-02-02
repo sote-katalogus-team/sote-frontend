@@ -1,0 +1,17 @@
+.fields {
+  margin: 50px 25px 100px 25px;
+}
+
+.checkField {
+  color: #FFF;
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+.checkTitle {
+  color: #FFF;
+  font-weight: bold;
+  font-size: 2em;
+  margin: 0 10px 50px 10px;
+  text-align: center;
+}

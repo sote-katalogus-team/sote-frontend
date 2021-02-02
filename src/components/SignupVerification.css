@@ -1,0 +1,15 @@
+.title {
+  color: #FFF;
+  font-weight: bold;
+  font-size: 2em;
+  margin: 50px 10px 50px 10px;
+  text-align: center;
+}
+
+input {
+  color: #000;
+  padding: 4px 8px;
+  height: 26px;
+  border: 1px solid #FFF;
+  border-radius: 5px;
+}
