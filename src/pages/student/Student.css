@@ -49,6 +49,24 @@
     margin-top: 60vh;
 }
 
+.student__codeInput {
+    width: 20vw;
+    height: 30px;
+
+    /* Body Bold */
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    /* identical to box height, or 156% */
+
+
+    /* Color 2 */
+
+    color: #A5B5E6;
+}
 
 
 @media (max-height: 569px)  {
@@ -56,4 +74,41 @@
         margin-top: 40vh;
     }
 
+}
+
+@media (max-height: 701px) and (min-height: 651px) {
+    .student__buttonContainer {
+        margin-top: 42vh;
+    }
+     .student__codeInput {
+        width: 43vh;
+    }
+
+
+}
+
+@media (max-height: 651px) and (min-height: 569px) {
+    .student__buttonContainer {
+        margin-top: 40vh;
+    }
+    .student__codeInput {
+        width: 50vh;
+    }
+
+}
+
+@media (max-height: 1080px) and (min-height: 702px) {
+    .student__buttonContainer {
+        margin-top: 45vh;
+    }
+    .student__codeInput {
+        width: 30vh;
+    }
+}
+
+
+@media (max-width: 281px) {
+     .student__codeInput {
+        width: 28vh;
+    }
 }

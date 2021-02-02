@@ -17,7 +17,7 @@ const Student = () => {
         </div>
         <div className="main__LoginContainer">
             <form >
-                <input placeholder={"code"} type="text" className="main__usernameInput"/><br/>
+                <input placeholder={"code"} type="text" className="student__codeInput"/><br/>
             </form>
         </div>
         <div className="student__buttonContainer">
