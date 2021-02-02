@@ -3,6 +3,10 @@ import './home.css';
 
 const Home = () => {
 
+  const goToRegister = () => {
+    window.location = "/signup"
+  }
+
 
   return (
   <div className="main__mainContainer">
@@ -15,7 +19,7 @@ const Home = () => {
     </div>
     <div className="main__buttonContainer">
       <button className={'main__loginButton'} >Login</button>
-      <button  className={'main__registerButton'}>Register</button>
+      <button onClick={goToRegister}  className={'main__registerButton'}>Register</button>
     </div>
   </div>
   );
