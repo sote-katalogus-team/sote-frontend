@@ -38,7 +38,7 @@ const NewLesson = () => {
         <br/>
         <div>
             <input type="number" min={1} max={3} className={"number__input"}/>
-            <button className="newLesson__submit"> Submit</button>
+            <button className="newLesson__submit"> Hozzáadás</button>
         </div>
     </div>
 }
