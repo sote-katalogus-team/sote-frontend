@@ -1,13 +1,80 @@
 
 
 .admin__sidebar {
+    margin-top: 2vw;
     position: fixed;
     left: 0;
     top: 0;
+    width: 20vw;
+    text-align: center;
 
 }
 
+.admin__title {
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    /* or 150% */
+
+    letter-spacing: 0.15px;
+
+    /* Black / High Emphasis */
+
+    color: rgba(0, 0, 0, 0.87);
+}
 
 .admin__image {
+    text-align: center;
     width: 150px;
+}
+
+.admin__sidebarMenu {
+    margin-left: 1vw;
+    text-align: left;
+}
+
+.admin__settingsMenu {
+    text-align: left;
+    margin-left: 1vw;
+}
+
+.admin__sidebarMenu p {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 21px;
+    /* or 150% */
+
+    letter-spacing: 0.1px;
+
+    color: #212121;
+    width: 100%;
+}
+
+
+.admin__sidebarMenu span {
+    margin-right: 2vw;
+}
+.admin__settingsMenu span {
+    margin-right: 2vw;
+}
+
+
+.admin__settingsTitle {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    /* or 150% */
+
+    letter-spacing: 0.25px;
+
+    /* Black / Disabled */
+
+    color: #9E9E9E;
 }
