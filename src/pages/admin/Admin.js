@@ -6,8 +6,11 @@ import NewLesson from "../../components/newLesson/NewLesson";
 
 const Admin = () => {
     return <div className="admin__main">
-        <AdminSidebar />
-        <NewLesson />
+        <div className="admin__head">
+            <AdminSidebar />
+            <NewLesson />
+        </div>
+
     </div>
 }
 

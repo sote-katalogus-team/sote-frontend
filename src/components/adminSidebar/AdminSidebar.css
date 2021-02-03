@@ -2,10 +2,9 @@
 
 .admin__sidebar {
     margin-top: 2vw;
-    position: fixed;
-    left: 0;
     top: 0;
     width: 20vw;
+    height: auto;
     text-align: center;
 
 }

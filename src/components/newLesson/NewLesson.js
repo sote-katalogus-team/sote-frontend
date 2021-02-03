@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import "./NewLesson.css"
 
 const NewLesson = () => {
     const url = process.env.REACT_APP_URL;
@@ -28,14 +29,16 @@ const NewLesson = () => {
                 <option value="eloadas" className="type__option">Elöadás</option>
                 <option value="gyakorlat" className="type__option">Gyakorlat</option>
                 <option value="konzultacio" className="type__option">Konzultáció</option>
-            </select>
+            </select> <br/>
 
             <input type="text" className="name__input"/>
+            <input type="date"/> <br/>
 
+        </div>
+        <br/>
+        <div>
             <input type="number" min={1} max={3} className={"number__input"}/>
-
-            <input type="date"/>
-
+            <button className="newLesson__submit"> Submit</button>
         </div>
     </div>
 }
