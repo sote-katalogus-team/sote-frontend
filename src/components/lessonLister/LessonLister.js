@@ -21,16 +21,22 @@ const LessonLister = () => {
 
     async function  fetchTurns() {
         axios.get(url+ "/turnus/all").then((res) => {
+
+
             setTurns(res.data)
-
-
         })
     }
 
 
     async function getClassesById() {
         axios.get(url + "/classes/all/" + turnusId).then(res => {
-            setLessons(res.data)
+
+            let all = [];
+            Object.keys(res.data).forEach(elem => {
+                res.data[elem].forEach(item => {
+                    all.push(item)}
+                )})
+            setLessons(all)
         })
     }
 
