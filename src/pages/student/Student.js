@@ -2,7 +2,7 @@ import React from 'react';
 import './Student.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import fontawesome from '@fortawesome/fontawesome'
-import { faCheckSquare, faUser } from '@fortawesome/fontawesome-free-solid'
+import { faUser } from '@fortawesome/fontawesome-free-solid'
 
 const Student = () => {
 

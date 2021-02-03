@@ -1,0 +1,17 @@
+body {
+    background-color: #ffffff;
+}
+
+.admin__main {
+    border: 20px solid rgba(41, 88, 229, 1);
+    border-radius: 15px;
+    margin-left: 290px;
+    margin-right: 290px;
+    height: 100%;
+}
+
+.admin__head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
