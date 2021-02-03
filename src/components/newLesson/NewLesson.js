@@ -31,13 +31,17 @@ const NewLesson = () => {
                 <option value="konzultacio" className="type__option">Konzultáció</option>
             </select> <br/>
 
-            <input type="text" className="name__input"/>
-            <input type="date"/> <br/>
+            <input placeholder={"óra neve"} type="text" className="name__input"/>
+            <input type="date"/>
+            <br/>
+
 
         </div>
         <br/>
         <div>
-            <input type="number" min={1} max={3} className={"number__input"}/>
+            <input placeholder={"értéke"} type="number" maxLength={1} min={1} max={3} className={"number__input"}/>
+            <label htmlFor="input">pótlás?</label>
+            <input type="checkbox" id="potlas" name="potlas" value="pótlás" className={"potlas"}/>
             <button className="newLesson__submit"> Hozzáadás</button>
         </div>
     </div>

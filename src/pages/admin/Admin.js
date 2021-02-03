@@ -2,6 +2,7 @@ import React from "react";
 import './Admin.css'
 import AdminSidebar from "../../components/adminSidebar/AdminSidebar";
 import NewLesson from "../../components/newLesson/NewLesson";
+import LessonLister from "../../components/lessonLister/LessonLister";
 
 
 const Admin = () => {
@@ -10,6 +11,7 @@ const Admin = () => {
             <AdminSidebar />
             <NewLesson />
         </div>
+        <LessonLister />
 
     </div>
 }
