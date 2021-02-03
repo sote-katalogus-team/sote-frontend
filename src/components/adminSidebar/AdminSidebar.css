@@ -1,0 +1,13 @@
+
+
+.admin__sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+}
+
+
+.admin__image {
+    width: 150px;
+}
