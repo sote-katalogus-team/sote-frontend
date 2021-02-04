@@ -1,8 +1,8 @@
 import React from "react";
 import AdminSidebar from "../../components/adminSidebar/AdminSidebar";
-import NewLesson from "../../components/newLesson/NewLesson";
-import LessonLister from "../../components/lessonLister/LessonLister";
+
 import NewTurnus from "../../components/newTurnus/NewTurnus";
+import TurnusLister from "../../components/turnusLister/TurnusLister";
 
 const AdminNewTurnus = () => {
     return <div className="admin__main">
@@ -10,7 +10,7 @@ const AdminNewTurnus = () => {
             <AdminSidebar active={"new-turnus"} />
             <NewTurnus />
         </div>
-        <LessonLister />
+        <TurnusLister />
 
     </div>
 }
