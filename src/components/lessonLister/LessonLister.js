@@ -55,6 +55,7 @@ const LessonLister = () => {
         <div className="lessons__tableContainer">
             <table className={"lessons_table"}>
                 <thead>
+                <tr>
                 <th className={"th__type"}>Óra típusa</th>
                 <th>Óra neve</th>
                 <th>Dátuma</th>
@@ -62,6 +63,7 @@ const LessonLister = () => {
                 <th>pótlás</th>
                 <th>státusz</th>
                 <th>törlés</th>
+                </tr>
                 </thead>
                 <tbody>
                 {elo.map(e => (

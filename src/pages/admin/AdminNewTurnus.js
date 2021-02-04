@@ -7,7 +7,7 @@ import NewTurnus from "../../components/newTurnus/NewTurnus";
 const AdminNewTurnus = () => {
     return <div className="admin__main">
         <div className="admin__head">
-            <AdminSidebar />
+            <AdminSidebar active={"new-turnus"} />
             <NewTurnus />
         </div>
         <LessonLister />
