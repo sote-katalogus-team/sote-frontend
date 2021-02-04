@@ -69,3 +69,13 @@
     padding: 10px;
     color: rgba(41, 88, 229, 1);
 }
+
+
+.potlas {
+    border: 2px solid rgba(41, 88, 229, 1);
+    border-radius: 2px;
+    color: rgba(41, 88, 229, 1);
+    width: 30px;
+    height: 15px;
+    font-size: 22px;
+}
