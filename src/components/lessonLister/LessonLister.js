@@ -4,7 +4,6 @@ import Lesson from "../Lesson/Lesson";
 
 
 const LessonLister = () => {
-    //  const[lessons, setLessons] = useState([])
     const [konz, setKonz] = useState([])
     const [elo, setElo] = useState([])
     const [gyak, setGyak] = useState([])
@@ -24,8 +23,6 @@ const LessonLister = () => {
 
     async function fetchTurns() {
         axios.get(url + "/turnus/all").then((res) => {
-
-
             setTurns(res.data)
         })
     }
@@ -40,12 +37,17 @@ const LessonLister = () => {
         })
     }
 
+    const changeTurns = () => {
+        const newID = document.getElementById("turner").value;
+        setTurnusId(newID);
+    }
+
 
     console.log(elo)
 
 
     return <div className="lessons__main">
-        <select name="turn" id="turner" className="newLesson__turnSelect">
+        <select onChange={changeTurns} name="turn" id="turner" className="newLesson__turnSelect">
             {turns.map(turn => (
                 <option value={turn.id} className="turn__option">{turn.name}</option>
             ))}
@@ -63,13 +65,13 @@ const LessonLister = () => {
                 </thead>
                 <tbody>
                 {elo.map(e => (
-                    <Lesson type={"elöadás"} data={e} />
+                    <Lesson type={"elöadás"} data={e}/>
                 ))}
                 {gyak.map(e => (
-                    <Lesson type={"gyakorlat"} data={e} />
+                    <Lesson type={"gyakorlat"} data={e}/>
                 ))}
                 {konz.map(e => (
-                    <Lesson type={"konzultáció"} data={e} />
+                    <Lesson type={"konzultáció"} data={e}/>
                 ))}
 
                 </tbody>
