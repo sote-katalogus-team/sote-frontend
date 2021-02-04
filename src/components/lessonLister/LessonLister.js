@@ -51,9 +51,9 @@ const LessonLister = () => {
             ))}
         </select>
         <div className="lessons__tableContainer">
-            <table>
+            <table className={"lessons_table"}>
                 <thead>
-                <th>Óra típusa</th>
+                <th className={"th__type"}>Óra típusa</th>
                 <th>Óra neve</th>
                 <th>Dátuma</th>
                 <th>Értéke</th>
