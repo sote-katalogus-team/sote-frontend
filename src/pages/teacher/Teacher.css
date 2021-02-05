@@ -1,0 +1,31 @@
+.teacher__main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.teacher__container {
+  flex-basis: 80%
+}
+
+
+.teacher__button {
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 70%;
+  font-size: 1.1em;
+  color: #000;
+  height: 34px;
+  border: 1px solid #FFF;
+  border-radius: 5px;
+}
+
+.teacher__list {
+  width: 90%;
+  margin: auto;
+  margin-top: 40px;
+  background-color: #FFF;
+  font-size: 1.1em;
+  color: #000;
+}
