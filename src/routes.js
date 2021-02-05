@@ -7,6 +7,7 @@ import StudentStatistics from "./pages/studentStatistics/StudentStatistics";
 import AdminNewLesson from "./pages/admin/AdminNewLesson";
 import AdminNewTurnus from "./pages/admin/AdminNewTurnus";
 import AdminNewTeacher from "./pages/admin/AdminNewTeacher";
+import AdminStatistics from "./pages/admin/AdminStatistics";
 
 const Routes = () => (
   <Router>
@@ -18,6 +19,7 @@ const Routes = () => (
       <Route exact path="/admin/new-lesson" component={AdminNewLesson} />
       <Route exact path="/admin/new-turnus" component={AdminNewTurnus} />
       <Route exact path="/admin/new-teacher" component={AdminNewTeacher} />
+      <Route exact path="/admin/statistics" component={AdminStatistics} />
     </Switch>
   </Router>
 );
