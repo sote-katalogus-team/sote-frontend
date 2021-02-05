@@ -15,6 +15,7 @@ const Teacher = () => {
   const [counterValue, setCounterValue] = useState(90000);
   const [counterComplete, setCounterComplete] = useState(false);
   const [code, setCode] = useState("{{CODE}}");
+  //const [popupVisible, setPopupVisible] = useState(false);
 
   const handleNextButtonClick = () => {
     setStep(2);
@@ -33,7 +34,13 @@ const Teacher = () => {
   const handleGoToVerifyButtonClick = () => {
     //TODO http request to get the number of students
     //setNumOfStudents(...)
+
+    /*if (counterComplete) {
       setStep(4);
+    } else {
+      setPopupVisible(true);
+    }*/
+    setStep(4);
   }
 
   const handleGoToSelectionButtonClick = () => {
@@ -138,6 +145,7 @@ const Teacher = () => {
           </button>
         )}
       </div>
+      {/*popupVisible && <div className="teacher__popup">POPUP</div>*/}
     </div>
   );
 }
