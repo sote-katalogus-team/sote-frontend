@@ -56,7 +56,6 @@ body {
     border-spacing: 20px 0;
     overflow-y:scroll;
     max-height: 100px;
-
 }
 
 .turnusLister__tableContainer {
@@ -88,3 +87,45 @@ body {
 .add_attendance input {
     width: 50px;
 }
+
+
+.newTeacher__inputContainer {
+    margin-top: 200px;
+}
+
+.newTeacher__inputContainer input {
+    width: 200px;
+    border: 3px solid rgba(41, 88, 229, 1);
+    margin-right: 30px;
+    border-radius: 6px;
+    font-size: 20px;
+    color: rgba(41, 88, 229, 1);
+
+}
+
+
+.newTeacher__inputContainer button {
+    width: 150px;
+    border: 3px solid rgba(41, 88, 229, 1);
+    margin-right: 30px;
+    border-radius: 6px;
+    font-size: 20px;
+    padding: 20px;
+    color: rgba(41, 88, 229, 1);
+}
+
+.teacherLister_tableContainer {
+    margin-left: 500px;
+    text-align: center;
+    font-size: 26px;
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.teacher__table {
+    padding: 10px;
+    border-spacing: 20px 0;
+    overflow-y:scroll;
+    max-height: 100px;
+}
+
