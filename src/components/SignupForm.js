@@ -9,10 +9,10 @@ const SignupForm = ({ data, onChangeData }) => {
     confirmPassword: "",
     neptunCode: ""
   });
-
   useEffect(() => {
     onChangeData(state);
   }, [state, onChangeData]);
+
 
   const handleChange = (e) => {
     let { id, value } = e.target;
