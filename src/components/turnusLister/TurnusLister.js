@@ -27,10 +27,10 @@ const TurnusLister = () => {
                 <thead>
                 <tr>
                     <th>Turnus neve</th>
-                    <th>Turnus száma</th>
-                    <th>Eloadasok száma</th>
-                    <th>Gyakorlatok száma</th>
-                    <th>Konzultációk száma</th>
+                    <th>Turnus év</th>
+                    <th>Elóadás kötelező jelenlét</th>
+                    <th>Gyakorlat kötelező jelenlét</th>
+                    <th>Konzultáció kötelező jelenlét</th>
                     <th>Törlés</th>
                     </tr>
                 </thead>

@@ -1,6 +1,7 @@
 
 
 .admin__sidebar {
+    float: left;
     margin-left: 0;
     margin-top: 2vw;
     top: 0;
