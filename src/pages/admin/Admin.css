@@ -22,11 +22,20 @@ body {
     font-size: 25px;
     text-align: center;
     margin-bottom: 40px;
+
 }
+
+.lessons__tableContainer {
+    max-height: 300px;
+    overflow: scroll;
+}
+
 
 .lessons_table {
     padding: 10px;
     border-spacing: 20px 0;
+    overflow-y:scroll;
+    max-height: 100px;
 }
 
 .newTurnus__inputs input {
@@ -42,6 +51,7 @@ body {
 .turnus__table {
     padding: 10px;
     border-spacing: 20px 0;
+
 }
 
 .turnusLister__tableContainer {
