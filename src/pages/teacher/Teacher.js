@@ -40,7 +40,11 @@ const Teacher = () => {
     } else {
       setPopupVisible(true);
     }*/
-    setStep(4);
+    const go = window.confirm("Biztosan tovább mész, ha nem végzett, akkor leállítod az idozitot!!")
+    if (go) {
+      setStep(4);
+    }
+
   }
 
   const handleGoToSelectionButtonClick = () => {
