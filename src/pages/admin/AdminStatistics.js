@@ -1,8 +1,7 @@
 import React from "react";
 import AdminSidebar from "../../components/adminSidebar/AdminSidebar";
-import NewTeacher from "../../components/newTeacher/NewTeacher";
-import TeacherLister from "../../components/teacherLister/TeacherLister";
 import StatisticsFilter from "../../components/statisticsFilter/StatisticsFilter";
+import StatisticsTable from "../../components/statisticsTable/StatisticsTable";
 
 const AdminStatistics = () => {
     return <div className="admin__main">
@@ -10,7 +9,7 @@ const AdminStatistics = () => {
             <AdminSidebar active={"new-turnus"} />
             <StatisticsFilter />
         </div>
-        <TeacherLister />
+        <StatisticsTable />
 
     </div>
 }
