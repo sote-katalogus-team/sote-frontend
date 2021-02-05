@@ -1,6 +1,7 @@
 
 
 .admin__sidebar {
+    float: left;
     margin-left: 0;
     margin-top: 2vw;
     top: 0;
@@ -77,4 +78,11 @@
     /* Black / Disabled */
 
     color: #9E9E9E;
+}
+
+.active {
+    border: 20px solid rgba(41, 88, 229, 1);
+    border-radius: 2px;
+    background-color: rgba(41, 88, 229, 1) ;
+    color: #ffffff;
 }
