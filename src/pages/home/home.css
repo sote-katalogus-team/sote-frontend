@@ -1,5 +1,6 @@
 .main__mainContainer {
     background-color: rgba(41, 139, 229, 1);
+    height: available;
 }
 
 .App {

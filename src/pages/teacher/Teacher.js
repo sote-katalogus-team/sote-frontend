@@ -15,6 +15,10 @@ const Teacher = () => {
   const [counterValue, setCounterValue] = useState(90000);
   const [counterComplete, setCounterComplete] = useState(false);
   const [code, setCode] = useState("{{CODE}}");
+
+
+  window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
+
   //const [popupVisible, setPopupVisible] = useState(false);
 
   const handleNextButtonClick = () => {

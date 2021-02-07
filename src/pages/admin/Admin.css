@@ -1,4 +1,4 @@
-body {
+Body {
     background-color: #ffffff;
 }
 
@@ -13,7 +13,7 @@ body {
 .admin__head {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 
@@ -122,10 +122,13 @@ body {
     overflow: scroll;
 }
 
-.teacher__table {
+.teacher__AdmintTable {
     padding: 10px;
     border-spacing: 20px 0;
     overflow-y:scroll;
     max-height: 100px;
 }
 
+.newTurnus__mainContainer {
+    margin-right: 10vh;
+}

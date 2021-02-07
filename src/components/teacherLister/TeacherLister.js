@@ -25,7 +25,7 @@ const TeacherLister  = () => {
 
     return <div className="teacherLister__main">
             <div className="teacherLister_tableContainer">
-                <table className={"teacher__table"}>
+                <table className={"teacher__AdmintTable"}>
                 <thead>
                 <tr>
                     <th>Oktató neve</th>

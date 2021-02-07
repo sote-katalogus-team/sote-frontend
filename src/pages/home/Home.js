@@ -8,6 +8,11 @@ const Home = () => {
   }
 
 
+
+
+  window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
+
+
   return (
   <div className="main__mainContainer">
     <div className={"home__image"}><img src="https://www.semmelweiskiado.hu/images/termekek/2/1691/semmelweis_kiado_logo_1608213956.jpg" alt="logo"/></div>
