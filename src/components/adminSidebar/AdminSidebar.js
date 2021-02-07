@@ -21,7 +21,7 @@ const AdminSidebar = (props) => {
         </div>
         <div className="admin__sidebarMenu">
             <a href="/admin/new-lesson"><p id={"new-lesson"} className="admin__newLesson"><span> <FontAwesomeIcon icon="calendar-plus"  className={"admin__calendar"}/></span> Órák hozzáadása</p></a>
-            <p className="admin__statisztika"><span> <FontAwesomeIcon icon="chart-bar"  className={"admin__chart"}/></span> Statisztika</p>
+            <a href="/admin/statistics"><p className="admin__statisztika"><span> <FontAwesomeIcon icon="chart-bar"  className={"admin__chart"}/></span> Statisztika</p></a>
             <a href="/admin/new-teacher"><p className="admin__newTeacher"><span> <FontAwesomeIcon icon="user-plus"  className={"admin__addTeacher"}/></span> Oktatók hozzáadása</p></a>
             <a href="/admin/new-turnus"><p className="admin__newTeacher"><span> <FontAwesomeIcon icon="calendar-plus"  className={"admin__calendar"}/></span> Turnus hozzáadása</p></a>
         </div>
