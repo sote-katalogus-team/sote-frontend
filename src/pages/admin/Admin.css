@@ -129,6 +129,24 @@ Body {
     max-height: 100px;
 }
 
-.newTurnus__mainContainer {
+
+.statistics__table {
+    font-size: 20px;
+    padding: 10px;
+    border-spacing: 20px 0;
+    overflow-y:scroll;
+    max-height: 100px;
+}
+
+.newTurnus__mainContainer, .statisticsFilter__main {
     margin-right: 10vh;
+}
+
+.statisticsFilter__main{
+    margin-top: 10vh;
+
+}
+
+.statisticsTable__main {
+    margin-left: 400px;
 }

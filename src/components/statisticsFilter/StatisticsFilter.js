@@ -36,6 +36,15 @@ const StatisticsFilter = () => {
             </select>
         </div>
 
+        <div className="statistics__searchSelect">
+            <p>Keresés típusa:</p>
+            <select name="type" id="2" className="newLesson__lessonType">
+                <option value="student" className="type__option">Diák</option>
+                <option value="lesson" className="type__option">Óra</option>
+            </select>
+        </div>
+
+
 
 
 
