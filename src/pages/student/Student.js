@@ -5,7 +5,7 @@ import fontawesome from '@fortawesome/fontawesome'
 import { faUser } from '@fortawesome/fontawesome-free-solid'
 
 const Student = () => {
-
+     window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
     const toStatistics = () => {
         window.location = "/student/statistics"
     }
