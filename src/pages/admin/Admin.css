@@ -1,13 +1,13 @@
-Body {
-    background-color: #ffffff;
-}
+
 
 .admin__main {
-    border: 20px solid rgba(41, 88, 229, 1);
+    margin-top: 10px;
+    border: 10px solid white;
     border-radius: 15px;
     margin-left: 290px;
     margin-right: 290px;
     height: 100%;
+    background-color: white;
 }
 
 .admin__head {
@@ -40,11 +40,11 @@ Body {
 
 .newTurnus__inputs input {
     width: 200px;
-    border: 3px solid rgba(41, 88, 229, 1);
+    border: 3px solid rgba(41, 139, 229, 1);
     margin-right: 30px;
     border-radius: 6px;
     font-size: 20px;
-    color: rgba(41, 88, 229, 1);
+    color: rgba(41, 139, 229, 1);
 }
 
 .newTurnus__inputs {
@@ -80,7 +80,7 @@ Body {
 }
 
 .add_attendance p {
-    color: rgba(41, 88, 229, 1);
+    color: rgba(41, 139, 229, 1);
     margin-right: 10px;
 }
 
@@ -95,23 +95,23 @@ Body {
 
 .newTeacher__inputContainer input {
     width: 200px;
-    border: 3px solid rgba(41, 88, 229, 1);
+    border: 3px solid rgba(41, 139, 229, 1);
     margin-right: 30px;
     border-radius: 6px;
     font-size: 20px;
-    color: rgba(41, 88, 229, 1);
+    color: rgba(41, 139, 229, 1);
 
 }
 
 
 .newTeacher__inputContainer button {
     width: 150px;
-    border: 3px solid rgba(41, 88, 229, 1);
+    border: 3px solid rgba(41, 139, 229, 1);
     margin-right: 30px;
     border-radius: 6px;
     font-size: 20px;
     padding: 20px;
-    color: rgba(41, 88, 229, 1);
+    color: rgba(41, 139, 229, 1);
 }
 
 .teacherLister_tableContainer {

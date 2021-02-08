@@ -7,6 +7,29 @@ const Home = () => {
     window.location = "/signup"
   }
 
+  const handleLogin = () => {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+
+    if (password === "admin" && username === "admin") {
+      window.location = "/admin/new-lesson"
+    }
+    if (password === "oktato" && username === "oktato") {
+      window.location = "/teacher"
+    }
+    if (password === "student" && username === "student") {
+      window.location = "/student"
+    }
+
+
+
+
+  }
+
+
+
+
 
 
 
@@ -18,12 +41,12 @@ const Home = () => {
     <div className={"home__image"}><img src="https://www.semmelweiskiado.hu/images/termekek/2/1691/semmelweis_kiado_logo_1608213956.jpg" alt="logo"/></div>
     <div className="main__LoginContainer">
       <form >
-        <input placeholder={"username"} type="text" className="main__usernameInput"/><br/>
-        <input placeholder={"password"} type="password" className="main__passwordInput"/>
+        <input id={"username"} placeholder={"username"} type="text" className="main__usernameInput"/><br/>
+        <input id={"password"} placeholder={"password"} type="password" className="main__passwordInput"/>
       </form>
     </div>
     <div className="main__buttonContainer">
-      <button className={'main__loginButton'} >Login</button>
+      <button onClick={handleLogin} className={'main__loginButton'} >Login</button>
       <button onClick={goToRegister}  className={'main__registerButton'}>Register</button>
     </div>
   </div>
