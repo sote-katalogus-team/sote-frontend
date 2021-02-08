@@ -188,7 +188,57 @@
         text-align: center;
     }
 
+}
+@media (max-width: 320px) {
+    .admin__main {
+        margin-top: 10px;
+        border: 10px solid white;
+        border-radius: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        width: 100%;
+    }
+
+    .lessons__main {
+        width: auto;
+        margin-left: 0;
+    }
+
+    .admin__head {
+        display: block;
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .admin__main div {
+        text-align: center;
+    }
+
+}
 
 
-
+@media (max-width: 500px) {
+    .admin__main {
+        margin-top: 10px;
+        border: 10px solid white;
+        border-radius: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        width: 100%;
+    }
+    .admin__head {
+        display: block;
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .admin__main div {
+        text-align: center;
+    }
+    .lessons__main {
+        width: auto;
+        margin-left: 0;
+    }
 }

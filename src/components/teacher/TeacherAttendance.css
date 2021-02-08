@@ -66,3 +66,14 @@
   font-weight: bold;
   text-align: center;
 }
+
+
+
+@media (min-width: 1500px) {
+  .attendance__neptun {
+    width: 20vw;
+  }
+  .attendance__addStudent {
+    width: 20vw;
+  }
+}

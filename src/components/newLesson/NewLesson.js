@@ -113,7 +113,7 @@ const NewLesson = () => {
 
         </div>
         <br/>
-        <div>
+        <div className={"newLesson__inputContainer"}>
             <input id={"newlessonPoint"} placeholder={"értéke"} type="number" maxLength={1} min={1} max={3} className={"number__input"}/>
             <label htmlFor="input">pótlás?</label>
             <input type="checkbox" id="potlas" name="potlas" value="pótlás" className={"potlas"}/>

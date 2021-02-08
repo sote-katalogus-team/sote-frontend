@@ -93,5 +93,73 @@
         margin-top: 5px;
     }
 
+    .newLesson__inputContainer {
+        text-align: center;
+        display: block;
+    }
+
+
+    .newLesson__submit {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 130px;
+    }
+
+
+}@media (max-width: 320px) {
+
+    .newLesson__main {
+        margin: 0;
+        text-align: center;
+    }
+
+    .newLesson__selectContainer select {
+        margin-right: 0;
+        margin-top: 5px;
+    }
+    .newLesson__selectContainer input {
+        margin-right: 0;
+        margin-top: 5px;
+    }
+    .newLesson__inputContainer {
+        text-align: center;
+        display: block;
+    }
+
+
+    .newLesson__submit {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 180px;
+    }
+
+
+}@media (max-width: 500px) {
+
+    .newLesson__main {
+        margin: 0;
+        text-align: center;
+    }
+
+    .newLesson__selectContainer select {
+        margin-right: 0;
+        margin-top: 5px;
+    }
+    .newLesson__selectContainer input {
+        margin-right: 0;
+        margin-top: 5px;
+    }
+    .newLesson__inputContainer {
+        text-align: center;
+        display: block;
+    }
+
+
+    .newLesson__submit {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 200px;
+    }
+
 
 }
