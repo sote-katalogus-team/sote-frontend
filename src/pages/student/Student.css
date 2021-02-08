@@ -112,3 +112,30 @@
         width: 28vh;
     }
 }
+
+
+
+
+
+@media (min-width: 1500px) {
+    .student__mainContainer {
+
+        height: 100%;
+    }
+    .student__welcome, .student__name {
+        font-size: 30px;
+        float: left;
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+    }
+
+    .student__header {
+        display: block;
+    }
+
+    .student__userLogo {
+        margin-left: 90%;
+    }
+
+}

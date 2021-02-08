@@ -13,7 +13,7 @@
   display: block;
   margin: auto;
   margin-bottom: 20px;
-  width: 70%;
+  width: 70vw;
   font-size: 1.1em;
   color: #000;
   height: 34px;
@@ -32,4 +32,15 @@
 
 .App {
  background-color: rgba(41, 139, 229, 1);
+}
+
+
+@media (min-width: 1500px) {
+  .teacher__button {
+    width: 20vw;
+  }
+
+  .teacher__table {
+    width: 60vw;
+  }
 }

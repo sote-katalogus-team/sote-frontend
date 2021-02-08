@@ -60,3 +60,17 @@
 .teacher__table tr.selected {
   background-color: rgba(41, 139, 229, 1);;
 }
+
+
+@media (min-width: 1500px) {
+  .teacher__table {
+    width: 45vw;
+  }
+  .teacher__wrapper {
+    margin-top: 100px;
+    width: 46vw;
+  }
+  .teacher__date {
+    width: 30vw;
+  }
+}
