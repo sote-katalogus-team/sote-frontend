@@ -3,6 +3,7 @@ import fontawesome from '@fortawesome/fontawesome'
 import {faTrash} from '@fortawesome/fontawesome-free-solid'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import { makeStyles } from '@material-ui/core/styles';
 
 const Lesson = (props) => {
     const url = process.env.REACT_APP_URL;
@@ -36,6 +37,9 @@ const Lesson = (props) => {
     async function deleteKonzultacio() {
         axios.delete(url + "/konzultacio/" + props.data?.id +  "/delete").then(res => {
             alert(res.data)
+
+
+
             window.location.reload();
         })
         console.log("konzultáció")
