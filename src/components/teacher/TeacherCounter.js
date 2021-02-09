@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import Countdown, { zeroPad } from "react-countdown";
+import axios from "axios";
 import './TeacherCounter.css';
 
 
-const TeacherCounter = ({counterValue, code, onCounterComplete }) => {
+const TeacherCounter = ({counterValue, code, selection, onCounterComplete }) => {
   const counter = Date.now() + parseInt(counterValue);
-
+  const url = process.env.REACT_APP_URL;
   const [endMessageVisible, setEndMessageVisible] = useState(false);
 
   useEffect(() => {
@@ -14,7 +15,11 @@ const TeacherCounter = ({counterValue, code, onCounterComplete }) => {
   }, [endMessageVisible, onCounterComplete]);
 
   const handleComplete = () => {
-    //TODO http request to sign that countdown ends
+    axios
+      .post(
+        url + "/" + selection.type + "/" + selection.item.id + "/closeClass"
+      )
+      .then((res) => console.log(res.data));
     setEndMessageVisible(true);
   };
 
