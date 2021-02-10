@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import "./TeacherAttendance.css";
+import authHeader from "../../security/auth-header";
+import {useCookies} from "react-cookie";
 
 const TeacherAttendance = ({ numOfStudents, selection }) => {
   const [neptunCode, setNeptunCode] = useState("");
   const [message, setMessage] = useState(null);
   const url = process.env.REACT_APP_URL;
+  const [cookies, setCookies] = useCookies(['user'])
 
   const handleNeptunCodeChange = (e) => {
     setMessage(null);
@@ -19,7 +22,7 @@ const TeacherAttendance = ({ numOfStudents, selection }) => {
         "type": selection.type.toUpperCase(),
         "id": selection.item.id
       }
-    }).then(res => console.log(res.data));
+    }, {headers: authHeader(cookies.user)}).then(res => console.log(res.data));
     setMessage("A hozzáadás sikerült!");
     //setMessage("A hozzáadás sikertelen!");
   };
