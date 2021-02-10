@@ -6,6 +6,8 @@ import TeacherSettings from '../../components/teacher/TeacherSettings';
 import TeacherCounter from '../../components/teacher/TeacherCounter';
 import TeacherAttendance from '../../components/teacher/TeacherAttendance';
 import axios from 'axios';
+import {useCookies} from "react-cookie";
+import authHeader from "../../security/auth-header";
 
 
 const Teacher = () => {
@@ -16,6 +18,7 @@ const Teacher = () => {
   const [counterValue, setCounterValue] = useState(90000);
   const [counterComplete, setCounterComplete] = useState(false);
   const [code, setCode] = useState("{{CODE}}");
+  const [cookies, setCookies] = useCookies("user")
 
 
   window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
@@ -29,7 +32,7 @@ const Teacher = () => {
   };
 
   const handleGenerateButtonClick = () => {
-    axios.get(url + '/' + selection.type + '/' + selection.item.id + '/openClass').then(res => setCode(res.data));
+    axios.get(url + '/' + selection.type + '/' + selection.item.id + '/openClass', {headers: authHeader(cookies.user)}).then(res => setCode(res.data));
     setStep(3);
   }
 
@@ -42,8 +45,8 @@ const Teacher = () => {
       body: {
         id: selection.item.id,
         type: selection.type.toUpperCase()
-      },
-    }).then(res => setNumOfStudents(res.data));
+      , },
+    }, {headers: authHeader(cookies.user)}).then(res => setNumOfStudents(res.data));
 
     if (counterComplete) {
       setStep(4);
@@ -51,7 +54,7 @@ const Teacher = () => {
       const go = window.confirm("Biztosan tovább mész, ha nem végzett, akkor leállítod az idozitot!!")
 
       if (go) {
-        axios.post(url + '/' + selection.type + '/' + selection.item.id + '/closeClass').then(res => console.log(res.data));
+        axios.post(url + '/' + selection.type + '/' + selection.item.id + '/closeClass',{} , {headers: authHeader(cookies.user)}).then(res => console.log(res.data));
         setStep(4);
       }
     }
