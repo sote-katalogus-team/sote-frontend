@@ -1,8 +1,11 @@
 import React from "react";
 import axios from "axios";
+import authHeader from "../../security/auth-header";
+import {useCookies} from "react-cookie";
 
 const NewTurnus = () => {
     const url = process.env.REACT_APP_URL;
+    const [cookies, setCookies] = useCookies(["user"])
 
 
     const validateNewTurnus = () => {
@@ -47,7 +50,7 @@ const NewTurnus = () => {
     }
 
     async function addNewTurnus(data) {
-        axios.post(url + "/turnus/add", data).then(res => {
+        axios.post(url + "/turnus/add", data, {headers: authHeader(cookies.user)}).then(res => {
             alert(res.data);
             window.location.reload();
         })
