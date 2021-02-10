@@ -3,8 +3,10 @@ import './Signup.css';
 import SignupForm from '../components/SignupForm';
 import SignupCheck from '../components/SignupCheck';
 import SignupVerification from '../components/SignupVerification';
+import axios from "axios";
 
 const Signup = () => {
+  const url = process.env.REACT_APP_URL;
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -24,7 +26,19 @@ const Signup = () => {
   const handleBackButtonClick = () => { setStep(1); };
   const handleSignupButtonClick = () => {
     //TODO send request to the server with reg data
-    setStep(3);
+
+    let data = {
+      email: state.email,
+      name: state.name,
+      password: state.password
+    }
+    axios.post(url + "/registration", data).then(res => {
+      console.log(res.data)
+      window.location = "/"
+    })
+
+
+    //setStep(3);
   }
   const handleVerifyButtonClick = () => {
     //TODO send request to the server to verify the signup

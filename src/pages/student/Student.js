@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import fontawesome from '@fortawesome/fontawesome'
 import { faUser } from '@fortawesome/fontawesome-free-solid'
 import axios from "axios";
+import authHeader from "../../security/auth-header";
+import {useCookies} from "react-cookie";
 
 
 const required = (value) => {
@@ -20,6 +22,7 @@ const required = (value) => {
 
 const Student = () => {
     const [message, setMessage] = useState("");
+    const [cookies, setCookies] = useCookies(["user"])
     const [user, setUser] = useState(1);
     const url = process.env.REACT_APP_URL;
     const [alert, setAlert] = useState(false)
@@ -50,7 +53,7 @@ const Student = () => {
 
         let code =  {"code": codeInput}
 
-        axios.post(url + "/student/" + user + "/send_code", code).then(res => {
+        axios.post(url + "/student/" + user + "/send_code", code, {headers: authHeader(cookies.user)}).then(res => {
             console.log(res)
             if (res.status === 200) {
                 setAlert(true)
