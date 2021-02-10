@@ -11,12 +11,13 @@ const TeacherSettings = ({selection, onChangeCounterValue}) => {
   const handleCounterValueChange = (e) => {
     setCounter(e.target.value);
   }
+  console.log(selection)
 
   return (
     <>
       <div className="selection__container">
         <div className="selection__title">Választott óra</div>
-        <div className="selection__name">{`${selection.name} ${selection.type}`}</div>
+        <div className="selection__name">{`${selection.item?.name} ${selection.type}`}</div>
       </div>
       <select id="counter" name="counter" className="counter__select" onChange={handleCounterValueChange}>
         <option value="90000">1:30</option>

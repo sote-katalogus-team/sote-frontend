@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import "./TeacherAttendance.css";
 
-const TeacherAttendance = ({ numOfStudents }) => {
+const TeacherAttendance = ({ numOfStudents, selection }) => {
   const [neptunCode, setNeptunCode] = useState("");
   const [message, setMessage] = useState(null);
+  const url = process.env.REACT_APP_URL;
 
   const handleNeptunCodeChange = (e) => {
     setMessage(null);
@@ -11,7 +13,13 @@ const TeacherAttendance = ({ numOfStudents }) => {
   };
 
   const handleAddStudentClick = () => {
-    //TODO http request to add student
+    axios.post(url + "/student/addByNeptunCode", {
+      body: {
+        "neptunCode": neptunCode,
+        "type": selection.type.toUpperCase(),
+        "id": selection.item.id
+      }
+    }).then(res => console.log(res.data));
     setMessage("A hozzáadás sikerült!");
     //setMessage("A hozzáadás sikertelen!");
   };

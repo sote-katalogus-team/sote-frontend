@@ -5,6 +5,7 @@ import TeacherSelect from '../../components/teacher/TeacherSelection';
 import TeacherSettings from '../../components/teacher/TeacherSettings';
 import TeacherCounter from '../../components/teacher/TeacherCounter';
 import TeacherAttendance from '../../components/teacher/TeacherAttendance';
+import axios from 'axios';
 
 
 const Teacher = () => {
@@ -18,6 +19,7 @@ const Teacher = () => {
 
 
   window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
+  const url = process.env.REACT_APP_URL;
 
 
   //const [popupVisible, setPopupVisible] = useState(false);
@@ -27,8 +29,7 @@ const Teacher = () => {
   };
 
   const handleGenerateButtonClick = () => {
-    //TODO http request to get the verification code
-    //setCode(...)
+    axios.get(url + '/' + selection.type + '/' + selection.item.id + '/openClass').then(res => setCode(res.data));
     setStep(3);
   }
 
@@ -37,17 +38,22 @@ const Teacher = () => {
   };
 
   const handleGoToVerifyButtonClick = () => {
-    //TODO http request to get the number of students
-    //setNumOfStudents(...)
+    axios.post(url + "/student/countStudent", {
+      body: {
+        id: selection.item.id,
+        type: selection.type.toUpperCase()
+      },
+    }).then(res => setNumOfStudents(res.data));
 
-    /*if (counterComplete) {
+    if (counterComplete) {
       setStep(4);
     } else {
-      setPopupVisible(true);
-    }*/
-    const go = window.confirm("Biztosan tovább mész, ha nem végzett, akkor leállítod az idozitot!!")
-    if (go) {
-      setStep(4);
+      const go = window.confirm("Biztosan tovább mész, ha nem végzett, akkor leállítod az idozitot!!")
+
+      if (go) {
+        axios.post(url + '/' + selection.type + '/' + selection.item.id + '/closeClass').then(res => console.log(res.data));
+        setStep(4);
+      }
     }
 
   }
@@ -87,10 +93,11 @@ const Teacher = () => {
           <TeacherCounter
             counterValue={counterValue}
             code={code}
+            selection={selection}
             onCounterComplete={handleCounterComplete}
           />
         )}
-        {step === 4 && <TeacherAttendance numOfStudents={numOfStudents} />}
+        {step === 4 && <TeacherAttendance numOfStudents={numOfStudents} selection={selection} />}
       </div>
       <div className="teacher__buttons">
         {step === 1 && (

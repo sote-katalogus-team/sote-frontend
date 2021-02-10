@@ -1,65 +1,108 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import './TeacherSelection.css';
+import axios from "axios";
 
-const TeacherSelection = ({ name, onSelectionChange }) => {
-  const now = new Date();
-  const today = now.toLocaleDateString('hu');
-  const [selectedItem, setSelectedItem] = useState(null);
+const TeacherSelection = ({name, onSelectionChange}) => {
+    const now = new Date();
+    const today = now.toLocaleDateString('hu');
+    const [selectedItem, setSelectedItem] = useState(null);
+    const url = process.env.REACT_APP_URL;
+    const [konz, setKonz] = useState([])
+    const [elo, setElo] = useState([])
+    const [gyak, setGyak] = useState([])
 
-  //Mock data
-  //TODO http request to get the list
-  const [list, setList] = useState([
-    { id: 1, name: "Gyerek1", type: "Előadás", supplement: false },
-    { id: 2, name: "Sebészet2", type: "Gyakorlat", supplement: false },
-    { id: 3, name: "Covid 19", type: "Konzultáció", supplement: false },
-    { id: 4, name: "Gyerek1 Pót", type: "Előadás", supplement: true },
-    { id: 5, name: "Sebészet3", type: "Gyakorlat", supplement: false },
-    { id: 6, name: "Covid 19 - 2", type: "Konzultáció", supplement: false },
-  ]);
 
-  useEffect(() => {
-    onSelectionChange(selectedItem);
-  }, [selectedItem, onSelectionChange])
+    //Mock data
+    //TODO http request to get the list
+    const [list, setList] = useState([]);
 
-  const handleRowClick = (id) => {
-    setSelectedItem(list.find((item) => item.id === id) || null);
-  };
 
-  const getClassName = item => {
-    if (selectedItem && item.id === selectedItem.id) {
-      return 'selected';
-    } else if (item.supplement) {
-      return "supplement";
+    useEffect(() => {
+            getTodayClasses()
+    }, [])
+
+
+    async function getTodayClasses() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = mm + '/' + dd + '/' + yyyy;
+        axios.get(url + '/classes/find_by_date', { params:
+                {
+                    date1 : today
+                }}).then(res => {
+                    console.log(res.data)
+            let all = Object.keys(res.data);
+            setElo(res.data[all[0]])
+            setGyak(res.data[all[1]])
+            setKonz(res.data[all[2]])
+        })
+
+
     }
 
-    return '';
-  }
 
-  return (
-    <>
-      <div className="teacher__welcome">Üdvözöljük, {name}</div>
-      <div className="teacher__date">{today}</div>
-      <div className="teacher__wrapper">
-        <table className="teacher__table">
-          <thead className="teacher__table__head">
-            <tr>
-              <td>Név</td>
-              <td>Típus</td>
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((item) => (
-              <tr className={getClassName(item)} key={item.id} data-id={item.id} onClick={() => handleRowClick(item.id)}>
-                <td>{item.name}</td>
-                <td>{item.type}</td>
-              </tr>
-            ))}
+    useEffect(() => {
+        onSelectionChange(selectedItem);
+    }, [selectedItem, onSelectionChange])
 
-          </tbody>
-        </table>
-      </div>
-    </>
-  );
+    const handleRowClick = (item, type) => {
+        let data= {
+            type: type,
+            item: item
+        }
+        setSelectedItem(data || null);
+    };
+
+    const getClassName = (item, type) => {
+        if (selectedItem && item.id === selectedItem.item.id && selectedItem.type === type) {
+            return 'selected';
+        } else if (item.supplement) {
+            return "supplement";
+        }
+
+        return '';
+    }
+
+    return (
+        <>
+            <div className="teacher__welcome">Üdvözöljük, {name}</div>
+            <div className="teacher__date">{today}</div>
+            <div className="teacher__wrapper">
+                <table className="teacher__table">
+                    <thead className="teacher__table__head">
+                    <tr>
+                        <td>Név</td>
+                        <td>Típus</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {elo.map((item) => (
+                        <tr className={getClassName(item, "eloadas")} key={"elo"+ item.id} data-id={"elo"+ item.id}
+                            onClick={() => handleRowClick(item, "eloadas")}>
+                            <td>{item.name}</td>
+                            <td>Elöadás</td>
+                        </tr>
+                    ))}
+                    {gyak.map((item) => (
+                        <tr className={getClassName(item, "gyakorlat")} key={"gyak" + item.id} data-id={"gyak" + item.id}
+                            onClick={() => handleRowClick(item, "gyakorlat")}>
+                            <td>{item.name}</td>
+                            <td>Gyakorlat</td>
+                        </tr>
+                    ))}
+                    {konz.map((item) => (
+                        <tr className={getClassName(item, "konzultacio" )} key={"konz"+ item.id} data-id={"konz" + item.id} onClick={() => handleRowClick( item, "konzultacio")}>
+                            <td>{item.name}</td>
+                            <td>Konzultáció</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
+        </>
+    );
 };
 
 export default TeacherSelection;
