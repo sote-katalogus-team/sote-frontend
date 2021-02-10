@@ -1,9 +1,12 @@
 import React from "react";
 import axios from "axios";
+import authHeader from "../../security/auth-header";
+import {useCookies} from "react-cookie";
 
 
 const NewTeacher = () => {
     const url = process.env.REACT_APP_URL;
+    const [cookies, setCookies] = useCookies(["user"])
 
     const validateNewTeacher = () => {
         const name = document.getElementById("newTeacherName").value;
@@ -29,7 +32,7 @@ const NewTeacher = () => {
 
 
     async function saveNewTeacher(data) {
-        axios.post(url + "/teacher/add", data).then(res => {
+        axios.post(url + "/teacher/add", data, {headers: authHeader(cookies.user)}).then(res => {
             alert(res.data)
             window.location.reload();
         })
