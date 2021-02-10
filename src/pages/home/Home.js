@@ -1,8 +1,13 @@
 import React from 'react';
 import './home.css';
 import axios from "axios";
+import { useCookies } from "react-cookie";
+
 
 const Home = () => {
+    const [cookies, setCookie] = useCookies([
+        "user"
+    ]);
     const url = process.env.REACT_APP_URL;
 
     const goToRegister = () => {
@@ -15,6 +20,7 @@ const Home = () => {
         const password = document.getElementById("password").value;
 
 
+        /*
         if (password === "admin" && username === "admin") {
             window.location = "/admin/new-lesson"
         }
@@ -24,11 +30,31 @@ const Home = () => {
         if (password === "student" && username === "student") {
             window.location = "/student"
         }
+
+         */
+
+        loginRequest(username, password)
+    }
+
+    const redirect = roles => {
+        console.log(typeof roles)
+        console.log(roles[0])
+
+        if (roles[0] === "STUDENT") {
+            window.location = "/student"
+        }
     }
 
 
-    async function loginRequest(data) {
-        axios.post(url + "/login")
+    async function loginRequest(username, password) {
+        let userCredentials = {
+            email: username,
+            password: password
+        }
+        axios.post(url + "/login", userCredentials).then(res => {
+            setCookie("user", res.data, { path: "/" });
+            redirect(res.data.roles)
+        })
     }
 
 
@@ -42,7 +68,7 @@ const Home = () => {
                 alt="logo"/></div>
             <form onSubmit={handleLogin}>
                 <div className="main__LoginContainer">
-                    <input required={"required"} id={"username"} placeholder={"username"} type="text"
+                    <input required={"required"} id={"username"} placeholder={"username"} type="email"
                            className="main__usernameInput"/><br/>
                     <input required={"required"} id={"password"} placeholder={"password"} type="password"
                            className="main__passwordInput"/>

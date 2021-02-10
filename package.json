@@ -48,6 +48,7 @@
   "devDependencies": {
     "@material-ui/core": "^4.11.3",
     "dotenv": "^8.2.0",
+    "react-cookie": "^4.0.3",
     "victory": "^35.4.8"
   }
 }
