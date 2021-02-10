@@ -42,6 +42,8 @@ const Home = () => {
 
         if (roles[0] === "STUDENT") {
             window.location = "/student"
+        } if (roles[0] === "TEACHER") {
+            window.location = "/teacher"
         }
     }
 

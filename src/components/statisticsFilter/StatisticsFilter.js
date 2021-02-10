@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import LessonStatisticsTable from "../statisticsTable/LessonStatisticsTable";
 
 const StatisticsFilter = () => {
     const[turns, setTurns] = useState([]);
+    const[selected, setSelected] = useState([])
     const url = process.env.REACT_APP_URL;
 
 
@@ -11,11 +13,24 @@ const StatisticsFilter = () => {
     }, [])
 
 
+
+    useEffect(() => {
+        fetchSelected()
+    }, [])
+
+
+
     async function fetchTurns() {
         axios.get(url + "/turnus/all").then((res) => {
             setTurns(res.data)
         })
     }
+    async function fetchSelected() {
+        axios.get(url + "/classes/statistic/1").then(res => {
+            setSelected(res.data)
+        })
+    }
+
 
     return <div className="statisticsFilter__main">
 
@@ -44,6 +59,7 @@ const StatisticsFilter = () => {
             </select>
         </div>
 
+        <LessonStatisticsTable data={selected}/>
 
 
 
