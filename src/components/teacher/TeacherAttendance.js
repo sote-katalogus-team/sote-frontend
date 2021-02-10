@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import "./TeacherAttendance.css";
 
-const TeacherAttendance = ({ numOfStudents, selection }) => {
+const TeacherAttendance = ({ numOfStudents, selection, newStudentAdded }) => {
   const [neptunCode, setNeptunCode] = useState("");
   const [message, setMessage] = useState(null);
   const url = process.env.REACT_APP_URL;
@@ -19,9 +19,17 @@ const TeacherAttendance = ({ numOfStudents, selection }) => {
         "type": selection.type.toUpperCase(),
         "id": selection.item.id
       }
-    }).then(res => console.log(res.data));
-    setMessage("A hozzáadás sikerült!");
-    //setMessage("A hozzáadás sikertelen!");
+    }).then(res => {
+      setMessage("A hozzáadás sikerült!");
+      newStudentAdded();
+      console.log(res.data);
+
+    }).catch(error => {
+      setMessage("A hozzáadás sikertelen!");
+      if (error.response) console.log(error.response.data);
+    });
+
+
   };
 
   const handleNeptunClodeClick = () => {

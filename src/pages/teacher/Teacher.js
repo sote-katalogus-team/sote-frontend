@@ -6,6 +6,7 @@ import TeacherSettings from '../../components/teacher/TeacherSettings';
 import TeacherCounter from '../../components/teacher/TeacherCounter';
 import TeacherAttendance from '../../components/teacher/TeacherAttendance';
 import axios from 'axios';
+import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 
 
 const Teacher = () => {
@@ -21,9 +22,6 @@ const Teacher = () => {
   window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
   const url = process.env.REACT_APP_URL;
 
-
-  //const [popupVisible, setPopupVisible] = useState(false);
-
   const handleNextButtonClick = () => {
     setStep(2);
   };
@@ -38,12 +36,7 @@ const Teacher = () => {
   };
 
   const handleGoToVerifyButtonClick = () => {
-    axios.post(url + "/student/countStudent", {
-      body: {
-        id: selection.item.id,
-        type: selection.type.toUpperCase()
-      },
-    }).then(res => setNumOfStudents(res.data));
+    refreshNumOfStudents();
 
     if (counterComplete) {
       setStep(4);
@@ -97,7 +90,7 @@ const Teacher = () => {
             onCounterComplete={handleCounterComplete}
           />
         )}
-        {step === 4 && <TeacherAttendance numOfStudents={numOfStudents} selection={selection} />}
+        {step === 4 && <TeacherAttendance numOfStudents={numOfStudents} selection={selection} newStudentAdded={() => refreshNumOfStudents()} />}
       </div>
       <div className="teacher__buttons">
         {step === 1 && (
@@ -147,7 +140,7 @@ const Teacher = () => {
             className="teacher__button"
             onClick={handleGoToVerifyButtonClick}
           >
-            Tovább az ellenőrzéshez
+            Lezárás
           </button>
         )}
         {step === 4 && (
@@ -161,9 +154,22 @@ const Teacher = () => {
           </button>
         )}
       </div>
-      {/*popupVisible && <div className="teacher__popup">POPUP</div>*/}
     </div>
   );
+
+  function refreshNumOfStudents() {
+    axios
+      .post(url + "/student/countStudent", {
+        body: {
+          id: selection.item.id,
+          type: selection.type.toUpperCase(),
+        },
+      })
+      .then((res) => {
+        setNumOfStudents(res.data);
+      })
+      .catch(error => console.log(error));
+  }
 }
 
 export default Teacher;
