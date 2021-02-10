@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import Lesson from "../Lesson/Lesson";
+import authHeader from "../../security/auth-header";
+import {useCookies} from "react-cookie";
 
 
 const LessonLister = () => {
@@ -10,6 +12,7 @@ const LessonLister = () => {
     const [turnusId, setTurnusId] = useState(1);
     const [turns, setTurns] = useState([]);
     const url = process.env.REACT_APP_URL;
+    const [cookies, setCookies] = useCookies(["user"])
 
 
     useEffect(() => {
@@ -22,14 +25,14 @@ const LessonLister = () => {
 
 
     async function fetchTurns() {
-        axios.get(url + "/turnus/all").then((res) => {
+        axios.get(url + "/turnus/all", {headers: authHeader(cookies.user)}).then((res) => {
             setTurns(res.data)
         })
     }
 
 
     async function getClassesById() {
-        axios.get(url + "/classes/all/" + turnusId).then(res => {
+        axios.get(url + "/classes/all/" + turnusId, {headers: authHeader(cookies.user)}).then(res => {
             let all = Object.keys(res.data);
             setElo(res.data[all[0]])
             setGyak(res.data[all[1]])
