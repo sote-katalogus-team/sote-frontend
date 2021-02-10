@@ -2,8 +2,11 @@ import React, {useEffect, useState} from "react";
 import './StudentStatistics.css'
 import Diagram from "../../components/diagram/Diagram";
 import axios from "axios";
+import authHeader from "../../security/auth-header";
+import {useCookies} from "react-cookie";
 
 const StudentStatistics = () => {
+    const [cookies, setCookies] = useCookies(["user"])
     const [student, setStudent] = useState(1)
     const [stats, setStats] = useState([])
     const url = process.env.REACT_APP_URL;
@@ -20,7 +23,7 @@ const StudentStatistics = () => {
 
 
     async  function fetchStudentsStats() {
-        axios.get(url + "/student/" + student + "/statistics").then(res => {
+        axios.get(url + "/student/" + student + "/statistics", {headers: authHeader(cookies.user)}).then(res => {
             setStats(res.data)
         })
     }
