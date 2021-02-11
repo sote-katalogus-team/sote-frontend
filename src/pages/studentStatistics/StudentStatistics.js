@@ -7,7 +7,7 @@ import {useCookies} from "react-cookie";
 
 const StudentStatistics = () => {
     const [cookies, setCookies] = useCookies(["user"])
-    const [student, setStudent] = useState(1)
+    const [student, setStudent] = useState(cookies.user.id)
     const [stats, setStats] = useState([])
     const url = process.env.REACT_APP_URL;
 
@@ -19,6 +19,8 @@ const StudentStatistics = () => {
     useEffect(() => {
         fetchStudentsStats();
     }, [])
+
+    console.log(stats)
 
 
 
