@@ -139,7 +139,7 @@
 }
 
 .newTurnus__mainContainer, .statisticsFilter__main {
-    margin-right: 10vh;
+    margin-right: 50vh;
 }
 
 .statisticsFilter__main{
@@ -151,6 +151,30 @@
     margin-left: 400px;
 }
 
+
+.statistics__tableContainer {
+    margin-left: -10vw;
+    margin-right: 7vw;
+}
+
+.lessonStatistics__container {
+    height: 40vh;
+    width: 40vw;
+
+}
+
+
+.newTeacher__main {
+    margin-right: 18vw;
+}
+
+
+.statistics__selects {
+    display: flex;
+    justify-content: space-around;
+    margin-left: -6vw;
+    margin-right: 13vw;
+}
 
 @media (max-width: 1919px) and (min-width: 1500px) {
     .admin__main {
