@@ -39,10 +39,11 @@ const NewTurnus = () => {
 
         let data = {
             "name": turnusName,
-            "turnus_number": turnusNumber,
+            "year": turnusNumber,
             "lecture": eloAttendance,
             "practice": gyakAttendance,
-            "consultation": konzAttendance
+            "consultation": konzAttendance,
+             "combinedName" : turnusName + "/" +  turnusNumber
         }
 
         addNewTurnus(data)
