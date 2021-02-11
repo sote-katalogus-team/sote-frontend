@@ -25,7 +25,6 @@ const Teacher = () => {
   const url = process.env.REACT_APP_URL;
 
 
-  //const [popupVisible, setPopupVisible] = useState(false);
 
   const handleNextButtonClick = () => {
     setStep(2);
