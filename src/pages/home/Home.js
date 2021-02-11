@@ -1,14 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './home.css';
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import {Snackbar} from "@material-ui/core";
+import {Alert} from "@material-ui/lab";
 
 
 const Home = () => {
     const [cookies, setCookie] = useCookies([
         "user"
     ]);
+    const [snackVisible, setSnackVisible] = useState(false)
     const url = process.env.REACT_APP_URL;
+
+    let loginAlert = ""
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setSnackVisible(false);
+    };
+
+
+    if (snackVisible) {
+        loginAlert = <Snackbar autoHideDuration={6000} open={snackVisible}>
+                <Alert onClose={handleClose} severity="error">
+                    Invalid email or password!
+                </Alert>
+            </Snackbar>
+    }
 
     const goToRegister = () => {
         window.location = "/signup"
@@ -29,8 +51,11 @@ const Home = () => {
             window.location = "/student"
         } if (roles[0] === "TEACHER") {
             window.location = "/teacher"
+        }if (roles[0] === "ADMIN") {
+            window.location = "/admin/new-lesson"
         }
     }
+
 
 
     async function loginRequest(username, password) {
@@ -41,11 +66,14 @@ const Home = () => {
         axios.post(url + "/login", userCredentials).then(res => {
             setCookie("user", res.data, { path: "/" });
             redirect(res.data.roles)
+        }).catch(() => {
+            setSnackVisible(true)
         })
+
     }
 
 
-    window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
+   // window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
 
 
     return (
@@ -70,6 +98,8 @@ const Home = () => {
 
                 <button onClick={goToRegister} className={'main__registerButton'}>Register</button>
             </div>
+            { loginAlert}
+
 
         </div>
     );
