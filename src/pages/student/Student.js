@@ -92,10 +92,13 @@ const Student = () => {
             )}
         <div className="student__buttonContainer">
             <button type={"submit"} className={'main__loginButton'} >send</button>
-            <button onClick={toStatistics}  className={'main__registerButton'}>statistics</button>
         </div>
 
         </form>
+        <div className="student__toStatsContainer">
+            <button onClick={toStatistics}  className={'main__registerButton'}>statistics</button>
+        </div>
+
     </div>
 }
 

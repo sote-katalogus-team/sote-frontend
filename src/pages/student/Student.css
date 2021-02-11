@@ -91,6 +91,13 @@
     padding: 20px;
 }
 
+.student__toStatsContainer {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+
 
 @media (max-height: 569px)  {
     .student__buttonContainer {
