@@ -6,6 +6,7 @@ import TeacherSettings from '../../components/teacher/TeacherSettings';
 import TeacherCounter from '../../components/teacher/TeacherCounter';
 import TeacherAttendance from '../../components/teacher/TeacherAttendance';
 import axios from 'axios';
+import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import {useCookies} from "react-cookie";
 import authHeader from "../../security/auth-header";
 
@@ -23,9 +24,6 @@ const Teacher = () => {
 
   window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
   const url = process.env.REACT_APP_URL;
-
-
-
   const handleNextButtonClick = () => {
     setStep(2);
   };
@@ -40,13 +38,13 @@ const Teacher = () => {
   };
 
   const handleGoToVerifyButtonClick = () => {
+    refreshNumOfStudents();
     axios.post(url + "/student/countStudent", {
       body: {
         id: selection.item.id,
         type: selection.type.toUpperCase()
       , },
     }, {headers: authHeader(cookies.user)}).then(res => setNumOfStudents(res.data));
-
     if (counterComplete) {
       setStep(4);
     } else {
@@ -99,7 +97,7 @@ const Teacher = () => {
             onCounterComplete={handleCounterComplete}
           />
         )}
-        {step === 4 && <TeacherAttendance numOfStudents={numOfStudents} selection={selection} />}
+        {step === 4 && <TeacherAttendance numOfStudents={numOfStudents} selection={selection} newStudentAdded={() => refreshNumOfStudents()} />}
       </div>
       <div className="teacher__buttons">
         {step === 1 && (
@@ -149,7 +147,7 @@ const Teacher = () => {
             className="teacher__button"
             onClick={handleGoToVerifyButtonClick}
           >
-            Tovább az ellenőrzéshez
+            Lezárás
           </button>
         )}
         {step === 4 && (
@@ -163,9 +161,22 @@ const Teacher = () => {
           </button>
         )}
       </div>
-      {/*popupVisible && <div className="teacher__popup">POPUP</div>*/}
     </div>
   );
+
+  function refreshNumOfStudents() {
+    axios
+      .post(url + "/student/countStudent", {
+        body: {
+          id: selection.item.id,
+          type: selection.type.toUpperCase(),
+        },
+      })
+      .then((res) => {
+        setNumOfStudents(res.data);
+      })
+      .catch(error => console.log(error));
+  }
 }
 
 export default Teacher;
