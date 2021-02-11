@@ -8,23 +8,18 @@ const NewTeacher = () => {
     const url = process.env.REACT_APP_URL;
     const [cookies, setCookies] = useCookies(["user"])
 
-    const validateNewTeacher = () => {
+    const validateNewTeacher = (e) => {
+        e.preventDefault()
         const name = document.getElementById("newTeacherName").value;
-        if (name.length === 0) {
-            alert("Legyél szíves a nevet megadni!")
-            return;
-        }
-
         const email = document.getElementById("newTeacherEmail").value;
+        const password = document.getElementById("newTeacherPassword").value;
 
-        if (validateEmail(email) === false) {
-            alert('Legyél szíves valid email címet megadni');
-                return;
-        }
+
 
         const data = {
             'name':name,
-            'email': email
+            'email': email,
+            'password': password
         }
         saveNewTeacher(data)
 
@@ -32,7 +27,7 @@ const NewTeacher = () => {
 
 
     async function saveNewTeacher(data) {
-        axios.post(url + "/teacher/add", data, {headers: authHeader(cookies.user)}).then(res => {
+        axios.post(url + "/teacher/add/teacher", data, {headers: authHeader(cookies.user)}).then(res => {
             alert(res.data)
             window.location.reload();
         })
@@ -45,9 +40,12 @@ const NewTeacher = () => {
 
     return <div className="newTeacher__main">
         <div className="newTeacher__inputContainer">
-            <input type="text" id={"newTeacherName"} placeholder={"Oktató neve"}/>
-            <input type="email"  id={"newTeacherEmail"} placeholder={"Oktató email címe"}/>
-            <button onClick={validateNewTeacher}>Hozzáadás</button>
+            <form autoComplete={"off"} onSubmit={validateNewTeacher}>
+            <input required={"required"} autoComplete={"off"} type="text" id={"newTeacherName"} placeholder={"Oktató neve"}/>
+            <input required={"required"} autoComplete={"off"} type="email"  id={"newTeacherEmail"} placeholder={"Oktató email címe"}/>
+            <input required={"required"} autoComplete={"off"} type="password"  id={"newTeacherPassword"} placeholder={"Oktató jelszava"}/>
+            <button  type={"submit"} >Hozzáadás</button>
+            </form>
         </div>
     </div>
 }
