@@ -23,7 +23,6 @@ const Home = () => {
         setSnackVisible(false);
     };
 
-
     if (snackVisible) {
         loginAlert = <Snackbar autoHideDuration={6000} open={snackVisible}>
                 <Alert onClose={handleClose} severity="error">
@@ -73,7 +72,6 @@ const Home = () => {
     }
 
 
-   // window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
 
 
     return (
@@ -99,7 +97,6 @@ const Home = () => {
                 <button onClick={goToRegister} className={'main__registerButton'}>Register</button>
             </div>
             { loginAlert}
-
 
         </div>
     );

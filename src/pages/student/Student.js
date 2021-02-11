@@ -22,7 +22,7 @@ const required = (value) => {
 
 const Student = () => {
     const [message, setMessage] = useState("");
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies, removeCookie] = useCookies(["user"])
     const [user, setUser] = useState(1);
     const url = process.env.REACT_APP_URL;
     const [alert, setAlert] = useState(false)
@@ -66,7 +66,10 @@ const Student = () => {
     }
 
 
-
+    function logOut() {
+        removeCookie("user","")
+        window.location = "/"
+    }
 
 
     fontawesome.library.add(faUser);
@@ -81,7 +84,7 @@ const Student = () => {
         <form onSubmit={handleSubmit} >
         <div className="main__LoginContainer">
 
-                <input id={'code'} placeholder={"code"} type="text" className="student__codeInput"/><br/>
+                <input required={"required"} id={'code'} placeholder={"code"} type="text" className="student__codeInput"/><br/>
         </div>
             {message && (
                 <div className="form-group">
@@ -97,6 +100,7 @@ const Student = () => {
         </form>
         <div className="student__toStatsContainer">
             <button onClick={toStatistics}  className={'main__registerButton'}>statistics</button>
+            <button onClick={logOut} className={'main__registerButton'}>Logout</button>
         </div>
 
     </div>
