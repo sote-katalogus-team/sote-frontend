@@ -31,8 +31,8 @@ const SignupForm = ({ data, onChangeData }) => {
       if (state.turnusId == null) {
         setState((prevState) => ({
           ...prevState,
-          turnusId: data[0].id,
-          turnusName: data[0].name,
+          turnusId: data[0]?.id,
+          turnusName: data[0]?.name,
         }));
       }
     })
