@@ -10,6 +10,7 @@ const SignupCheck = ({data}) => {
       <div className="checkField">Email: {data.email}</div>
       <div className="checkField">Password: {data.password}</div>
       <div className="checkField">Neptun Code: {data.neptunCode}</div>
+      <div className="checkField">Turn: {data.turnusName}</div>
     </div>
   );
 

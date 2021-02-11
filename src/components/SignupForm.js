@@ -9,7 +9,9 @@ const SignupForm = ({ data, onChangeData }) => {
     email: "",
     password: "",
     confirmPassword: "",
-    neptunCode: ""
+    neptunCode: "",
+    turnusId: null,
+    turnusName: ""
   });
   const [turns, setTurns] = useState([])
 
@@ -25,7 +27,14 @@ const SignupForm = ({ data, onChangeData }) => {
 
   async function  fetchTurns() {
     axios.get(url+ "/turnus/all_by_year").then((res) => {
-      setTurns(res.data)
+      setTurns(res.data);
+      if (state.turnusId == null) {
+        setState((prevState) => ({
+          ...prevState,
+          turnusId: data[0].id,
+          turnusName: data[0].name,
+        }));
+      }
     })
   }
 
@@ -36,13 +45,21 @@ const SignupForm = ({ data, onChangeData }) => {
     if (id === 'neptunCode') {
       value = value.trim().toUpperCase();
     }
-    setState(prevState => ({ ...prevState, [id]: value }));
+    if (id === 'turnusId') {
+      setState((prevState) => ({
+        ...prevState,
+        [id]: value,
+        turnusName: e.target.options[e.target.selectedIndex].text,
+      }));
+    } else {
+      setState(prevState => ({ ...prevState, [id]: value }));
+    }
   };
 
   return (
     <>
       <form autoComplete="off">
-        <label htmlFor="name" class="form-label">
+        <label htmlFor="name" className="form-label">
           Name
         </label>
         <input
@@ -55,7 +72,7 @@ const SignupForm = ({ data, onChangeData }) => {
           autoFocus
           autoComplete="off"
         />
-        <label htmlFor="email" class="form-label">
+        <label htmlFor="email" className="form-label">
           Email
         </label>
         <input
@@ -66,7 +83,7 @@ const SignupForm = ({ data, onChangeData }) => {
           value={state.email}
           onChange={handleChange}
         />
-        <label htmlFor="password" class="form-label">
+        <label htmlFor="password" className="form-label">
           Password
         </label>
         <input
@@ -77,7 +94,7 @@ const SignupForm = ({ data, onChangeData }) => {
           value={state.password}
           onChange={handleChange}
         />
-        <label htmlFor="confirmPassword" class="form-label">
+        <label htmlFor="confirmPassword" className="form-label">
           Confirm password
         </label>
         <input
@@ -88,7 +105,7 @@ const SignupForm = ({ data, onChangeData }) => {
           value={state.confirmPassword}
           onChange={handleChange}
         />
-        <label htmlFor="neptunCode" class="form-label">
+        <label htmlFor="neptunCode" className="form-label">
           Neptun code
         </label>
         <input
@@ -100,19 +117,12 @@ const SignupForm = ({ data, onChangeData }) => {
           value={state.neptunCode}
           onChange={handleChange}
         />
-        <div className="turnSelect__container">
-         <p className={"form-label"}> Select your turnus:</p>
-
-
-          <select name="turn" id="turnus-select"  className="newLesson__turnSelect">
-            {turns.map(turn => (
-                <option value={turn.id} className="turn__option">{turn.name}</option>
-            ))}
-          </select>
-        </div>
-
-
-
+        <label htmlFor="turnus-select" className={"form-label"}>Turn</label>
+        <select name="turn" id="turnusId" className="form-select form-input" value={state.turnusId} onChange={handleChange}>
+          {turns.map(turn => (
+              <option key={turn.id} value={turn.id} className="turn__option">{turn.name}</option>
+          ))}
+        </select>
 
       </form>
     </>
