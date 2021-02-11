@@ -12,7 +12,7 @@ const Signup = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    neptunCode: ""
+    neptunCode: "",
   });
 
   const [isValid, setIsValid] = useState(false);
@@ -30,7 +30,9 @@ const Signup = () => {
     let data = {
       email: state.email,
       name: state.name,
-      password: state.password
+      password: state.password,
+      neptun_code: state.neptunCode,
+      turnusId: state.turnusId
     }
     axios.post(url + "/registration", data).then(res => {
       console.log(res.data)
