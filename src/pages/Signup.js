@@ -13,6 +13,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
     neptunCode: "",
+    turnusId: null
   });
 
   const [isValid, setIsValid] = useState(false);

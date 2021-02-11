@@ -31,3 +31,7 @@
   text-align: center;
   display: block;
 }
+
+.form-select {
+  height: 38px;
+}
