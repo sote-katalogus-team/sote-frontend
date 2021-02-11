@@ -18,7 +18,7 @@ const Teacher = () => {
   const [counterValue, setCounterValue] = useState(90000);
   const [counterComplete, setCounterComplete] = useState(false);
   const [code, setCode] = useState("{{CODE}}");
-  const [cookies, setCookies] = useCookies("user")
+  const [cookies, removeCookie] = useCookies("user")
 
 
   window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
@@ -76,6 +76,11 @@ const Teacher = () => {
     setCounterComplete(isComplete);
   }
 
+  function logOut() {
+      removeCookie("user","")
+      window.location = "/"
+  }
+
   return (
     <div className="teacher__main">
       <div className="teacher__container">
@@ -114,6 +119,7 @@ const Teacher = () => {
               Tovább
             </button>
             <button
+                onClick={logOut}
               type="button"
               id="signoutButton"
               className="teacher__button"

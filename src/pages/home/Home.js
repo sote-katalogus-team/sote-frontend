@@ -23,6 +23,8 @@ const Home = () => {
         setSnackVisible(false);
     };
 
+
+
     if (snackVisible) {
         loginAlert = <Snackbar autoHideDuration={6000} open={snackVisible}>
                 <Alert onClose={handleClose} severity="error">
