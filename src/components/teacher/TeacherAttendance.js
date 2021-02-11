@@ -17,11 +17,11 @@ const TeacherAttendance = ({ numOfStudents, selection, newStudentAdded }) => {
 
     const handleAddStudentClick = () => {
         axios.post(url + "/student/addByNeptunCode", {
-            body: {
                 "neptunCode": neptunCode,
-                "type": selection.type.toUpperCase(),
-                "id": selection.item.id
-            }
+                "classInfo": {
+                    "id": selection.item.id,
+                    "type": selection.type.toUpperCase(),
+           }
         }, {headers: authHeader(cookies.user)}).then(res => {
             setMessage("A hozzáadás sikerült!");
             newStudentAdded();

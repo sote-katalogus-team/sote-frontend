@@ -23,7 +23,7 @@ const required = (value) => {
 const Student = () => {
     const [message, setMessage] = useState("");
     const [cookies, removeCookie] = useCookies(["user"])
-    const [user, setUser] = useState(1);
+    const [user, setUser] = useState(cookies.user.id);
     const url = process.env.REACT_APP_URL;
     const [alert, setAlert] = useState(false)
     const toStatistics = () => {
@@ -53,10 +53,8 @@ const Student = () => {
 
         axios.post(url + "/student/" + user + "/send_code", code, {headers: authHeader(cookies.user)}).then(res => {
             console.log(res)
-            if (res.status === 200) {
                 setAlert(true)
                 setMessage(res.data)
-            }
         }).catch(error => {
             setAlert(false)
             setMessage("Incorrect code or code is expired, try again or contact your teacher")
