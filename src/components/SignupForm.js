@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './SignupForm.css';
+import axios from "axios";
 
 const SignupForm = ({ data, onChangeData }) => {
+  const url = process.env.REACT_APP_URL;
   const [state, setState] = useState(data || {
     name: "",
     email: "",
@@ -9,9 +11,24 @@ const SignupForm = ({ data, onChangeData }) => {
     confirmPassword: "",
     neptunCode: ""
   });
+  const [turns, setTurns] = useState([])
+
   useEffect(() => {
     onChangeData(state);
   }, [state, onChangeData]);
+
+
+  useEffect(() => {
+    fetchTurns();
+  },[])
+
+
+  async function  fetchTurns() {
+    axios.get(url+ "/turnus/all_by_year").then((res) => {
+      setTurns(res.data)
+    })
+  }
+
 
 
   const handleChange = (e) => {
@@ -83,6 +100,20 @@ const SignupForm = ({ data, onChangeData }) => {
           value={state.neptunCode}
           onChange={handleChange}
         />
+        <div className="turnSelect__container">
+         <p className={"form-label"}> Select your turnus:</p>
+
+
+          <select name="turn" id="turnus-select"  className="newLesson__turnSelect">
+            {turns.map(turn => (
+                <option value={turn.id} className="turn__option">{turn.name}</option>
+            ))}
+          </select>
+        </div>
+
+
+
+
       </form>
     </>
   );

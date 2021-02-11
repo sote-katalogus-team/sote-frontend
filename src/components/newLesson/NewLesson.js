@@ -1,10 +1,14 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import "./NewLesson.css"
+import authHeader from "../../security/auth-header";
+import {useCookies} from "react-cookie";
 
 const NewLesson = () => {
     const url = process.env.REACT_APP_URL;
     const [turns, setTurns] = useState([])
+    const [cookies, setCookies] = useCookies(["user"])
+
 
 
     useEffect(() => {
@@ -19,8 +23,10 @@ const NewLesson = () => {
     }
 
 
-    const validateNewLesson = () => {
+    const validateNewLesson = (e) => {
+        e.preventDefault()
         let turnId = document.getElementById("1").value;
+        console.log(turnId)
         let lessonType = document.getElementById("2").value;
         let lessonName = document.getElementById("newLessonName").value;
         if (lessonName.length < 1) {
@@ -41,12 +47,14 @@ const NewLesson = () => {
             return;
         }
          let data = {
-            "turnus_id": turnId,
+            "turnusId": turnId,
              "name":lessonName,
              "point": numberInput,
              "potlas": isPotlas,
              "date": lessonDate
         }
+
+        console.log(data)
 
         switch (lessonType) {
             case "eloadas":
@@ -67,21 +75,21 @@ const NewLesson = () => {
 
 
     async function saveNewKonzultacio(data) {
-       axios.post(url + "/konzultacio/add", data).then(res => {
+       axios.post(url + "/konzultacio/add", data, {headers: authHeader(cookies.user)}).then(res => {
            alert(res.data)
            window.location.reload();
        })
         console.log("konzultáció")
     }
     async function saveNewEloadas(data) {
-       axios.post(url + "/eloadas/add", data).then(res => {
+       axios.post(url + "/eloadas/add", data, {headers: authHeader(cookies.user)}).then(res => {
            alert(res.data)
            window.location.reload();
        })
         console.log("eloadas")
     }
     async function saveNewGyakorlat(data) {
-        axios.post(url + "/gyakorlat/add", data).then(res => {
+        axios.post(url + "/gyakorlat/add", data, {headers: authHeader(cookies.user)}).then(res => {
             alert(res.data)
             window.location.reload();
         })
@@ -94,6 +102,7 @@ const NewLesson = () => {
 
 
     return <div className="newLesson__main">
+        <form onSubmit={validateNewLesson}>
         <div className="newLesson__selectContainer">
             <select name="turn" id="1" className="newLesson__turnSelect">
                 {turns.map(turn => (
@@ -106,19 +115,20 @@ const NewLesson = () => {
                 <option value="konzultacio" className="type__option">Konzultáció</option>
             </select> <br/>
 
-            <input id={"newLessonName"} placeholder={"óra neve"} type="text" className="name__input"/>
-            <input id={"lesson_date"} type="date"/>
+            <input required={"required"} id={"newLessonName"} placeholder={"óra neve"} type="text" className="name__input"/>
+            <input required={"required"} id={"lesson_date"} type="date"/>
             <br/>
 
 
         </div>
         <br/>
         <div className={"newLesson__inputContainer"}>
-            <input id={"newlessonPoint"} placeholder={"értéke"} type="number" maxLength={1} min={1} max={3} className={"number__input"}/>
+            <input required={"required"} id={"newlessonPoint"} placeholder={"értéke"} type="number" maxLength={1} min={1} max={3} className={"number__input"}/>
             <label htmlFor="input">pótlás?</label>
             <input type="checkbox" id="potlas" name="potlas" value="pótlás" className={"potlas"}/>
-            <button onClick={validateNewLesson} className="newLesson__submit"> Hozzáadás</button>
+            <button className="newLesson__submit"> Hozzáadás</button>
         </div>
+        </form>
     </div>
 }
 

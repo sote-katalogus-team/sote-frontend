@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './TeacherSelection.css';
 import axios from "axios";
+import authHeader from "../../security/auth-header";
+import {useCookies} from "react-cookie";
 
 const TeacherSelection = ({name, onSelectionChange}) => {
     const now = new Date();
@@ -10,6 +12,7 @@ const TeacherSelection = ({name, onSelectionChange}) => {
     const [konz, setKonz] = useState([])
     const [elo, setElo] = useState([])
     const [gyak, setGyak] = useState([])
+    const [cookies, setCookies] = useCookies(["user"])
 
 
     //Mock data
@@ -23,15 +26,7 @@ const TeacherSelection = ({name, onSelectionChange}) => {
 
 
     async function getTodayClasses() {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-        today = mm + '/' + dd + '/' + yyyy;
-        axios.get(url + '/classes/find_by_date', { params:
-                {
-                    date1 : today
-                }}).then(res => {
+        axios.get(url + '/classes/find_by_date', {headers: authHeader(cookies.user)}).then(res => {
                     console.log(res.data)
             let all = Object.keys(res.data);
             setElo(res.data[all[0]])

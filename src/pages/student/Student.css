@@ -69,6 +69,36 @@
 }
 
 
+
+.code__alertBad {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: red;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    width: 30vw;
+    padding: 20px;
+}
+.code__alertGood {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: green;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    width: 30vw;
+    padding: 20px;
+}
+
+.student__toStatsContainer {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
 @media (max-height: 569px)  {
     .student__buttonContainer {
         margin-top: 40vh;

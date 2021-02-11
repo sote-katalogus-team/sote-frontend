@@ -3,9 +3,14 @@ import fontawesome from '@fortawesome/fontawesome'
 import {faTrash} from '@fortawesome/fontawesome-free-solid'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import { makeStyles } from '@material-ui/core/styles';
+import {useCookies} from "react-cookie";
+import authHeader from "../../security/auth-header";
 
 const Lesson = (props) => {
     const url = process.env.REACT_APP_URL;
+    const [cookies, setCookies] = useCookies(["user"])
+
 
 
     fontawesome.library.add(faTrash);
@@ -34,21 +39,24 @@ const Lesson = (props) => {
 
 
     async function deleteKonzultacio() {
-        axios.delete(url + "/konzultacio/" + props.data?.id +  "/delete").then(res => {
+        axios.delete(url + "/konzultacio/" + props.data?.id +  "/delete", {headers: authHeader(cookies.user)} ).then(res => {
             alert(res.data)
+
+
+
             window.location.reload();
         })
         console.log("konzultáció")
     }
     async function deleteEloadas() {
-        axios.delete(url + "/eloadas/"+ props.data?.id +  "/delete").then(res => {
+        axios.delete(url + "/eloadas/"+ props.data?.id +  "/delete", {headers: authHeader(cookies.user)}).then(res => {
             alert(res.data)
             window.location.reload();
         })
         console.log("eloadas")
     }
     async function deleteGyakorlat() {
-        axios.delete(url + "/gyakorlat/"+ props.data?.id +  "/delete").then(res => {
+        axios.delete(url + "/gyakorlat/"+ props.data?.id +  "/delete", {headers: authHeader(cookies.user)}).then(res => {
             alert(res.data)
             window.location.reload();
         })

@@ -1,7 +1,7 @@
 
 .form-label, .form-input {
   display: block;
-  width: 70%;
+  width: 30vw;
   margin: auto;
   font-size: 1.1em;
 }
@@ -12,13 +12,22 @@
 }
 
 .form-label {
-  margin-top: 8%;
+  margin-top: 5vh;
   margin-bottom: 1%;
   color: #FFF;
+  text-align: initial;
 }
 
 .form-input  {
   height: 26px;
   border: 1px solid #FFF;
   border-radius: 5px;
+}
+
+.turnSelect__container{
+  margin-top: 2vh;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  display: block;
 }

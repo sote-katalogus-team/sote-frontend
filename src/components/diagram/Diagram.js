@@ -5,17 +5,34 @@ const Diagram = (props) => {
     const stat = props.stat
 
     let className = "";
-    if (stat > 80) {
-        className = "circular-chart green"
-    }
-    else {
-        if (stat > 74) {
-            className = "circular-chart orange"
+
+
+    if (props?.lecture) {
+        if (stat === 100 && props?.practice) {
+            className = "circular-chart green"
         }
         else {
             className = "circular-chart blue"
         }
     }
+    else {
+        if (stat > 80) {
+            className = "circular-chart green"
+        }
+        else {
+            if (stat > 74) {
+                className = "circular-chart orange"
+            }
+            else {
+                className = "circular-chart blue"
+            }
+    }
+
+
+
+    }
+
+
 
     return <div className="single-chart">
         <svg viewBox="0 0 36 36" className={className}>
