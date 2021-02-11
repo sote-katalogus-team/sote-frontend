@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import LessonStatisticsTable from "../statisticsTable/LessonStatisticsTable";
+import authHeader from "../../security/auth-header";
+import {useCookies} from "react-cookie";
 
 const StatisticsFilter = () => {
     const[turns, setTurns] = useState([]);
     const[selected, setSelected] = useState([])
     const url = process.env.REACT_APP_URL;
+    const [cookies, setCookies] = useCookies(["user"])
+
 
 
     useEffect(() => {
@@ -21,12 +25,12 @@ const StatisticsFilter = () => {
 
 
     async function fetchTurns() {
-        axios.get(url + "/turnus/all").then((res) => {
+        axios.get(url + "/turnus/all", {headers: authHeader(cookies.user)}).then((res) => {
             setTurns(res.data)
         })
     }
     async function fetchSelected() {
-        axios.get(url + "/classes/statistic/1").then(res => {
+        axios.get(url + "/classes/statistic/1", {headers: authHeader(cookies.user)}).then(res => {
             setSelected(res.data)
         })
     }

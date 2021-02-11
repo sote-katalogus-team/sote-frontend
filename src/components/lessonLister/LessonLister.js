@@ -33,6 +33,7 @@ const LessonLister = () => {
 
     async function getClassesById() {
         axios.get(url + "/classes/all/" + turnusId, {headers: authHeader(cookies.user)}).then(res => {
+            console.log(res.data)
             let all = Object.keys(res.data);
             setElo(res.data[all[0]])
             setGyak(res.data[all[1]])
