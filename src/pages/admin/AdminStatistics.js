@@ -10,8 +10,6 @@ const AdminStatistics = () => {
             <AdminSidebar active={"new-turnus"} />
             <StatisticsFilter />
         </div>
-        <StatisticsTable />
-
     </div>
 }
 

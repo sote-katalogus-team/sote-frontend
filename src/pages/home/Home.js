@@ -18,21 +18,6 @@ const Home = () => {
         e.preventDefault()
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
-
-
-        /*
-        if (password === "admin" && username === "admin") {
-            window.location = "/admin/new-lesson"
-        }
-        if (password === "oktato" && username === "oktato") {
-            window.location = "/teacher"
-        }
-        if (password === "student" && username === "student") {
-            window.location = "/student"
-        }
-
-         */
-
         loginRequest(username, password)
     }
 
@@ -42,6 +27,8 @@ const Home = () => {
 
         if (roles[0] === "STUDENT") {
             window.location = "/student"
+        } if (roles[0] === "TEACHER") {
+            window.location = "/teacher"
         }
     }
 
