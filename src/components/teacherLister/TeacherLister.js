@@ -23,6 +23,8 @@ const TeacherLister  = () => {
     }
 
 
+    console.log(teachers)
+
 
 
 
@@ -33,6 +35,7 @@ const TeacherLister  = () => {
                 <tr>
                     <th>Oktató neve</th>
                     <th>Oktató email címe</th>
+                    <th>Oktató jogok</th>
                     <th>Törlés</th>
                 </tr>
                 </thead>
