@@ -26,8 +26,8 @@ const Student = () => {
     const [user, setUser] = useState(1);
     const url = process.env.REACT_APP_URL;
     const [alert, setAlert] = useState(false)
-
-    window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
+    console.log(cookies.user)
+ //   window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
     const toStatistics = () => {
         window.location = "/student/statistics"
     }
@@ -70,7 +70,7 @@ const Student = () => {
 
 
     fontawesome.library.add(faUser);
-    const name = "test name";
+    const name = cookies.user?.name;
     const  neptunCode = "123ABC"
     return <div className="student__mainContainer">
         <div className="student__header">
