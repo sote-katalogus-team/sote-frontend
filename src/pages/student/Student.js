@@ -26,8 +26,6 @@ const Student = () => {
     const [user, setUser] = useState(1);
     const url = process.env.REACT_APP_URL;
     const [alert, setAlert] = useState(false)
-    console.log(cookies.user)
- //   window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"
     const toStatistics = () => {
         window.location = "/student/statistics"
     }
@@ -96,13 +94,11 @@ const Student = () => {
         <div className="student__buttonContainer">
             <button type={"submit"} className={'main__loginButton'} >send</button>
         </div>
-
         </form>
         <div className="student__toStatsContainer">
             <button onClick={toStatistics}  className={'main__registerButton'}>statistics</button>
             <button onClick={logOut} className={'main__registerButton'}>Logout</button>
         </div>
-
     </div>
 }
 

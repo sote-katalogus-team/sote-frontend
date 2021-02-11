@@ -9,6 +9,7 @@ import AdminNewLesson from "./pages/admin/AdminNewLesson";
 import AdminNewTurnus from "./pages/admin/AdminNewTurnus";
 import AdminNewTeacher from "./pages/admin/AdminNewTeacher";
 import AdminStatistics from "./pages/admin/AdminStatistics";
+import AdminSettings from "./pages/admin/AdminSettings";
 
 const Routes = () => (
   <Router>
@@ -22,6 +23,7 @@ const Routes = () => (
       <Route exact path="/admin/new-turnus" component={AdminNewTurnus} />
       <Route exact path="/admin/new-teacher" component={AdminNewTeacher} />
       <Route exact path="/admin/statistics" component={AdminStatistics} />
+      <Route exact path="/admin/settings" component={AdminSettings} />
     </Switch>
   </Router>
 );
