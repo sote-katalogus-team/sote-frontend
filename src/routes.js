@@ -24,6 +24,7 @@ const Routes = () => (
       <Route exact path="/admin/new-teacher" component={AdminNewTeacher} />
       <Route exact path="/admin/statistics" component={AdminStatistics} />
       <Route exact path="/admin/settings" component={AdminSettings} />
+      <Route exact path="/admin/edit-class" component={AdminSettings} />
     </Switch>
   </Router>
 );
