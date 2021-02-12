@@ -65,6 +65,7 @@ const AdminEditClassMenu = () => {
                 setLessons(res.data)
                 let all = Object.keys(res.data);
                 setActiveType(res.data[all[0]])
+                setActiveLesson(res.data[all[0]][0].id)
             })
         }
     }
@@ -72,6 +73,7 @@ const AdminEditClassMenu = () => {
     let LessonSelect = <h1>Nincsen ilyen típusú óra ehhez a turnushoz</h1>;
 
     const selectLesson = (e) => {
+        console.log(e.target.value)
         setActiveLesson(e.target.value)
     }
 
@@ -81,10 +83,10 @@ const AdminEditClassMenu = () => {
         LessonSelect =
             <>
                 <p>Óra:</p>
-                <select onChange={selectLesson}>
+                <select className="newLesson__turnSelect" onChange={selectLesson}>
                     {
                         activeType.map(lesson => (
-                            <option value={lesson}>{lesson.name}</option>
+                            <option value={lesson?.id}>{lesson.name}</option>
                         ))
                     }
                 </select>
