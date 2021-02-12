@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-const StudentLister = () => {
+const Student = () => {
     return <div className="studentLister__mainContainer">
 
     </div>
 }
 
-export default StudentLister
+export default Student
