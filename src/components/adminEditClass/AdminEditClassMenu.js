@@ -12,6 +12,7 @@ const AdminEditClassMenu = () => {
     const [lessons, setLessons] = useState(null)
     const [cookies, setCookies] = useCookies(["user"])
     const [activeClass, setActiveClass] = useState(null)
+    const [activeType, setActiveType] = useState(null)
     const [activeLesson, setActiveLesson] = useState(null)
 
 
@@ -27,6 +28,10 @@ const AdminEditClassMenu = () => {
     async function fetchTurns() {
         axios.get(url + "/turnus/all").then((res) => {
             setTurns(res.data)
+            if (res.data.length > 0) {
+                let all = Object.keys(res.data);
+                setSelectedTurnusId(res.data[all[0]].id)
+            }
         })
     }
 
@@ -34,20 +39,22 @@ const AdminEditClassMenu = () => {
     function getLesson(active) {
         let result = [];
         console.log(lessons)
-        let all = Object.keys(lessons);
-        switch (active) {
-            case "eloadas":
-                 return lessons[all[0]]
-            case "konzultacio":
-                console.log("konzultacio")
-                return lessons[all[2]]
-            case "gyakorlat":
-                console.log("gyakorlat")
-                return lessons[all[1]]
-            default:
-                alert("sthing went wrong")
-                return result;
-        }
+        if (lessons !== null) {
+            let all = Object.keys(lessons);
+            switch (active) {
+                case "eloadas":
+                    return lessons[all[0]]
+                case "konzultacio":
+                    console.log("konzultacio")
+                    return lessons[all[2]]
+                case "gyakorlat":
+                    console.log("gyakorlat")
+                    return lessons[all[1]]
+                default:
+                    alert("sthing went wrong")
+                    return result;
+            }
+        } else return result;
     }
 
 
@@ -56,22 +63,28 @@ const AdminEditClassMenu = () => {
             axios.get(url + "/classes/all/" + turnusId, {headers: authHeader(cookies.user)}).then(res => {
                 console.log(res.data)
                 setLessons(res.data)
+                let all = Object.keys(res.data);
+                setActiveType(res.data[all[0]])
             })
         }
     }
 
     let LessonSelect = <h1>Nincsen ilyen típusú óra ehhez a turnushoz</h1>;
 
+    const selectLesson = (e) => {
+        setActiveLesson(e.target.value)
+    }
 
-    if (activeLesson !== null && activeLesson.length > 0) {
-        console.log(activeLesson, "ACTIVE")
+
+    if (activeType !== null && activeType.length > 0) {
+        console.log(activeType, "ACTIVE")
         LessonSelect =
             <>
                 <p>Óra:</p>
-                <select>
+                <select onChange={selectLesson}>
                     {
-                        activeLesson.map(lesson => (
-                            <option value="lesson">{lesson.name}</option>
+                        activeType.map(lesson => (
+                            <option value={lesson}>{lesson.name}</option>
                         ))
                     }
                 </select>
@@ -81,7 +94,7 @@ const AdminEditClassMenu = () => {
 
     const changeLessonType = (e) => {
         setActiveClass(e.target.value)
-      setActiveLesson(getLesson(e.target.value))
+        setActiveType(getLesson(e.target.value))
     }
 
 
@@ -110,7 +123,7 @@ const AdminEditClassMenu = () => {
         </div>
 
         <div className="tableContainer">
-            <AdminEditClassStudentList/>
+            <AdminEditClassStudentList data={activeLesson}/>
         </div>
     </div>
 }

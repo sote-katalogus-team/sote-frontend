@@ -1,10 +1,17 @@
 import React from "react";
 
 
-const AdminEditClassStudentList = () => {
-    return <div className="studentList__container">
+const AdminEditClassStudentList = (props) => {
 
-    </div>
+    let content = ""
+
+    if (props?.data) {
+        <div className="studentList__container">
+            <h1>Data arrived</h1>
+        </div>
+    }
+
+    return content
 }
 
 export default AdminEditClassStudentList
