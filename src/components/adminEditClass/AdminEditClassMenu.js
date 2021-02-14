@@ -37,6 +37,7 @@ const AdminEditClassMenu = () => {
           console.log(res, "fetch classes")
           let all = Object.keys(res);
           setActiveType(res[all[0]])
+          setActiveClass("eloadas")
           setLessons(res)
           //setActiveType(res[0])
           // if (res[0][0].id !== undefined) {
@@ -161,7 +162,7 @@ const AdminEditClassMenu = () => {
             </div>
 
             <div className="tableContainer">
-                <AdminEditClassStudentList data={activeLesson}/>
+                <AdminEditClassStudentList type={activeClass} data={activeLesson}/>
             </div>
         </div>
     }
