@@ -162,7 +162,7 @@ const AdminEditClassMenu = () => {
             </div>
 
             <div className="tableContainer">
-                <AdminEditClassStudentList type={activeClass} data={activeLesson}/>
+                <AdminEditClassStudentList key={activeLesson} type={activeClass} data={activeLesson}/>
             </div>
         </div>
     }
