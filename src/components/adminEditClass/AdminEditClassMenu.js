@@ -7,7 +7,7 @@ import {useCookies} from "react-cookie";
 
 const AdminEditClassMenu = () => {
     const url = process.env.REACT_APP_URL;
-    const [turns, setTurns] = useState([])
+    const [turns, setTurns] = useState(null)
     const [selectedTurnusId, setSelectedTurnusId] = useState(null);
     const [lessons, setLessons] = useState(null)
     const [cookies, setCookies] = useCookies(["user"])
@@ -17,22 +17,43 @@ const AdminEditClassMenu = () => {
 
 
     useEffect(() => {
-        fetchTurns();
-    }, [])
+        fetchTurns().then(res => {
+            console.log(res)
+            setTurns(res)
+            if (res.length > 0) {
+                setSelectedTurnusId(res[0].id)
+            }
+
+    })}, [])
+
 
     useEffect(() => {
-        getClassesById(selectedTurnusId)
+        getClasses()
     }, [selectedTurnusId])
+
+  const getClasses = () => {
+        if (selectedTurnusId !== null) {
+      getClassesById(selectedTurnusId).then(res => {
+          console.log(res, "fetch classes")
+          let all = Object.keys(res);
+          setActiveType(res[all[0]])
+          setLessons(res)
+          //setActiveType(res[0])
+          // if (res[0][0].id !== undefined) {
+          ///      setActiveLesson(res[0][0].id)
+      })};
+  }
 
 
     async function fetchTurns() {
-        axios.get(url + "/turnus/all").then((res) => {
-            setTurns(res.data)
-            if (res.data.length > 0) {
-                let all = Object.keys(res.data);
-                setSelectedTurnusId(res.data[all[0]].id)
-            }
-        })
+        try {
+            const resp = await axios.get(url + "/turnus/all");
+            return (resp.data);
+        } catch (err) {
+            // Handle Error Here
+            console.error(err);
+        }
+
     }
 
 
@@ -54,20 +75,34 @@ const AdminEditClassMenu = () => {
                     alert("sthing went wrong")
                     return result;
             }
-        } else return result;
+        }
+        else return result;
     }
 
 
     async function getClassesById(turnusId) {
+        try {
+            const resp = await axios.get(url + "/classes/all/" + turnusId, {headers: authHeader(cookies.user)});
+            return (resp.data);
+        } catch (err) {
+            // Handle Error Here
+            console.error(err);
+        }
+        /*
         if (turnusId !== null) {
-            axios.get(url + "/classes/all/" + turnusId, {headers: authHeader(cookies.user)}).then(res => {
+          await  axios.get().then(res => {
                 console.log(res.data)
                 setLessons(res.data)
                 let all = Object.keys(res.data);
                 setActiveType(res.data[all[0]])
-                setActiveLesson(res.data[all[0]][0].id)
+                if (res?.data[all[0]][0].id !== undefined) {
+                    setActiveLesson(res?.data[all[0]][0].id)
+                }
+
             })
         }
+
+         */
     }
 
     let LessonSelect = <h1>Nincsen ilyen típusú óra ehhez a turnushoz</h1>;
@@ -78,7 +113,7 @@ const AdminEditClassMenu = () => {
     }
 
 
-    if (activeType !== null && activeType.length > 0) {
+    if (activeType !== null) {
         console.log(activeType, "ACTIVE")
         LessonSelect =
             <>
@@ -103,31 +138,37 @@ const AdminEditClassMenu = () => {
     const changeTurnus = () => {
         setSelectedTurnusId(document.getElementById("1").value)
     }
+    let content = <h1>LOADING</h1>
 
+    if (turns !== null) {
+       content = <div className="adminEdit__main">
+            <div className="classSelect__container">
+                <p>Turnus:</p>
+                <select onChange={changeTurnus} name="turn" id="1" className="newLesson__turnSelect">
+                    {turns.map(turn => (
+                        <option value={turn.id} className="turn__option">{turn.name}</option>
+                    ))}
+                </select>
 
-    return <div className="adminEdit__main">
-        <div className="classSelect__container">
-            <p>Turnus:</p>
-            <select onChange={changeTurnus} name="turn" id="1" className="newLesson__turnSelect">
-                {turns.map(turn => (
-                    <option value={turn.id} className="turn__option">{turn.name}</option>
-                ))}
-            </select>
+                <p>Óra típusa:</p>
+                <select value={activeClass} onChange={changeLessonType} name="type" id="2"
+                        className="newLesson__lessonType">
+                    <option value="eloadas" className="type__option">Elöadás</option>
+                    <option value="gyakorlat" className="type__option">Gyakorlat</option>
+                    <option value="konzultacio" className="type__option">Konzultáció</option>
+                </select>
+                {LessonSelect}
+            </div>
 
-            <p>Óra típusa:</p>
-            <select value={activeClass} onChange={changeLessonType} name="type" id="2"
-                    className="newLesson__lessonType">
-                <option value="eloadas" className="type__option">Elöadás</option>
-                <option value="gyakorlat" className="type__option">Gyakorlat</option>
-                <option value="konzultacio" className="type__option">Konzultáció</option>
-            </select>
-            {LessonSelect}
+            <div className="tableContainer">
+                <AdminEditClassStudentList data={activeLesson}/>
+            </div>
         </div>
+    }
 
-        <div className="tableContainer">
-            <AdminEditClassStudentList data={activeLesson}/>
-        </div>
-    </div>
+
+
+    return content
 }
 
 export default AdminEditClassMenu
