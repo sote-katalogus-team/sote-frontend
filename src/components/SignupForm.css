@@ -35,3 +35,11 @@
 .form-select {
   height: 38px;
 }
+
+
+@media (max-width: 500px) {
+  .form-label, .form-input {
+    width: 60vw;
+  }
+}
+
