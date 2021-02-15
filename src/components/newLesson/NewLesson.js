@@ -17,7 +17,7 @@ const NewLesson = () => {
 
 
     async function  fetchTurns() {
-        axios.get(url+ "/turnus/all").then((res) => {
+        axios.get(url+ "/turnus/all", {headers: authHeader(cookies.user)}).then((res) => {
             setTurns(res.data)
         })
     }
