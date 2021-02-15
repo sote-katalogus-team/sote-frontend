@@ -51,6 +51,7 @@ const AdminEditClassStudentList = (props) => {
     let content = ""
     let addingAlert = ""
 
+    console.log(props, "propsss")
 
     useEffect(() => {
         fetchLessonStudent().then(res => {
@@ -146,7 +147,9 @@ const AdminEditClassStudentList = (props) => {
                             </Button>
                         </form>
                     </div>
-
+                    <div className="studentListTitle">
+                        <h5 className="tableTitle">{props.name}</h5>
+                    </div>
                     <TableContainer className={classes.paper} component={Paper}>
                         <Table className={classes.table} aria-label="simple table">
                             <TableHead>

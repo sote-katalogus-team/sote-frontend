@@ -210,6 +210,11 @@
 }
 
 
+.studentListTitle {
+    text-align: center;
+    font-size: 20px;
+}
+
 @media (max-width: 1919px) and (min-width: 1500px) {
     .admin__main {
         margin-top: 10px;

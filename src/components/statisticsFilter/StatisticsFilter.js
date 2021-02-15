@@ -9,7 +9,7 @@ const StatisticsFilter = () => {
     const[turns, setTurns] = useState([]);
     const[turnId, setTurnId] = useState(null)
     const[selected, setSelected] = useState([])
-    const[selectedType, setSelectedType] = useState([])
+    const[selectedType, setSelectedType] = useState("student")
     const url = process.env.REACT_APP_URL;
     const [cookies, setCookies] = useCookies(["user"])
     const [warning, setWarning] = useState("all")

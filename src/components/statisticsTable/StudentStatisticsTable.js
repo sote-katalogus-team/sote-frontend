@@ -3,10 +3,7 @@ import {DataGrid} from '@material-ui/data-grid';
 
 
 const StudentStatisticsTable = (props) => {
-
     let content = ""
-
-
     if (props.data[0]?.studentName !== undefined) {
 
 
