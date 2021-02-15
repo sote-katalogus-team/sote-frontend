@@ -7,20 +7,28 @@ const LessonStatisticsTable = (props) => {
     // { field: 'id', headerName: 'ID', width: 70 },
     let columns = [
         { field: 'id', headerName: 'id', width: 100 },
-        { field: 'name', headerName: 'név', width: 100 },
+        { field: 'name', headerName: 'név', width: 200 },
         { field: 'potlas', headerName: 'pótlás', width: 100 },
-        { field: 'date', headerName: 'dátum', width: 200 },
+        { field: 'date', headerName: 'dátum', width: 150 },
         { field: 'headcount', headerName: 'részvétel', width: 200 }
     ]
 
-    let rows = [
-    ]
+    let rows = []
 
+
+    const isPotlas = (potlas) => {
+        if (potlas === true) {
+            return "igen"
+        }
+        else {
+            return "nem"
+        }
+    }
 
     let id = 0;
     props.data.forEach(item => {
         id++;
-        rows.push({id:id ,name: item.currentClass.name, potlas:item.currentClass.potlas, date: item.currentClass.date ,headcount: item.headCount})
+        rows.push({id:id ,name: item.currentClass.name, potlas:isPotlas(item.currentClass.potlas), date: item.currentClass.date ,headcount: item.headCount})
     })
 
 

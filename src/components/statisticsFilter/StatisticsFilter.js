@@ -6,41 +6,72 @@ import {useCookies} from "react-cookie";
 
 const StatisticsFilter = () => {
     const[turns, setTurns] = useState([]);
+    const[turnId, setTurnId] = useState(null)
     const[selected, setSelected] = useState([])
+    const[selectedType, setSelectedType] = useState([])
     const url = process.env.REACT_APP_URL;
     const [cookies, setCookies] = useCookies(["user"])
 
 
 
     useEffect(() => {
-        fetchTurns();
+        fetchTurns().then(res => {
+            setTurns(res)
+            setTurnId(res[0]?.id)
+        });
+
     }, [])
 
 
-
-    useEffect(() => {
-        fetchSelected()
-    }, [])
-
-
-
-    async function fetchTurns() {
-        axios.get(url + "/turnus/all", {headers: authHeader(cookies.user)}).then((res) => {
-            setTurns(res.data)
-        })
-    }
-    async function fetchSelected() {
-        axios.get(url + "/classes/statistic/1", {headers: authHeader(cookies.user)}).then(res => {
+       const changeSelected = () => {
+        fetchSelected(turnId).then(res => {
             setSelected(res.data)
         })
     }
 
 
+
+    async function fetchTurns() {
+        try {
+            const resp = await  axios.get(url + "/turnus/all", {headers: authHeader(cookies.user)})
+            return resp.data
+        }
+        catch (error) {
+
+        }
+    }
+    async function fetchSelected(turnId) {
+        try {
+            const resp = await axios.get(url + "/classes/statistic/" + turnId, {headers: authHeader(cookies.user)});
+            return resp.data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    function selectTurn(e) {
+        e.preventDefault()
+        console.log(e.target.value)
+        setTurnId(e.target.value)
+    }
+
+
+    const selectType = (e) => {
+        e.preventDefault()
+        console.log(e.target.value)
+        setSelectedType(e.target.value)
+        fetchSelected(turnId).then(res => {
+            setSelected(res)
+            }
+        )
+    }
+
     return <div className="statisticsFilter__main">
 
         <div className="statistics__turnSelect">
             <p>turnus:</p>
-            <select name="turn" id="turner" className="newLesson__turnSelect">
+            <select onChange={selectTurn} name="turn" id="turner" className="newLesson__turnSelect">
                 {turns.map(turn => (
                     <option value={turn.id} className="turn__option">{turn.name}</option>
                 ))}
@@ -48,9 +79,8 @@ const StatisticsFilter = () => {
         </div>
         <div className="statistics__selects">
         <div className="statistics__classSelect">
-            <p>Óra típusa:</p>
-            <select name="type" id="2" className="newLesson__lessonType">
-                <option value="0" className="type__option">Figyelmeztetés szerint</option>
+            <p>Figyelmeztetés szerint:</p>
+            <select onChange={selectType} name="type" id="2" className="newLesson__lessonType">
                 <option value="eloadas" className="type__option">Elöadás</option>
                 <option value="gyakorlat" className="type__option">Gyakorlat</option>
                 <option value="konzultacio" className="type__option">Konzultáció</option>
@@ -58,16 +88,15 @@ const StatisticsFilter = () => {
         </div>
 
         <div className="statistics__searchSelect">
-            <p>Keresés típusa:</p>
+            <p>Jelenlét szerint:</p>
             <select name="type" id="2" className="newLesson__lessonType">
-                <option value="0" className="type__option">Jelenlét szerint</option>
                 <option value="student" className="type__option">Diák</option>
                 <option value="lesson" className="type__option">Óra</option>
             </select>
         </div>
         </div>
         <div className="statistics__tableContainer">
-            <LessonStatisticsTable data={selected}/>
+            <LessonStatisticsTable key={selected} data={selected}/>
         </div>
 
 
