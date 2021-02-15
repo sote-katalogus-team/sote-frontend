@@ -32,7 +32,7 @@ const Signup = () => {
       email: state.email,
       name: state.name,
       password: state.password,
-      neptun_code: state.neptunCode,
+      neptunCode: state.neptunCode,
       turnusId: state.turnusId
     }
     axios.post(url + "/registration", data).then(res => {
