@@ -1,5 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
+import {
+    Button,
+    makeStyles,
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TextField
+} from "@material-ui/core";
 import axios from "axios";
 import authHeader from "../../security/auth-header";
 import {useCookies} from "react-cookie";
@@ -10,6 +21,15 @@ const useStyles = makeStyles({
     },
 });
 
+
+const useTheme = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+}));
+
 const AdminEditClassStudentList = (props) => {
     const [cookies, setCookies] = useCookies("user")
     const url = process.env.REACT_APP_URL;
@@ -17,9 +37,10 @@ const AdminEditClassStudentList = (props) => {
     const [finished, setFinished] = useState(false)
     const classes = useStyles();
 
+    const theme = useTheme();
 
 
-    let content = <div><h1>LOADING</h1></div>
+    let content = ""
 
 
 
@@ -55,12 +76,29 @@ const AdminEditClassStudentList = (props) => {
 
     console.log(props.type)
 
+
+    const submitNewStudent = (e) => {
+        e.preventDefault()
+
+        console.log(document.getElementById("neptunCode").value)
+
+    }
+
     if (finished === true) {
         if (lessonData !== undefined) {
 
             if (props?.data && props.type) {
                 console.log(lessonData)
                 content = <div className="studentList__container">
+                    <div className={theme.root}>
+                        <form onSubmit={submitNewStudent} >
+                            <TextField required={true} id="neptunCode" label="neptun kód" variant="outlined" />
+                            <Button className={"addStudentButton"} type={"submit"} variant="outlined" color="primary">
+                                Hozzáadás
+                            </Button>
+                        </form>
+                    </div>
+
                     <TableContainer component={Paper}>
                         <Table className={classes.table} aria-label="simple table">
                             <TableHead>
@@ -76,7 +114,6 @@ const AdminEditClassStudentList = (props) => {
                                         <TableCell component="th" scope="row">
                                             {row.name}
                                         </TableCell>
-                                        <TableCell align="right">{row.name}</TableCell>
                                         <TableCell align="right">{row.neptunCode}</TableCell>
                                         <TableCell align="right">{row.email}</TableCell>
                                     </TableRow>

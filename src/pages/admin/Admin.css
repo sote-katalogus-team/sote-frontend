@@ -176,6 +176,33 @@
     margin-right: 13vw;
 }
 
+
+.studentList__container {
+    margin-right: auto;
+    margin-left: auto;
+}
+.tableContainer {
+    margin-right: 10vw;
+    margin-left: auto;
+}
+
+.classSelect__container {
+    margin-left: 10vw;
+}
+
+.studentList__addContainer {
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    margin-left: 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addStudentButton {
+    margin-left: 20px;
+}
+
+
 @media (max-width: 1919px) and (min-width: 1500px) {
     .admin__main {
         margin-top: 10px;
