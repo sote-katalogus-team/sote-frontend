@@ -1,49 +1,80 @@
 import React from "react";
-import { DataGrid } from '@material-ui/data-grid';
+import {DataGrid} from '@material-ui/data-grid';
 
 
 const StudentStatisticsTable = (props) => {
-    console.log(props?.data, "STUDEEEENTS")
-    let columns = [
-        { field: 'id', headerName: 'id', width: 100 },
-        { field: 'name', headerName: 'név', width: 200 },
-        { field: 'neptunCode', headerName: 'neptun kód', width: 150 },
-        { field: 'warning', headerName: 'figyelmeztetés', width: 200 },
-    ]
 
-    let rows = []
+    let content = ""
 
 
-    if (props.warningType) {
-        switch(props.warningType) {
-            case "konzultacio" :
-                props.data.forEach(data => {
-                    if (!data.includes("Konzultáció")) {
-                        props.data.pop(data)
-                    }
-                })
+    if (props.data[0]?.studentName !== undefined) {
+
+
+        let columns = [
+            {field: 'id', headerName: 'id', width: 100},
+            {field: 'name', headerName: 'név', width: 200},
+            {field: 'neptunCode', headerName: 'neptun kód', width: 150},
+            {field: 'warning', headerName: 'figyelmeztetés', width: 200},
+        ]
+
+        let rows = []
+
+        let results = []
+
+        if (props.warning) {
+
+            switch (props.warning) {
+                case "konzultacio" :
+                    props.data.forEach(data => {
+                        if (data.warning !== null) {
+                            if (data?.warning.includes("Konzultáció")) {
+                                results.push(data)
+                            }
+                        }
+
+                    })
+                    break;
+                case  "eloadas" :
+                    props.data.forEach(data => {
+                        if (data.warning !== null) {
+                            if (data?.warning.includes("Előadás")) {
+                                results.push(data)
+                            }
+                        }
+
+                    })
+                    break;
+                case  "gyakorlat" :
+                    props.data.forEach(data => {
+                        if (data.warning !== null) {
+                            if (data?.warning.includes("Gyakorlat")) {
+                                results.push(data)
+                            }
+                        }
+                    })
+                    break;
+                default :
+                    props.data.forEach(item => {
+                        results.push(item)
+                    })
+            }
         }
+
+        console.log(props.data)
+
+
+        let id = 0;
+        results.forEach(item => {
+            id++;
+            rows.push({id: id, name: item.studentName, neptunCode: item.neptunCode, warning: item.warning})
+        })
+
+
+        content =  <div className={"lessonStatistics__container"}>
+            <DataGrid rows={rows} columns={columns}/>
+        </div>
     }
-
-    console.log(props.data)
-
-
-
-
-
-
-    let id = 0;
-    props.data.forEach(item => {
-        id++;
-       rows.push({id:id ,name: item.studentName, neptunCode:item.neptunCode, warning: item.warning})
-    })
-
-
-
-    return  <div className={"lessonStatistics__container"} >
-        <DataGrid rows={rows} columns={columns} />
-    </div>
-
+    return content
 }
 
 export default StudentStatisticsTable;

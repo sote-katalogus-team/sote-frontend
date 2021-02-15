@@ -12,6 +12,7 @@ const StatisticsFilter = () => {
     const[selectedType, setSelectedType] = useState([])
     const url = process.env.REACT_APP_URL;
     const [cookies, setCookies] = useCookies(["user"])
+    const [warning, setWarning] = useState("all")
 
 
 
@@ -39,7 +40,7 @@ const StatisticsFilter = () => {
             table =  <LessonStatisticsTable key={selected} data={selected}/>
         }
         if (selectedType === "student") {
-            table =  <StudentStatisticsTable warning={"konzultacio"} key={selected} data={selected} />
+            table =  <StudentStatisticsTable warning={warning} key={selected} data={selected} />
         }
     }
 
@@ -115,7 +116,7 @@ const StatisticsFilter = () => {
 
     function warningSelect(e) {
         e.preventDefault()
-        console.log(e.target.value)
+        setWarning(e.target.value)
     }
 
     return <div className="statisticsFilter__main">
