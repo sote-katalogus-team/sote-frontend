@@ -85,7 +85,7 @@ const Home = () => {
                 alt="logo"/></div>
             <form onSubmit={handleLogin}>
                 <div className="main__LoginContainer">
-                    <input required={"required"} id={"username"} placeholder={"username"} type="email"
+                    <input required={"required"} id={"username"} placeholder={"email"} type="email"
                            className="main__usernameInput"/><br/>
                     <input required={"required"} id={"password"} placeholder={"password"} type="password"
                            className="main__passwordInput"/>
