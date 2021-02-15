@@ -4,7 +4,6 @@ import { DataGrid } from '@material-ui/data-grid';
 
 const LessonStatisticsTable = (props) => {
     console.log(props?.data)
-    // { field: 'id', headerName: 'ID', width: 70 },
     let columns = [
         { field: 'id', headerName: 'id', width: 100 },
         { field: 'name', headerName: 'név', width: 200 },

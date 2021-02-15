@@ -24,11 +24,21 @@ const StatisticsFilter = () => {
 
 
        const changeSelected = () => {
-        fetchSelected(turnId).then(res => {
+        fetchClassStats(turnId).then(res => {
             setSelected(res.data)
         })
     }
 
+
+    let table = ""
+
+
+    if (selectedType) {
+        if (selectedType === "lesson") {
+            table =  <LessonStatisticsTable key={selected} data={selected}/>
+
+        }
+    }
 
 
     async function fetchTurns() {
@@ -40,7 +50,7 @@ const StatisticsFilter = () => {
 
         }
     }
-    async function fetchSelected(turnId) {
+    async function fetchClassStats(turnId) {
         try {
             const resp = await axios.get(url + "/classes/statistic/" + turnId, {headers: authHeader(cookies.user)});
             return resp.data
@@ -50,10 +60,34 @@ const StatisticsFilter = () => {
     }
 
 
+
+    async function fetchSelectedStudent(turnId) {
+        try {
+            const resp = await axios.get(url + "/classes/student_statistics/" + turnId, {headers: authHeader(cookies.user)})
+            return resp.data
+        }
+        catch (error) {
+            console.log(error)
+
+        }
+    }
+
+
     function selectTurn(e) {
         e.preventDefault()
         console.log(e.target.value)
         setTurnId(e.target.value)
+        if (selectedType === "lesson") {
+            fetchClassStats(e.target.value).then(res => {
+                    setSelected(res)
+                }
+            )
+        }
+        if (selectedType === "student") {
+            fetchSelectedStudent(e.target.value).then(res => {
+                setSelected(res)
+            })
+        }
     }
 
 
@@ -61,10 +95,19 @@ const StatisticsFilter = () => {
         e.preventDefault()
         console.log(e.target.value)
         setSelectedType(e.target.value)
-        fetchSelected(turnId).then(res => {
-            setSelected(res)
-            }
-        )
+        if (e.target.value === "lesson") {
+            fetchClassStats(turnId).then(res => {
+                    setSelected(res)
+                }
+            )
+        }
+        if (e.target.value === "student") {
+            fetchSelectedStudent(turnId).then(res => {
+                setSelected(res)
+            })
+        }
+
+
     }
 
     return <div className="statisticsFilter__main">
@@ -80,7 +123,8 @@ const StatisticsFilter = () => {
         <div className="statistics__selects">
         <div className="statistics__classSelect">
             <p>Figyelmeztetés szerint:</p>
-            <select onChange={selectType} name="type" id="2" className="newLesson__lessonType">
+            <select  name="type" id="2" className="newLesson__lessonType">
+                <option value="all" className="type__option">Összes diák</option>
                 <option value="eloadas" className="type__option">Elöadás</option>
                 <option value="gyakorlat" className="type__option">Gyakorlat</option>
                 <option value="konzultacio" className="type__option">Konzultáció</option>
@@ -89,14 +133,14 @@ const StatisticsFilter = () => {
 
         <div className="statistics__searchSelect">
             <p>Jelenlét szerint:</p>
-            <select name="type" id="2" className="newLesson__lessonType">
+            <select onChange={selectType} name="type" id="2" className="newLesson__lessonType">
                 <option value="student" className="type__option">Diák</option>
                 <option value="lesson" className="type__option">Óra</option>
             </select>
         </div>
         </div>
         <div className="statistics__tableContainer">
-            <LessonStatisticsTable key={selected} data={selected}/>
+            {table}
         </div>
 
 
