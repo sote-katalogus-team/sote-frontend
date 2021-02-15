@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import AdminEditClassStudentList from "../AdminEditClassStudentList/AdminEditClassStudentList";
+import AdminEditClassStudentList from "./AdminEditClassStudentList";
 import axios from "axios";
 import authHeader from "../../security/auth-header";
 import {useCookies} from "react-cookie";

@@ -3,6 +3,7 @@ import axios from "axios";
 import LessonStatisticsTable from "../statisticsTable/LessonStatisticsTable";
 import authHeader from "../../security/auth-header";
 import {useCookies} from "react-cookie";
+import StudentStatisticsTable from "../statisticsTable/StudentStatisticsTable";
 
 const StatisticsFilter = () => {
     const[turns, setTurns] = useState([]);
@@ -36,7 +37,9 @@ const StatisticsFilter = () => {
     if (selectedType) {
         if (selectedType === "lesson") {
             table =  <LessonStatisticsTable key={selected} data={selected}/>
-
+        }
+        if (selectedType === "student") {
+            table =  <StudentStatisticsTable warning={"konzultacio"} key={selected} data={selected} />
         }
     }
 
@@ -63,7 +66,7 @@ const StatisticsFilter = () => {
 
     async function fetchSelectedStudent(turnId) {
         try {
-            const resp = await axios.get(url + "/classes/student_statistics/" + turnId, {headers: authHeader(cookies.user)})
+            const resp = await axios.get(url + "/classes/student_statistic/" + turnId, {headers: authHeader(cookies.user)})
             return resp.data
         }
         catch (error) {
@@ -110,6 +113,11 @@ const StatisticsFilter = () => {
 
     }
 
+    function warningSelect(e) {
+        e.preventDefault()
+        console.log(e.target.value)
+    }
+
     return <div className="statisticsFilter__main">
 
         <div className="statistics__turnSelect">
@@ -123,7 +131,7 @@ const StatisticsFilter = () => {
         <div className="statistics__selects">
         <div className="statistics__classSelect">
             <p>Figyelmeztetés szerint:</p>
-            <select  name="type" id="2" className="newLesson__lessonType">
+            <select onChange={warningSelect} name="type" id="2" className="newLesson__lessonType">
                 <option value="all" className="type__option">Összes diák</option>
                 <option value="eloadas" className="type__option">Elöadás</option>
                 <option value="gyakorlat" className="type__option">Gyakorlat</option>
