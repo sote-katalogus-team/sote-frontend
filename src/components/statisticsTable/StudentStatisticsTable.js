@@ -8,9 +8,12 @@ const StudentStatisticsTable = (props) => {
 
 
         let columns = [
-            {field: 'id', headerName: 'id', width: 100},
-            {field: 'name', headerName: 'név', width: 200},
-            {field: 'neptunCode', headerName: 'neptun kód', width: 150},
+            {field: 'id', headerName: 'id', width: 50},
+            {field: 'name', headerName: 'név', width: 170},
+            {field: 'neptunCode', headerName: 'neptun kód', width: 140},
+            {field: 'konzultacio', headerName: 'konzultáció', width: 110},
+            {field: 'eloadas', headerName: 'elöadás', width: 100},
+            {field: 'gyakorlat', headerName: 'gyakorlat', width: 110},
             {field: 'warning', headerName: 'figyelmeztetés', width: 200},
         ]
 
@@ -63,7 +66,7 @@ const StudentStatisticsTable = (props) => {
         let id = 0;
         results.forEach(item => {
             id++;
-            rows.push({id: id, name: item.studentName, neptunCode: item.neptunCode, warning: item.warning})
+            rows.push({id: id, name: item.studentName, neptunCode: item.neptunCode,konzultacio: item.percentages.consultation + "%", eloadas: item.percentages.lecture + "%", gyakorlat: item.percentages.practice + "%" ,warning: item.warning})
         })
 
 
