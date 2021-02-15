@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import Turnus from "../turnus/Turnus";
+import authHeader from "../../security/auth-header";
 
 
 const TurnusLister = () => {
@@ -13,7 +14,7 @@ const TurnusLister = () => {
     },[])
 
     async function  fetchTurns() {
-        axios.get(url+ "/turnus/all").then((res) => {
+        axios.get(url+ "/turnus/all", {headers: authHeader(cookies.user)}).then((res) => {
             setTurns(res.data)
         })
     }

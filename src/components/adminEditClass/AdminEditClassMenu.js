@@ -48,7 +48,7 @@ const AdminEditClassMenu = () => {
 
     async function fetchTurns() {
         try {
-            const resp = await axios.get(url + "/turnus/all");
+            const resp = await axios.get(url + "/turnus/all", {headers: authHeader(cookies.user)});
             return (resp.data);
         } catch (err) {
             // Handle Error Here
