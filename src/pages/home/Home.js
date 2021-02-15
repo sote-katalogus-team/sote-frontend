@@ -65,7 +65,9 @@ const Home = () => {
             password: password
         }
         axios.post(url + "/login", userCredentials).then(res => {
-            setCookie("user", res.data, { path: "/" });
+            let d = new Date();
+            d.setTime(d.getTime() + (120*60*1000));
+            setCookie("user", res.data, { path: "/" , expires: d});
             redirect(res.data.roles)
         }).catch(() => {
             setSnackVisible(true)
@@ -99,7 +101,6 @@ const Home = () => {
                 <button onClick={goToRegister} className={'main__registerButton'}>Register</button>
             </div>
             { loginAlert}
-
         </div>
     );
 };

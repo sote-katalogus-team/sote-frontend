@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import AdminEditClassStudentList from "../AdminEditClassStudentList/AdminEditClassStudentList";
+import AdminEditClassStudentList from "./AdminEditClassStudentList";
 import axios from "axios";
 import authHeader from "../../security/auth-header";
 import {useCookies} from "react-cookie";
@@ -14,6 +14,7 @@ const AdminEditClassMenu = () => {
     const [activeClass, setActiveClass] = useState(null)
     const [activeType, setActiveType] = useState(null)
     const [activeLesson, setActiveLesson] = useState(null)
+    const [activeName, setActiveName] = useState("")
 
 
     useEffect(() => {
@@ -60,7 +61,6 @@ const AdminEditClassMenu = () => {
 
     function getLesson(active) {
         let result = [];
-        console.log(lessons)
         if (lessons !== null) {
             let all = Object.keys(lessons);
             switch (active) {
@@ -109,13 +109,12 @@ const AdminEditClassMenu = () => {
     let LessonSelect = <h1>Nincsen ilyen típusú óra ehhez a turnushoz</h1>;
 
     const selectLesson = (e) => {
-        console.log(e.target.value)
         setActiveLesson(e.target.value)
+        setActiveName(getLessonsName(e.target.value))
     }
 
 
     if (activeType !== null) {
-        console.log(activeType, "ACTIVE")
         LessonSelect =
             <>
                 <p>Óra:</p>
@@ -128,6 +127,21 @@ const AdminEditClassMenu = () => {
                 </select>
             </>
     }
+
+
+    const getLessonsName = (id) => {
+        let name = "No name"
+        activeType.forEach(lesson => {
+            console.log(lesson, "LESSSSON")
+            console.log(id, "LESSSSON iddddd")
+            if (lesson.id.toString() === id) {
+                name = lesson.name;
+            }
+        })
+
+        return name;
+    }
+
 
 
     const changeLessonType = (e) => {
@@ -162,7 +176,7 @@ const AdminEditClassMenu = () => {
             </div>
 
             <div className="tableContainer">
-                <AdminEditClassStudentList key={activeLesson} type={activeClass} data={activeLesson}/>
+                <AdminEditClassStudentList name={activeName} key={activeLesson} type={activeClass} data={activeLesson}/>
             </div>
         </div>
     }

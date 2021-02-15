@@ -18,17 +18,24 @@ import {Alert} from "@material-ui/lab";
 
 const useStyles = makeStyles({
     table: {
+        Height: 200,
+        overflowY: "scroll",
         minWidth: 650,
+    },
+    paper: {
+        maxHeight: 400,
+        width: '100%',
+        overflowY: 'auto',
     },
 });
 
 
 const useTheme = makeStyles((theme) => ({
     root: {
-        '& > *': {
-            margin: theme.spacing(1),
+        textAlign: "center",
+        marginBottom: 90
         },
-    },
+
 }));
 
 const AdminEditClassStudentList = (props) => {
@@ -44,6 +51,7 @@ const AdminEditClassStudentList = (props) => {
     let content = ""
     let addingAlert = ""
 
+    console.log(props, "propsss")
 
     useEffect(() => {
         fetchLessonStudent().then(res => {
@@ -139,8 +147,10 @@ const AdminEditClassStudentList = (props) => {
                             </Button>
                         </form>
                     </div>
-
-                    <TableContainer component={Paper}>
+                    <div className="studentListTitle">
+                        <h5 className="tableTitle">{props.name}</h5>
+                    </div>
+                    <TableContainer className={classes.paper} component={Paper}>
                         <Table className={classes.table} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
