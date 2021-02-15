@@ -63,7 +63,6 @@ const AdminEditClassStudentList = (props) => {
 
     async function fetchLessonStudent() {
         try  {
-            console.log(url + "/"+ props.type + "/"+ props.data + "/students")
             const resp = await axios.get(url + "/"+ props.type + "/"+ props.data + "/students", {headers: authHeader(cookies.user)});
             console.log(resp.data)
             return (resp.data);
@@ -79,10 +78,34 @@ const AdminEditClassStudentList = (props) => {
 
     const submitNewStudent = (e) => {
         e.preventDefault()
+        saveStudent(document.getElementById("neptunCode").value).then(res => {
+            fetchLessonStudent().then(res => {
+                setLessonData(res)
+                }
+            )
+        })
 
-        console.log(document.getElementById("neptunCode").value)
+
+
 
     }
+
+    async function saveStudent (neptunCode) {
+        try {
+            const resp = await axios.post(url + "/student/addByNeptunCode", {
+                "neptunCode": neptunCode,
+                "classInfo": {
+                    "id": props.data,
+                    "type": props.type.toUpperCase(),
+                }
+            }, {headers: authHeader(cookies.user)})
+            return resp.data
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
 
     if (finished === true) {
         if (lessonData !== undefined) {
