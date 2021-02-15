@@ -18,17 +18,24 @@ import {Alert} from "@material-ui/lab";
 
 const useStyles = makeStyles({
     table: {
+        Height: 200,
+        overflowY: "scroll",
         minWidth: 650,
+    },
+    paper: {
+        maxHeight: 400,
+        width: '100%',
+        overflowY: 'auto',
     },
 });
 
 
 const useTheme = makeStyles((theme) => ({
     root: {
-        '& > *': {
-            margin: theme.spacing(1),
+
+        marginBottom: 90
         },
-    },
+
 }));
 
 const AdminEditClassStudentList = (props) => {
@@ -140,7 +147,7 @@ const AdminEditClassStudentList = (props) => {
                         </form>
                     </div>
 
-                    <TableContainer component={Paper}>
+                    <TableContainer className={classes.paper} component={Paper}>
                         <Table className={classes.table} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
