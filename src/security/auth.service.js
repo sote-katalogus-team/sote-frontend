@@ -1,11 +1,13 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:8080/";
+const url = process.env.REACT_APP_URL;
+
+
 
 
 const register = (username, email, password) => {
-    return axios.post(API_URL + "signup", {
+    return axios.post(url + "signup", {
         username,
         email,
         password,
@@ -14,7 +16,7 @@ const register = (username, email, password) => {
 
 const login = (username, password) => {
     return axios
-        .post(API_URL + "signin", {
+        .post(url + "signin", {
             username,
             password,
         }, {headers: authHeader()})
@@ -27,7 +29,13 @@ const login = (username, password) => {
 };
 
 
-export default {
-    register,
-    login,
-};
+
+export default function adminAuthenticate (user)  {
+    if (!user.roles.includes("ADMIN")) {
+        window.location = "/";
+    }
+}
+
+
+
+
