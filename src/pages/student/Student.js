@@ -30,7 +30,7 @@ const Student = () => {
 
     Authenticate(cookies.user, "STUDENT")
 
-
+    console.log(cookies.user)
     const toStatistics = () => {
         window.location = "/student/statistics"
     }
@@ -75,11 +75,10 @@ const Student = () => {
 
     fontawesome.library.add(faUser);
     const name = cookies.user?.name;
-    const  neptunCode = "123ABC"
     return <div className="student__mainContainer">
         <div className="student__header">
             <p className={"student__welcome"}>welcome</p>
-            <p className="student__name">{name} #{neptunCode}</p>
+            <p className="student__name">{name}</p>
             <FontAwesomeIcon icon="user"  className={"student__userLogo"}/>
         </div>
         <form onSubmit={handleSubmit} >

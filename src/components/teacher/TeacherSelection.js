@@ -62,7 +62,7 @@ const TeacherSelection = ({name, onSelectionChange}) => {
 
     return (
         <>
-            <div className="teacher__welcome">Üdvözöljük, {name}</div>
+            <div className="teacher__welcome">Üdvözöljük!</div>
             <div className="teacher__date">{today}</div>
             <div className="teacher__wrapper">
                 <table className="teacher__table">

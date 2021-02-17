@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './Teacher.css';
 
 import TeacherSelect from '../../components/teacher/TeacherSelection';
@@ -21,6 +21,7 @@ const Teacher = () => {
   const [code, setCode] = useState("{{CODE}}");
   const [cookies, removeCookie] = useCookies("user")
   Authenticate(cookies.user, "TEACHER")
+
 
 
 
