@@ -1,0 +1,33 @@
+.input-label {
+    text-align: center;
+    color: white;
+}
+
+
+.codeInput-2 {
+    text-align: center;
+    width: 30vw;
+}
+
+
+.inputs {
+    margin-right: auto;
+    margin-left:auto;
+    text-align: center;
+
+}
+
+@media (max-width: 300px) {
+    .codeInput-2 {
+        width: 80vw;
+    }
+}
+@media (max-width: 500px) {
+    .codeInput-2 {
+        width: 60vw;
+    }
+}@media (max-width: 800px) {
+    .codeInput-2 {
+        width: 50vw;
+    }
+}

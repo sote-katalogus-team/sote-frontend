@@ -6,6 +6,8 @@ import SignupVerification from '../components/SignupVerification';
 import axios from "axios";
 
 const Signup = () => {
+  const [message, setMessage] = useState("");
+  const [alert, setAlert] = useState(false)
   const url = process.env.REACT_APP_URL;
   const [state, setState] = useState({
     name: "",
@@ -37,15 +39,31 @@ const Signup = () => {
     }
     axios.post(url + "/registration", data).then(res => {
       console.log(res.data)
-      window.location = "/"
     })
 
 
-    //setStep(3);
+    setStep(3);
   }
   const handleVerifyButtonClick = () => {
-    //TODO send request to the server to verify the signup
+    const code = document.getElementById("verificationCode").value;
+    axios.post(url + "/validate", {"email": state.email, "code" : code}).then(res => {
+      setAlert(true)
+      setMessage(res.data)
+    }).catch(error => {
+      setAlert(false)
+      setMessage("Incorrect code, please try again")
+    })
   }
+  const setAlertClassname = () => {
+    if (alert) {
+      return "code__alertGood"
+    }
+    else {
+      return "code__alertBad"
+    }
+  }
+
+
 
   const isDataValid = data => {
     if (data.name.trim() === '') {
@@ -70,6 +88,13 @@ const Signup = () => {
     }
 
     return true;
+  }
+
+  function goToLogin() {
+    const go = window.confirm("Are you sure about leaving this page?")
+    if (go) {
+      window.location = '/';
+    }
   }
 
   return (
@@ -108,6 +133,13 @@ const Signup = () => {
       {step === 3 && (
         <>
           <input type="text" id="verificationCode" className="codeInput" autoFocus />
+          {message && (
+              <div className="form-group">
+                <div className={setAlertClassname()} role="alert">
+                  {message}
+                </div>
+              </div>
+          )}
           <button
             type="button"
             className="button"
@@ -115,11 +147,18 @@ const Signup = () => {
           >
             Verify
           </button>
+          <button
+              type="button"
+              className="button"
+          onClick={goToLogin}
+          >
+            Go to Login
+          </button>
         </>
       )}
     </div>
   );
 
-};
+}
 
 export default Signup;

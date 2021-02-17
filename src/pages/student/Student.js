@@ -22,10 +22,10 @@ const required = (value) => {
 
 const Student = () => {
     const [message, setMessage] = useState("");
+    const [alert, setAlert] = useState(false)
     const [cookies, removeCookie] = useCookies(["user"])
     const [user, setUser] = useState(cookies.user.id);
     const url = process.env.REACT_APP_URL;
-    const [alert, setAlert] = useState(false)
     const toStatistics = () => {
         window.location = "/student/statistics"
     }
