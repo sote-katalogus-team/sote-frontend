@@ -37,6 +37,11 @@ const Home = () => {
         window.location = "/signup"
     }
 
+
+    const goToVerify = () => {
+        window.location = "/verify"
+    }
+
     const handleLogin = (e) => {
         e.preventDefault()
         const username = document.getElementById("username").value;
@@ -99,7 +104,7 @@ const Home = () => {
 
 
                 <button onClick={goToRegister} className={'main__registerButton'}>Register</button>
-                <button className={'main__registerButton'}>Verify an account</button>
+                <button onClick={goToVerify} className={'main__registerButton'}>Verify an account</button>
             </div>
 
 
