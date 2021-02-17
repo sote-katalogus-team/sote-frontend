@@ -99,7 +99,10 @@ const Home = () => {
 
 
                 <button onClick={goToRegister} className={'main__registerButton'}>Register</button>
+                <button className={'main__registerButton'}>Verify an account</button>
             </div>
+
+
             { loginAlert}
         </div>
     );

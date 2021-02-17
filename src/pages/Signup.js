@@ -93,7 +93,7 @@ const Signup = () => {
   function goToLogin() {
     const go = window.confirm("Are you sure about leaving this page?")
     if (go) {
-      window.location = '/home';
+      window.location = '/';
     }
   }
 
