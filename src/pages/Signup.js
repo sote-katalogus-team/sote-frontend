@@ -90,6 +90,13 @@ const Signup = () => {
     return true;
   }
 
+  function goToLogin() {
+    const go = window.confirm("Are you sure about leaving this page?")
+    if (go) {
+      window.location = '/home';
+    }
+  }
+
   return (
     <div>
       {step === 1 && <SignupForm data={state} onChangeData={handleChangeData} />}
@@ -140,12 +147,18 @@ const Signup = () => {
           >
             Verify
           </button>
-
+          <button
+              type="button"
+              className="button"
+          onClick={goToLogin}
+          >
+            Go to Login
+          </button>
         </>
       )}
     </div>
   );
 
-};
+}
 
 export default Signup;
