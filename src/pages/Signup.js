@@ -37,14 +37,16 @@ const Signup = () => {
     }
     axios.post(url + "/registration", data).then(res => {
       console.log(res.data)
-      window.location = "/"
     })
 
 
-    //setStep(3);
+    setStep(3);
   }
   const handleVerifyButtonClick = () => {
-    //TODO send request to the server to verify the signup
+    const code = document.getElementById("verificationCode").value;
+    axios.post(url + "/validate", {"email": state.email, "code" : code}).then(res => {
+      console.log(res)
+    })
   }
 
   const isDataValid = data => {
