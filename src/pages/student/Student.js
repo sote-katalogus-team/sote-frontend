@@ -6,6 +6,7 @@ import { faUser } from '@fortawesome/fontawesome-free-solid'
 import axios from "axios";
 import authHeader from "../../security/auth-header";
 import {useCookies} from "react-cookie";
+import Authenticate from "../../security/auth.service";
 
 
 const required = (value) => {
@@ -26,6 +27,10 @@ const Student = () => {
     const [cookies, removeCookie] = useCookies(["user"])
     const [user, setUser] = useState(cookies.user.id);
     const url = process.env.REACT_APP_URL;
+
+    Authenticate(cookies.user, "STUDENT")
+
+
     const toStatistics = () => {
         window.location = "/student/statistics"
     }

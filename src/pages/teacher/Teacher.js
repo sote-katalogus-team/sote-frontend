@@ -8,6 +8,7 @@ import TeacherAttendance from '../../components/teacher/TeacherAttendance';
 import axios from 'axios';
 import {useCookies} from "react-cookie";
 import authHeader from "../../security/auth-header";
+import Authenticate from "../../security/auth.service";
 
 
 const Teacher = () => {
@@ -19,6 +20,9 @@ const Teacher = () => {
   const [counterComplete, setCounterComplete] = useState(false);
   const [code, setCode] = useState("{{CODE}}");
   const [cookies, removeCookie] = useCookies("user")
+  Authenticate(cookies.user, "TEACHER")
+
+
 
 
   window.document.body.style.backgroundColor = "rgba(41, 139, 229, 1)"

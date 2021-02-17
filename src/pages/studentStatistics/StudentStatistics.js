@@ -4,6 +4,7 @@ import Diagram from "../../components/diagram/Diagram";
 import axios from "axios";
 import authHeader from "../../security/auth-header";
 import {useCookies} from "react-cookie";
+import Authenticate from "../../security/auth.service";
 
 const StudentStatistics = () => {
     const [cookies, setCookies] = useCookies(["user"])
@@ -11,6 +12,7 @@ const StudentStatistics = () => {
     const [stats, setStats] = useState([])
     const url = process.env.REACT_APP_URL;
 
+    Authenticate(cookies.user, "STUDENT")
 
     const back = () => {
         window.location = "/student"
