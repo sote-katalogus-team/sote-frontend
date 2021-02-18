@@ -47,7 +47,6 @@ const AdminImportTurnus = () => {
     let tableBody = <tbody> </tbody>
 
     if (lessons !== null && lessons !== undefined) {
-        console.log(lessons, "LESSSSONS")
         tableBody =
             <tbody>
             { konz.map(lesson => (
@@ -75,12 +74,11 @@ const AdminImportTurnus = () => {
 
 
     const getTurnNameById = (id) => {
-        return turns.find(t => t.id === parseInt(id))
+        const turn = turns.find(t => t.id === parseInt(id))
+        return turn.name
     }
 
-
     function selectTurn1() {
-
     }
 
     function selectTurn2() {
