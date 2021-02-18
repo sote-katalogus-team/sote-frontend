@@ -143,9 +143,12 @@
 }
 
 .statisticsFilter__main{
-    margin-top: 10vh;
-
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 .statisticsTable__main {
     margin-left: 400px;
@@ -153,13 +156,15 @@
 
 
 .statistics__tableContainer {
-    margin-left: -10vw;
-    margin-right: 7vw;
 }
 
 .lessonStatistics__container {
     height: 40vh;
-    width: 40vw;
+    width: 50vw;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -170,10 +175,7 @@
 
 
 .statistics__selects {
-    display: flex;
-    justify-content: space-around;
-    margin-left: -6vw;
-    margin-right: 13vw;
+    text-align: center;
 }
 
 
