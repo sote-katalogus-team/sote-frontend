@@ -32,6 +32,10 @@
     width: 150px;
 }
 
+.admin__sidebar a {
+    text-decoration: none;
+}
+
 .admin__sidebarMenu {
     margin-left: 1vw;
     text-align: left;
