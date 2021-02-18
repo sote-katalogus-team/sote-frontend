@@ -75,6 +75,9 @@
     font-size: 22px;
 }
 
+.customMargin {
+    margin-right: 5vw;
+}
 
 
 @media (max-width: 300px) {

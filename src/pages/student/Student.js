@@ -77,8 +77,7 @@ const Student = () => {
     const name = cookies.user?.name;
     return <div className="student__mainContainer">
         <div className="student__header">
-            <p className={"student__welcome"}>welcome</p>
-            <p className="student__name">{name}</p>
+            <p className="student__name">Welcome, {name}!</p>
             <FontAwesomeIcon icon="user"  className={"student__userLogo"}/>
         </div>
         <form onSubmit={handleSubmit} >

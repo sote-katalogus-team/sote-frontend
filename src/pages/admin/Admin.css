@@ -34,8 +34,10 @@
 .lessons_table {
     padding: 10px;
     border-spacing: 20px 0;
-    overflow-y:scroll;
+    overflow-y: scroll;
     max-height: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .newTurnus__inputs input {
@@ -185,12 +187,11 @@
     margin-left: auto;
 }
 .tableContainer {
-    margin-right: 10vw;
+    margin-right: auto;
     margin-left: auto;
 }
 
 .classSelect__container {
-    margin-left: 10vw;
 }
 
 .studentList__addContainer {

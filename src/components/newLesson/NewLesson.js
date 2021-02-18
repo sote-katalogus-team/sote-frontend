@@ -104,7 +104,7 @@ const NewLesson = () => {
     return <div className="newLesson__main">
         <form onSubmit={validateNewLesson}>
         <div className="newLesson__selectContainer">
-            <select name="turn" id="1" className="newLesson__turnSelect">
+            <select name="turn" id="1" className="newLesson__turnSelect customMargin">
                 {turns.map(turn => (
                     <option value={turn.id} className="turn__option">{turn.name}</option>
                 ))}
@@ -115,7 +115,7 @@ const NewLesson = () => {
                 <option value="konzultacio" className="type__option">Konzultáció</option>
             </select> <br/>
 
-            <input required={"required"} id={"newLessonName"} placeholder={"óra neve"} type="text" className="name__input"/>
+            <input required={"required"} id={"newLessonName"} placeholder={"óra neve"} type="text" className="name__input customMargin"/>
             <input required={"required"} id={"lesson_date"} type="date"/>
             <br/>
 
