@@ -215,6 +215,41 @@
     font-size: 20px;
 }
 
+
+.importTurnus__main {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.arrow {
+    font-size: 60px;
+    color: rgba(41, 139, 229, 1);
+}
+
+
+.importTurnus__copyButton {
+    border: 2px solid rgba(41, 139, 229, 1);
+    background-color:rgba(41, 139, 229, 1);
+    color: white;
+    border-radius: 2px;
+    width: 7vw;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.importTurnus__table {
+    display: block;
+    padding: 10px;
+    border-spacing: 20px 0;
+    overflow-y: scroll;
+    max-height: 47vh !important;
+    text-align: center;
+}
+
+
+
 @media (max-width: 1919px) and (min-width: 1500px) {
     .admin__main {
         margin-top: 10px;
@@ -227,6 +262,8 @@
     }
 
 }
+
+
 
 
 
