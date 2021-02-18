@@ -36,8 +36,10 @@ const AdminImportTurnus = () => {
     }
 
     async function importLessons(turn1, turn2) {
+        console.log(turn1 + "         "   + turn2)
         try {
-
+            const resp = await axios.get(url + "/turnus/" + turn2 + "/duplicate/" + turn1, {headers: authHeader(cookies.user)})
+            return resp.data
         } catch (error) {
 
         }
@@ -90,22 +92,32 @@ const AdminImportTurnus = () => {
         })
     }
 
+    function submitImport() {
+        const turn1 = document.getElementById("turner-1").value
+        const turn2 = document.getElementById("turner-2").value
+        importLessons(turn1, turn2).then(res => {
+            alert(res)
+        })
+
+
+    }
+
     return <div className="importTurnus__main">
         <div className="selectContainers">
             <p>Válassza ki a Turnust amelynek az óráit szeretné másolni:</p>
-            <select onChange={selectTurn1} name="turn" id="turner" className="newLesson__turnSelect">
+            <select onChange={selectTurn1} name="turn-1" id="turner-1" className="newLesson__turnSelect">
                 {turns.map(turn => (
                     <option value={turn.id} className="turn__option">{turn.name}</option>
                 ))}
             </select>
             <p className={"import-arrow"}><FontAwesomeIcon className={"arrow"} icon={"arrow-alt-circle-down"}/></p>
             <p>Válassza ki a Turnust ahová szeretné másolni az órákat.:</p>
-            <select onChange={selectTurn2} name="turn" id="turner" className="newLesson__turnSelect">
+            <select onChange={selectTurn2} name="turn-2" id="turner-2" className="newLesson__turnSelect">
                 {turns.map(turn => (
                     <option value={turn.id} className="turn__option">{turn.name}</option>
                 ))}
             </select> <br/>
-            <button className={"importTurnus__copyButton"}>Másolás</button>
+            <button onClick={submitImport} className={"importTurnus__copyButton"}>Másolás</button>
         </div>
 
 

@@ -16,33 +16,15 @@ const ImportLesson = (props) => {
         })
     }
 
-    /*
-     @Id
-    @GeneratedValue
-    private Long id;
-
-    private Long turnusId;
-
-    private String name;
-
-    @Temporal(TemporalType.DATE)
-    private Date date;
-
-    private Integer point;
-
-    @Builder.Default
-    private String code = null;
-
-    private Boolean potlas;
-
-    @Builder.Default
-    private Boolean active = true;
-
-    @Builder.Default
-    private Boolean isAttendanceOpen = false;
-     */
 
     async function saveNewDate(date, type) {
+        if (type === "konzultáció") {
+            type = "konzultacio"
+        }
+        if (type === "elöadás") {
+            type = "eloadas"
+        }
+
         let data = {
             turnusId: props.data.turnusId,
             name: props.data.name,
@@ -60,14 +42,44 @@ const ImportLesson = (props) => {
     }
 
 
+    function changeName(e) {
+        console.log(e.target.value)
+        saveNewName(e.target.value, props.type).then(res => {
+            console.log(res)
+        })
+    }
 
 
+    async function saveNewName(name, type) {
+        if (type === "konzultáció") {
+            type = "konzultacio"
+        }
+        if (type === "elöadás") {
+            type = "eloadas"
+        }
+
+        let data = {
+            turnusId: props.data.turnusId,
+            name: name,
+            date: props.data.date,
+            point: props.data.point,
+            potlas: props.data.potlas
+        }
+        try {
+            const resp = await axios.put(url + "/" + type + "/" + props.data.id + "/update" , data, {headers: authHeader(cookies.user)} )
+            return resp.data
+        }
+        catch (error) {
+
+        }
+    }
 
     return <tr>
         <td>{props?.type}</td>
-        <td>{props?.data.name}</td>
+        <td><input onBlur={changeName} type="text" defaultValue={props?.data.name}/></td>
         <td><input  onChange={changeDate} type="date"
         defaultValue={props?.data.date}/></td>
+        <td>Törlés</td>
     </tr>
 }
 
