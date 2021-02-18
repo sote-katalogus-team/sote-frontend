@@ -130,6 +130,7 @@ const AdminImportTurnus = () => {
         <div className="importTurnus__tableContainer">
             <p>Turnusban szereplő órák listája:</p>
             <select onChange={selectListTurn} name="turn" id="turner" className="newLesson__turnSelect">
+                <option selected hidden>Choose here</option>
                 {turns.map(turn => (
                     <option value={turn.id} className="turn__option">{turn.name}</option>
                 ))}
