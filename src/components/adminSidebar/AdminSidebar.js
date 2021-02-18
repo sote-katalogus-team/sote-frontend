@@ -23,8 +23,9 @@ const AdminSidebar = (props) => {
             <a href="/admin/new-lesson"><p id={"new-lesson"} className="admin__newLesson"><span> <FontAwesomeIcon icon="calendar-plus"  className={"admin__calendar"}/></span> Órák hozzáadása</p></a>
             <a href="/admin/statistics"><p className="admin__statisztika"><span> <FontAwesomeIcon icon="chart-bar"  className={"admin__chart"}/></span> Statisztika</p></a>
             <a href="/admin/new-teacher"><p className="admin__newTeacher"><span> <FontAwesomeIcon icon="user-plus"  className={"admin__addTeacher"}/></span> Oktatók hozzáadása</p></a>
-            <a href="/admin/new-turnus"><p className="admin__newTeacher"><span> <FontAwesomeIcon icon="calendar-plus"  className={"admin__calendar"}/></span> Turnus hozzáadása</p></a>
             <a href="/admin/edit-class"><p className="admin__newTeacher"><span> <FontAwesomeIcon icon="user-plus"  className={"admin__addTeacher"}/></span>Hallgatók listája</p></a>
+            <a href="/admin/new-turnus"><p className="admin__newTeacher"><span> <FontAwesomeIcon icon="calendar-plus"  className={"admin__calendar"}/></span> Turnus hozzáadása</p></a>
+            <a href="/admin/import-turnus"><p className="admin__newTeacher"><span> <FontAwesomeIcon icon="calendar-plus"  className={"admin__calendar"}/></span> Turnus másolása</p></a>
         </div>
         <div className="admin__settingsMenu">
            <p className="admin__settingsTitle">Beállitások</p>
