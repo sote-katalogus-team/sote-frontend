@@ -28,7 +28,7 @@ const Routes = () => (
       <Route exact path="/admin/statistics" component={AdminStatistics} />
       <Route exact path="/admin/settings" component={AdminSettings} />
       <Route exact path="/admin/edit-class" component={AdminEditClass} />
-      <Route exact path="/admin/import-turn" component={AdminImportTurn} />
+      <Route exact path="/admin/import-turnus" component={AdminImportTurn} />
       <Route exact path="/verify" component={AccountVerification} />
     </Switch>
   </Router>
