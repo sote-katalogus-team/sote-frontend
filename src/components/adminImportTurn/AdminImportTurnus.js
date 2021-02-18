@@ -36,7 +36,6 @@ const AdminImportTurnus = () => {
     }
 
     async function importLessons(turn1, turn2) {
-        console.log(turn1 + "         "   + turn2)
         try {
             const resp = await axios.get(url + "/turnus/" + turn2 + "/duplicate/" + turn1, {headers: authHeader(cookies.user)})
             return resp.data
@@ -74,6 +73,12 @@ const AdminImportTurnus = () => {
         }
     }
 
+
+    const getTurnNameById = (id) => {
+        return turns.find(t => t.id === parseInt(id))
+    }
+
+
     function selectTurn1() {
 
     }
@@ -95,11 +100,14 @@ const AdminImportTurnus = () => {
     function submitImport() {
         const turn1 = document.getElementById("turner-1").value
         const turn2 = document.getElementById("turner-2").value
-        importLessons(turn1, turn2).then(res => {
-            alert(res)
-        })
-
-
+        const turn1Name = getTurnNameById(turn1)
+        const turn2Name = getTurnNameById(turn2)
+        const allowed = window.confirm("Biztosan át akarod másolni a " + turn1Name + " nevü turnus óráit a " + turn2Name + " nevü turnusba?")
+        if (allowed) {
+            importLessons(turn1, turn2).then(res => {
+                alert(res)
+            })
+        }
     }
 
     return <div className="importTurnus__main">
