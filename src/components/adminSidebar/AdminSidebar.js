@@ -7,11 +7,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const AdminSidebar = (props) => {
     fontawesome.library.add(faCalendarPlus, faChartBar, faUserPlus, faCog);
 
-   let act =  document.getElementById(props?.active);
-
-   if (act) {
-       act.classList.add("active")
-   }
 
 
     return <div className="admin__sidebar">
