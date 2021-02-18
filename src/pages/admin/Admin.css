@@ -239,6 +239,15 @@
     margin-top: 15px;
 }
 
+.importTurnus__table {
+    display: block;
+    padding: 10px;
+    border-spacing: 20px 0;
+    overflow-y: scroll;
+    max-height: 47vh !important;
+    text-align: center;
+}
+
 
 
 @media (max-width: 1919px) and (min-width: 1500px) {
@@ -253,6 +262,8 @@
     }
 
 }
+
+
 
 
 

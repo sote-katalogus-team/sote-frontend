@@ -136,7 +136,7 @@ const AdminImportTurnus = () => {
             </select>
 
 
-            <table>
+            <table className={"importTurnus__table"}>
                 <thead>
                 <tr>
                     <th>Óra típusa</th>
