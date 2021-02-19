@@ -12,16 +12,15 @@
 
 .admin__head {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
 }
 
 
 .lessons__main {
-    margin-left: 350px;
     font-size: 25px;
     text-align: center;
     margin-bottom: 40px;
+    width: 1314px;
 
 }
 
@@ -96,7 +95,7 @@
 }
 
 .newTeacher__inputContainer input {
-    width: 200px;
+    width: 9vw;
     border: 3px solid rgba(41, 139, 229, 1);
     margin-right: 30px;
     border-radius: 6px;
@@ -172,7 +171,6 @@
 
 
 .newTeacher__main {
-    margin-right: 5vw;
 }
 
 
