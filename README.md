@@ -1,5 +1,3 @@
-# sote-frontend
-
 <!-- PROJECT LOGO -->
 <br />
 
@@ -58,33 +56,81 @@ The purpose is to:
 
 ### Built With
 
+This section should list any major frameworks that you built your project using. Leave any
+add-ons/plugins for the acknowledgements section. Here are a few examples.
+
+* Spring Boot
+* React
+* H2 database
+* Java
+* Hibernate
+* JWT
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-
+This is an example of how you may give instructions on setting up your project locally. To get a
+local copy up and running follow these simple example steps.
 
 ### Local
 
 #### Prerequisites
 
+* maven
+  ```sh
+  sudo apt-get install maven
+  ```
+* postgresql
+  ```sh
+  sudo apt-get -y install postgresql
+  ```
+* sendgrid
+ Register at [https://sendgrid.com/](https://sendgrid.com/)
+ Create a verified single sender.
+ Create API-Key.
+
 #### Installation
 
-1. Clone the repo
+1. a.) Clone the backend repo
+   ```sh
+   git clone https://github.com/sote-katalogus-team/sote-backend.git
+   ```
+   b.) Clone the frontend repo
    ```sh
    git clone https://github.com/sote-katalogus-team/sote-frontend.git
    ```
+   
 2. Install NPM packages
    ```sh
    npm install
    ```
+3. set environment variables
+   * EMAIL -> email used for creating verified single sender on Sendgrid
+   * API-KEY -> Api-key created on Sendgrid
+   * PASSWORD -> password for postgresql user
+   * USERNAME -> postgresql username
+   
 ### Cloud
 
 #### Prerequisites
 
+* heroku
+  Register at [https://www.heroku.com/](https://www.heroku.com/)
+
+* sendgrid
+ Register at [https://sendgrid.com/](https://sendgrid.com/)
+ Create a verified single sender.
+ Create API-Key.
 
 #### Deploy
+
+1. Create application on Heroku
+2. Create Config Vars on "Settings" tab
+    * API-KEY -> Api-key created on Sendgrid
+    * EMAIL -> email used for creating verified single sender on Sendgrid
+3. Connect heroku to github repository
+4. Select a branch to deploy. Currently "heroku_deploy" is created for this purpose.
 
 
 <!-- CONTRIBUTING -->
