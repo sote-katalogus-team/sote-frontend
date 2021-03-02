@@ -72,7 +72,7 @@ const Home = () => {
         axios.post(url + "/login", userCredentials).then(res => {
             let d = new Date();
             d.setTime(d.getTime() + (120*60*100000));
-            setCookie("user", res.data, { path: "/" , expires: d});
+            setCookie("user", res.data, { path: "/" });
             redirect(res.data.roles)
         }).catch(() => {
             setSnackVisible(true)

@@ -3,10 +3,18 @@ import "./AdminSidebar.css"
 import fontawesome from '@fortawesome/fontawesome'
 import {faCalendarPlus, faChartBar, faUserPlus, faCog} from '@fortawesome/fontawesome-free-solid'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useCookies} from "react-cookie";
 
 const AdminSidebar = (props) => {
+    const [cookie, setCookie] = useCookies(["user"])
     fontawesome.library.add(faCalendarPlus, faChartBar, faUserPlus, faCog);
 
+
+    const logOut = () => {
+        setCookie("user", null, {path: "/"});
+        window.location = "/"
+
+    }
 
 
     return <div className="admin__sidebar">
@@ -24,7 +32,9 @@ const AdminSidebar = (props) => {
         </div>
         <div className="admin__settingsMenu">
            <p className="admin__settingsTitle">Beállitások</p>
+
         <a href="/admin/settings">   <p className="admin__settings"><span> <FontAwesomeIcon icon="cog"  className={"admin__cog"}/></span> Beállítások</p></a>
+          <p onClick={e => {logOut()}} className="admin__settings"><span> <FontAwesomeIcon icon="cog"  className={"admin__cog"}/></span> Kijelentkezés</p>
         </div>
     </div>
 }
