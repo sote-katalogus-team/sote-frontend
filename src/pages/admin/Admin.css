@@ -4,8 +4,8 @@
     margin-top: 10px;
     border: 10px solid white;
     border-radius: 15px;
-    margin-left: 290px;
-    margin-right: 290px;
+    margin-left: 16vw;
+    margin-right: 14vw;
     height: 100%;
     background-color: white;
 }
@@ -17,7 +17,7 @@
 
 
 .lessons__main {
-    font-size: 25px;
+    font-size: 22px;
     text-align: center;
     margin-bottom: 40px;
     width: 1314px;
@@ -253,6 +253,32 @@
     text-align: center;
 }
 
+.adminSettingsMain {
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(41, 139, 229, 1);
+
+}
+
+
+.adminSettingsMain input {
+    width: 9vw;
+    border: 3px solid rgba(41, 139, 229, 1);
+    border-radius: 6px;
+    font-size: 20px;
+    color: rgba(41, 139, 229, 1);
+    margin-bottom: 10px;
+}
+
+.adminSettingsMain button {
+    width: 10vw;
+    border: 3px solid rgba(41, 139, 229, 1);
+    border-radius: 6px;
+    font-size: 20px;
+    color: rgba(41, 139, 229, 1);
+    margin-bottom: 10px;
+}
+
 
 
 @media (max-width: 1919px) and (min-width: 1500px) {
@@ -345,5 +371,60 @@
     .lessons__main {
         width: auto;
         margin-left: 0;
+    }
+    .lessonStatistics__container {
+        width: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .admin__main {
+        margin-top: 10px;
+        border: 10px solid white;
+        border-radius: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        width: 100%;
+    }
+    .admin__head {
+        display: block;
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .admin__main div {
+        text-align: center;
+    }
+    .lessons__main {
+        font-size: 15px;
+        width: auto;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1499px) {
+    .admin__main {
+        margin-top: 10px;
+        border: 10px solid white;
+        border-radius: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        width: 100%;
+    }
+    .admin__head {
+        display: block;
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .admin__main div {
+        text-align: center;
+    }
+    .lessons__main {
+        width: auto;
+        margin-left: 0;
+        font-size: 18px;
     }
 }
