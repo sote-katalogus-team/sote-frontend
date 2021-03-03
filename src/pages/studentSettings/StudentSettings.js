@@ -46,7 +46,6 @@ const StudentSettings = () => {
 
 
     const changeName = async name => {
-        console.log(cookies.user)
         const data = {
             name,
         }
@@ -58,13 +57,22 @@ const StudentSettings = () => {
         }
     }
     const changeEmail = async email => {
-        console.log(cookies.user)
         const data = {
             email,
         }
         try {
             const resp = await axios.put(url + "/student/" + cookies.user.id + "/email/update" , data, {headers: authHeader(cookies.user)})
-            console.log(resp)
+            return resp.data
+        } catch (error) {
+
+        }
+    }
+   const changePassword = async password => {
+        const data = {
+            password,
+        }
+        try {
+            const resp = await axios.put(url + "/student/" + cookies.user.id + "/password/update" , data, {headers: authHeader(cookies.user)})
             return resp.data
         } catch (error) {
 
@@ -93,6 +101,25 @@ const StudentSettings = () => {
             alert("Emails must be the same!")
         }
     }
+    const handlePasswordChange = e => {
+        e.preventDefault()
+        if (document.getElementById("newPass1").value === document.getElementById("newPass2").value) {
+            if (window.confirm("Are sure you want to change your password?")) {
+                changePassword(document.getElementById("newPass1").value).then(res => {
+                    if (res === undefined) {
+                        alert("An error occurred, please try again later!")
+                    }
+                    else {
+                        alert("Update was successfully, please log in again to refresh your data")
+                    }
+                })
+            }
+
+        }
+        else {
+            alert("Passwords must be the same!")
+        }
+    }
 
 
 
@@ -118,7 +145,7 @@ const StudentSettings = () => {
                 </div>
                 <div className="newPassword">
                     <p>Change Password:</p>
-                    <form >
+                    <form onSubmit={handlePasswordChange} >
                         <input placeholder={"•••••••••"}  required={"required"} id={"newPass1"} type="password"/> <br/>
                         <input placeholder={"•••••••••"}  required={"required"} id={"newPass2"} type="password"/> <br/>
                         <button type={"submit"}>save</button>
