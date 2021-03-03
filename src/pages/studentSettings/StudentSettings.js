@@ -67,6 +67,17 @@ const StudentSettings = () => {
 
         }
     }
+    const changeNeptunCode = async neptunCode => {
+        const data = {
+            neptunCode,
+        }
+        try {
+            const resp = await axios.put(url + "/student/" + cookies.user.id + "/neptunCode/update" , data, {headers: authHeader(cookies.user)})
+            return resp.data
+        } catch (error) {
+
+        }
+    }
    const changePassword = async password => {
         const data = {
             password,
@@ -112,6 +123,21 @@ const StudentSettings = () => {
             alert("Emails must be the same!")
         }
     }
+
+    const handleNeptunCodeChange = e => {
+        e.preventDefault()
+            if (window.confirm("Are sure you want to change your neptunCode?")) {
+                changeNeptunCode(document.getElementById("neptunCode").value).then(res => {
+                    if (res === undefined) {
+                        alert("This neptunCode is already used")
+                    }
+                    else {
+                        alert("Update was successfully, please log in again to refresh your data")
+                    }
+                })
+            }
+    }
+
     const handlePasswordChange = e => {
         e.preventDefault()
         if (document.getElementById("newPass1").value === document.getElementById("newPass2").value) {
@@ -191,8 +217,8 @@ const StudentSettings = () => {
                 </div>
                 <div className="newNeptunCode">
                     <p>Change neptun code:</p>
-                    <form >
-                        <input  required={"required"} type="text"/> <br/>
+                    <form onSubmit={handleNeptunCodeChange} >
+                        <input  id={"neptunCode"} required={"required"} type="text"/> <br/>
                         <button type={"submit"}>save</button>
                     </form>
                 </div>
