@@ -28,13 +28,39 @@ const StudentSettings = () => {
     }
 
 
+    const handleNameChange = e => {
+        e.preventDefault();
+        changeName(document.getElementById("newName").value).then(res => {
+            alert(res)
+        })
+    }
+
+
+
+    const changeName = async name => {
+        console.log(cookies.user)
+        const data = {
+            name,
+        }
+        try {
+            const resp = await axios.put(url + "/student/" + cookies.user.id + "/name/update" , data, {headers: authHeader(cookies.user)})
+            return resp.data
+        } catch (error) {
+
+        }
+    }
+
+
+
+
+
 
     return <div className="studentSettings__container">
             <div className="studentSettings__inputContainer">
                 <div className="newName">
                     <p>Change name:</p>
-                    <form >
-                        <input required={"required"} type="text"/> <br/>
+                    <form onSubmit={handleNameChange} >
+                        <input id={"newName"} required={"required"} type="text"/> <br/>
                         <button  type={"submit"}>save</button>
                     </form>
                 </div>
