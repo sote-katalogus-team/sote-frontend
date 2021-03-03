@@ -98,6 +98,19 @@
 
 }
 
+.studentSettings__container {
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.studentSettings__inputContainer input {
+    margin-bottom: 2vh;
+    width: 60vw;
+}
+
 
 @media (max-height: 569px)  {
     .student__buttonContainer {
@@ -166,6 +179,9 @@
 
     .student__userLogo {
         margin-left: 90%;
+    }
+    .studentSettings__inputContainer input {
+        width: 30vw;
     }
 
 }

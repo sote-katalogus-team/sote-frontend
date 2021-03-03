@@ -78,7 +78,7 @@ const Student = () => {
     return <div className="student__mainContainer">
         <div className="student__header">
             <p className="student__name">Welcome, {name}!</p>
-            <FontAwesomeIcon icon="user"  className={"student__userLogo"}/>
+            <a href="/student/settings"><FontAwesomeIcon icon="user"  className={"student__userLogo"}/></a>
         </div>
         <form onSubmit={handleSubmit} >
         <div className="main__LoginContainer">

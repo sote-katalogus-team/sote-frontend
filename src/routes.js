@@ -13,6 +13,7 @@ import AdminSettings from "./pages/admin/AdminSettings";
 import AdminEditClass from "./pages/admin/AdminEditClass";
 import AccountVerification from "./pages/accountVerification/AccountVerification";
 import AdminImportTurn from "./pages/admin/AdminImportTurn";
+import StudentSettings from "./pages/studentSettings/StudentSettings";
 
 const Routes = () => (
   <Router>
@@ -21,6 +22,7 @@ const Routes = () => (
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/student" component={Student} />
       <Route exact path="/student/statistics" component={StudentStatistics} />
+      <Route exact path="/student/settings" component={StudentSettings} />
       <Route exact path="/teacher" component={Teacher} />
       <Route exact path="/admin/new-lesson" component={AdminNewLesson} />
       <Route exact path="/admin/new-turnus" component={AdminNewTurnus} />
