@@ -30,9 +30,17 @@ const StudentSettings = () => {
 
     const handleNameChange = e => {
         e.preventDefault();
-        changeName(document.getElementById("newName").value).then(res => {
-            alert(res)
-        })
+        if (window.confirm("Are you sure you want to change your name?")) {
+            changeName(document.getElementById("newName").value).then(res => {
+                if (res === undefined) {
+                    alert("An error occurred, please try again later!")
+                }
+                else {
+                    alert("Update was successfully, please log in again to refresh your data")
+                }
+            })
+        }
+
     }
 
 
@@ -47,6 +55,42 @@ const StudentSettings = () => {
             return resp.data
         } catch (error) {
 
+        }
+    }
+    const changeEmail = async email => {
+        console.log(cookies.user)
+        const data = {
+            email,
+        }
+        try {
+            const resp = await axios.put(url + "/student/" + cookies.user.id + "/email/update" , data, {headers: authHeader(cookies.user)})
+            console.log(resp)
+            return resp.data
+        } catch (error) {
+
+        }
+    }
+
+
+
+
+    const handleEmailChange = e => {
+        e.preventDefault()
+        if (document.getElementById("email1").value === document.getElementById("email2").value) {
+            if (window.confirm("Are sure you want to change your email?")) {
+                changeEmail(document.getElementById("email1").value).then(res => {
+                    if (res === undefined) {
+                        alert("This email is already used")
+                    }
+                    else {
+                        alert("Update was successfully, please log in again to refresh your data")
+                    }
+                })
+            }
+
+        }
+        else {
+            alert("Emails must be the same!")
         }
     }
 
@@ -66,9 +110,9 @@ const StudentSettings = () => {
                 </div>
                 <div className="newEmail">
                     <p>Change Email:</p>
-                    <form >
-                    <input  required={"required"} type="email"/> <br/>
-                    <input  required={"required"} type="email"/> <br/>
+                    <form onSubmit={handleEmailChange} >
+                    <input placeholder={"new email"} id={"email1"} required={"required"} type="email"/> <br/>
+                    <input placeholder={"confirm new email"} id={"email2"} required={"required"} type="email"/> <br/>
                     <button type={"submit"}>save</button>
                     </form>
                 </div>
