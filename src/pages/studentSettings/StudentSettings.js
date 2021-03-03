@@ -78,6 +78,17 @@ const StudentSettings = () => {
 
         }
     }
+   const changeTurnus = async turnusId => {
+        const data = {
+            turnusId,
+        }
+        try {
+            const resp = await axios.put(url + "/student/" + cookies.user.id + "/turnus/update" , data, {headers: authHeader(cookies.user)})
+            return resp.data
+        } catch (error) {
+
+        }
+    }
 
 
 
@@ -116,6 +127,23 @@ const StudentSettings = () => {
             }
 
         }
+        else {
+            alert("Passwords must be the same!")
+        }
+    }
+    const handleTurnusChange = e => {
+        e.preventDefault()
+            if (window.confirm("Are sure you want to change your turnus?")) {
+                changeTurnus(document.getElementById("turner-1").value).then(res => {
+                    if (res === undefined) {
+                        alert("An error occurred, please try again later!")
+                    }
+                    else {
+                        alert("Update was successfully, please log in again to refresh your data")
+                    }
+                })
+            }
+
         else {
             alert("Passwords must be the same!")
         }
@@ -159,7 +187,7 @@ const StudentSettings = () => {
                             <option value={turn.id} className="turn__option">{turn.name}</option>
                         ))}
                     </select> <br/>
-                    <button>save</button>
+                    <button onClick={handleTurnusChange}  >save</button>
                 </div>
                 <div className="newNeptunCode">
                     <p>Change neptun code:</p>
