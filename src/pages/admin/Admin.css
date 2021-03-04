@@ -155,6 +155,7 @@
 
 
 .statistics__tableContainer {
+    width: auto;
 }
 
 .lessonStatistics__container {
@@ -398,6 +399,9 @@
         font-size: 15px;
         width: auto;
         margin-left: 0;
+    }
+    .lessonStatistics__container {
+        width: 100%;
     }
 }
 

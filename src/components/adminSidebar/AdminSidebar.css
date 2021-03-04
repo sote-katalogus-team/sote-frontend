@@ -50,6 +50,9 @@
     text-align: left;
     margin-left: 1vw;
 }
+.admin__settingsMenu a{
+   text-decoration: none;
+}
 
 .admin__sidebarMenu p {
     font-family: Roboto;
