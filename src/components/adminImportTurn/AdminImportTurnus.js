@@ -10,7 +10,7 @@ import ImportLesson from "../importLesson/ImportLesson";
 const AdminImportTurnus = () => {
     const [turns, setTurns] = useState([])
     const url = process.env.REACT_APP_URL;
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
     const [lessons, setLessons] = useState([])
     const [konz, setKonz] = useState([])
     const [elo, setElo] = useState([])

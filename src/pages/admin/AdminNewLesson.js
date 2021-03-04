@@ -7,7 +7,7 @@ import Authenticate  from '../../security/auth.service'
 import {useCookies} from "react-cookie";
 
 const AdminNewLesson = () => {
-    const [cookies, setCookie] = useCookies([
+    const [cookies] = useCookies([
         "user"
     ]);
     Authenticate(cookies.user, "ADMIN")

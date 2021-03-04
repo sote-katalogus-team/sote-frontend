@@ -6,7 +6,7 @@ import {useCookies} from "react-cookie";
 
 const AdminSettingsBar = () => {
     const url = process.env.REACT_APP_URL;
-    const [cookies, setCookies] = useCookies("user")
+    const [cookies] = useCookies("user")
 
 
 

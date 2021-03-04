@@ -3,13 +3,12 @@ import fontawesome from '@fortawesome/fontawesome'
 import {faTrash} from '@fortawesome/fontawesome-free-solid'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import { makeStyles } from '@material-ui/core/styles';
 import {useCookies} from "react-cookie";
 import authHeader from "../../security/auth-header";
 
 const Lesson = (props) => {
     const url = process.env.REACT_APP_URL;
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
 
 
 

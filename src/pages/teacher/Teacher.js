@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './Teacher.css';
 
 import TeacherSelect from '../../components/teacher/TeacherSelection';
@@ -13,7 +13,7 @@ import Authenticate from "../../security/auth.service";
 
 const Teacher = () => {
   const [step, setStep] = useState(1);
-  const [name, setName] = useState("{{name}}"); //TODO get name from ?
+  const [name] = useState("{{name}}"); //TODO get name from ?
   const [selection, setSelection] = useState(null);
   const [numOfStudents, setNumOfStudents] = useState(0);
   const [counterValue, setCounterValue] = useState(90000);

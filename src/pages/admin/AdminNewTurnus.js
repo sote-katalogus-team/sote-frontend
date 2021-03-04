@@ -7,7 +7,7 @@ import {useCookies} from "react-cookie";
 import Authenticate from "../../security/auth.service";
 
 const AdminNewTurnus = () => {
-    const [cookies, setCookie] = useCookies([
+    const [cookies] = useCookies([
         "user"
     ]);
     Authenticate(cookies.user, "ADMIN")

@@ -11,7 +11,7 @@ const StatisticsFilter = () => {
     const[selected, setSelected] = useState([])
     const[selectedType, setSelectedType] = useState("student")
     const url = process.env.REACT_APP_URL;
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
     const [warning, setWarning] = useState("all")
 
 

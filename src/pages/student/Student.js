@@ -9,23 +9,13 @@ import {useCookies} from "react-cookie";
 import Authenticate from "../../security/auth.service";
 
 
-const required = (value) => {
-    if (!value) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                This field is required!
-            </div>
-        );
-    }
-};
-
 
 
 const Student = () => {
     const [message, setMessage] = useState("");
     const [alert, setAlert] = useState(false)
     const [cookies, removeCookie] = useCookies(["user"])
-    const [user, setUser] = useState(cookies.user.id);
+    const [user] = useState(cookies.user.id);
     const url = process.env.REACT_APP_URL;
 
     Authenticate(cookies.user, "STUDENT")

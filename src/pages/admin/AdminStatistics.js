@@ -1,12 +1,11 @@
 import React from "react";
 import AdminSidebar from "../../components/adminSidebar/AdminSidebar";
 import StatisticsFilter from "../../components/statisticsFilter/StatisticsFilter";
-import StatisticsTable from "../../components/statisticsTable/StatisticsTable";
 import {useCookies} from "react-cookie";
 import Authenticate from "../../security/auth.service";
 
 const AdminStatistics = () => {
-    const [cookies, setCookie] = useCookies([
+    const [cookies] = useCookies([
         "user"
     ]);
     Authenticate(cookies.user, "ADMIN")

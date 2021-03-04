@@ -12,7 +12,7 @@ const LessonLister = () => {
     const [turnusId, setTurnusId] = useState(1);
     const [turns, setTurns] = useState([]);
     const url = process.env.REACT_APP_URL;
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
 
 
     useEffect(() => {

@@ -1,10 +1,6 @@
 import React from "react";
-import Lesson from "../Lesson/Lesson";
 
-const StatisticsTable = (props) => {
-    let data= {
-
-    }
+const StatisticsTable = () => {
     return <div className="statisticsTable__main">
         <table className={"statistics__table"}>
             <thead>

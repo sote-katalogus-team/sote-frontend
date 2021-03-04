@@ -8,7 +8,7 @@ import authHeader from "../../security/auth-header";
 const TeacherLister  = () => {
     const url = process.env.REACT_APP_URL;
     const[teachers, setTeachers] = useState([])
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
 
 
     useEffect(() => {

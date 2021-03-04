@@ -34,7 +34,7 @@ const useTheme = makeStyles((theme) => ({
     root: {
         textAlign: "center",
         marginBottom: 90
-        },
+    },
 
 }));
 

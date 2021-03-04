@@ -1,13 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {useCookies} from "react-cookie";
 import Authenticate from "../../security/auth.service";
 import AdminSidebar from "../../components/adminSidebar/AdminSidebar";
-import AdminEditClassMenu from "../../components/adminEditClass/AdminEditClassMenu";
 import AdminImportTurnus from "../../components/adminImportTurn/AdminImportTurnus";
 
 
 const AdminImportTurn = () => {
-    const [cookies, setCookie] = useCookies([
+    const [cookies] = useCookies([
         "user"
     ]);
 
