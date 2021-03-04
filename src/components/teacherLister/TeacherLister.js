@@ -23,11 +23,6 @@ const TeacherLister  = () => {
     }
 
 
-    console.log(teachers)
-
-
-
-
     return <div className="teacherLister__main">
             <div className="teacherLister_tableContainer">
                 <table className={"teacher__AdmintTable"}>

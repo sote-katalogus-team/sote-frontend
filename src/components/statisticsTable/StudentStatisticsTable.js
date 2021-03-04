@@ -60,7 +60,6 @@ const StudentStatisticsTable = (props) => {
             }
         }
 
-        console.log(props.data)
 
 
         let id = 0;

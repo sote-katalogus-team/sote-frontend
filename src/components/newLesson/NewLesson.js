@@ -7,7 +7,7 @@ import {useCookies} from "react-cookie";
 const NewLesson = () => {
     const url = process.env.REACT_APP_URL;
     const [turns, setTurns] = useState([])
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
 
 
 
@@ -110,7 +110,7 @@ const NewLesson = () => {
                 ))}
             </select>
             <select name="type" id="2" className="newLesson__lessonType">
-                <option value="eloadas" className="type__option">Elöadás</option>
+                <option value="eloadas" className="type__option">Előadás</option>
                 <option value="gyakorlat" className="type__option">Gyakorlat</option>
                 <option value="konzultacio" className="type__option">Konzultáció</option>
             </select> <br/>

@@ -79,7 +79,6 @@ const StatisticsFilter = () => {
 
     function selectTurn(e) {
         e.preventDefault()
-        console.log(e.target.value)
         setTurnId(e.target.value)
         if (selectedType === "lesson") {
             fetchClassStats(e.target.value).then(res => {
@@ -97,7 +96,6 @@ const StatisticsFilter = () => {
 
     const selectType = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
         setSelectedType(e.target.value)
         if (e.target.value === "lesson") {
             fetchClassStats(turnId).then(res => {
@@ -151,11 +149,6 @@ const StatisticsFilter = () => {
         <div className="statistics__tableContainer">
             {table}
         </div>
-
-
-
-
-
     </div>
 }
 

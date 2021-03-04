@@ -30,6 +30,7 @@
 .admin__image {
     text-align: center;
     width: 150px;
+    margin-left: 5vw;
 }
 
 .admin__sidebar a {
@@ -45,19 +46,21 @@
     text-align: left;
     margin-left: 1vw;
 }
+.admin__settingsMenu p{
+    text-align: left;
+    margin-left: 1vw;
+}
 
 .admin__sidebarMenu p {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 17px;
     line-height: 21px;
-    /* or 150% */
-
     letter-spacing: 0.1px;
-
     color: #212121;
     width: 100%;
+    text-align: left;
 }
 
 
@@ -124,7 +127,7 @@
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
     .admin__sidebar {
         display: block;
         text-align: center;
@@ -137,7 +140,7 @@
         margin-left: auto;
     }
 
-}@media (min-width: 500px) and (min-width: 1700px){
+}@media (min-width: 801px) and (min-width: 1700px){
     .admin__sidebar {
       text-align: left;
     }

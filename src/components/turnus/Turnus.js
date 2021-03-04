@@ -3,7 +3,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 const Turnus = (props) => {
-    console.log(props.data)
     return <tr>
         <td>{props.data?.combinedName}</td>
         <td>{props.data?.year}</td>
