@@ -46,7 +46,6 @@ const AccountVerification = () => {
 
         <form onSubmit={handleVerifyButtonClick} >
             <div className="inputs">
-                <p className={"input-label"}>email:</p>
                 <input required={"required"} type="email" id="email-input" className="codeInput-2" autoFocus />
                 <p  className={"input-label"} >code:</p>
                 <input required={"required"}  type="text" id="verificationCode" className="codeInput-2" autoFocus />

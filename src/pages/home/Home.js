@@ -94,19 +94,17 @@ const Home = () => {
                            className="main__usernameInput"/><br/>
                     <input required={"required"} id={"password"} placeholder={"password"} type="password"
                            className="main__passwordInput"/>
+                   <br/> <button type={"submit"} className={'main__loginButton'}>Login</button>
+                   <br/> <button onClick={goToRegister} className={'main__registerButton'}>Register</button>
+
 
                 </div>
                 <div className="main__buttonContainer">
-                    <button type={"submit"} className={'main__loginButton'}>Login</button>
+
+                    <button onClick={goToVerify} className={'main__registerButton'}>Verify an account</button>
+                    <button onClick={e => {window.location = "/reset"}} className={'main__registerButton'}>Reset password</button>
                 </div>
             </form>
-            <div className="main__buttonContainer2">
-
-
-                <button onClick={goToRegister} className={'main__registerButton'}>Register</button>
-                <button onClick={goToVerify} className={'main__registerButton'}>Verify an account</button>
-            </div>
-
             { loginAlert}
         </div>
     );

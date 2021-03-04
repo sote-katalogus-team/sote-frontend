@@ -14,6 +14,7 @@ import AdminEditClass from "./pages/admin/AdminEditClass";
 import AccountVerification from "./pages/accountVerification/AccountVerification";
 import AdminImportTurn from "./pages/admin/AdminImportTurn";
 import StudentSettings from "./pages/studentSettings/StudentSettings";
+import ResetPage from "./pages/resetPage/ResetPage";
 
 const Routes = () => (
   <Router>
@@ -32,6 +33,7 @@ const Routes = () => (
       <Route exact path="/admin/edit-class" component={AdminEditClass} />
       <Route exact path="/admin/import-turnus" component={AdminImportTurn} />
       <Route exact path="/verify" component={AccountVerification} />
+      <Route exact path="/reset" component={ResetPage} />
     </Switch>
   </Router>
 );
