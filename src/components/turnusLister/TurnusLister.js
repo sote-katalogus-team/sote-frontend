@@ -8,7 +8,7 @@ import {useCookies} from "react-cookie";
 const TurnusLister = () => {
     const url = process.env.REACT_APP_URL;
     const[turns, setTurns] = useState([])
-    const[cookies, setCookies] = useCookies("user")
+    const[cookies,] = useCookies("user")
 
 
     useEffect(()=> {

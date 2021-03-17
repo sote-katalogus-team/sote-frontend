@@ -6,7 +6,7 @@ import {useCookies} from "react-cookie";
 
 const NewTeacher = () => {
     const url = process.env.REACT_APP_URL;
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
 
     const validateNewTeacher = (e) => {
         e.preventDefault()

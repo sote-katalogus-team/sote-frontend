@@ -12,7 +12,7 @@ const LessonLister = () => {
     const [turnusId, setTurnusId] = useState(1);
     const [turns, setTurns] = useState([]);
     const url = process.env.REACT_APP_URL;
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
 
 
     useEffect(() => {
@@ -33,7 +33,6 @@ const LessonLister = () => {
 
     async function getClassesById() {
         axios.get(url + "/classes/all/" + turnusId, {headers: authHeader(cookies.user)}).then(res => {
-            console.log(res.data)
             let all = Object.keys(res.data);
             setElo(res.data[all[0]])
             setGyak(res.data[all[1]])
@@ -45,10 +44,6 @@ const LessonLister = () => {
         const newID = document.getElementById("turner").value;
         setTurnusId(newID);
     }
-
-
-    console.log(elo)
-
 
     return <div className="lessons__main">
         <select onChange={changeTurns} name="turn" id="turner" className="newLesson__turnSelect">

@@ -3,7 +3,6 @@ import { DataGrid } from '@material-ui/data-grid';
 
 
 const LessonStatisticsTable = (props) => {
-    console.log(props?.data)
     let content = "";
 
     if (props.data[0]?.currentClass !== undefined) {

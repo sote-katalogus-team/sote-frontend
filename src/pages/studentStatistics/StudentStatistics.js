@@ -7,8 +7,8 @@ import {useCookies} from "react-cookie";
 import Authenticate from "../../security/auth.service";
 
 const StudentStatistics = () => {
-    const [cookies, setCookies] = useCookies(["user"])
-    const [student, setStudent] = useState(cookies.user.id)
+    const [cookies] = useCookies(["user"])
+    const [student] = useState(cookies.user.id)
     const [stats, setStats] = useState([])
     const url = process.env.REACT_APP_URL;
 

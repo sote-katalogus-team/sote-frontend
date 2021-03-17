@@ -11,7 +11,7 @@ const StatisticsFilter = () => {
     const[selected, setSelected] = useState([])
     const[selectedType, setSelectedType] = useState("student")
     const url = process.env.REACT_APP_URL;
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
     const [warning, setWarning] = useState("all")
 
 
@@ -79,7 +79,6 @@ const StatisticsFilter = () => {
 
     function selectTurn(e) {
         e.preventDefault()
-        console.log(e.target.value)
         setTurnId(e.target.value)
         if (selectedType === "lesson") {
             fetchClassStats(e.target.value).then(res => {
@@ -97,7 +96,6 @@ const StatisticsFilter = () => {
 
     const selectType = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
         setSelectedType(e.target.value)
         if (e.target.value === "lesson") {
             fetchClassStats(turnId).then(res => {
@@ -131,10 +129,10 @@ const StatisticsFilter = () => {
         </div>
         <div className="statistics__selects">
         <div className="statistics__classSelect">
-            <p>Figyelmeztetés szerint:</p>
+            <p>Figyelmeztetés szerint: (csak diák)</p>
             <select onChange={warningSelect} name="type" id="2" className="newLesson__lessonType">
                 <option value="all" className="type__option">Összes diák</option>
-                <option value="eloadas" className="type__option">Elöadás</option>
+                <option value="eloadas" className="type__option">Előadás</option>
                 <option value="gyakorlat" className="type__option">Gyakorlat</option>
                 <option value="konzultacio" className="type__option">Konzultáció</option>
             </select>
@@ -143,6 +141,7 @@ const StatisticsFilter = () => {
         <div className="statistics__searchSelect">
             <p>Jelenlét szerint:</p>
             <select onChange={selectType} name="type" id="2" className="newLesson__lessonType">
+                <option selected hidden>Choose here</option>
                 <option value="student" className="type__option">Diák</option>
                 <option value="lesson" className="type__option">Óra</option>
             </select>
@@ -151,11 +150,6 @@ const StatisticsFilter = () => {
         <div className="statistics__tableContainer">
             {table}
         </div>
-
-
-
-
-
     </div>
 }
 

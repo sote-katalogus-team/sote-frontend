@@ -6,7 +6,7 @@ import Authenticate from "../../security/auth.service";
 
 
 const AdminSettings = () => {
-    const [cookies, setCookie] = useCookies([
+    const [cookies] = useCookies([
         "user"
     ]);
     Authenticate(cookies.user, "ADMIN")

@@ -10,7 +10,7 @@ const AdminEditClassMenu = () => {
     const [turns, setTurns] = useState(null)
     const [selectedTurnusId, setSelectedTurnusId] = useState(null);
     const [lessons, setLessons] = useState(null)
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
     const [activeClass, setActiveClass] = useState(null)
     const [activeType, setActiveType] = useState(null)
     const [activeLesson, setActiveLesson] = useState(null)

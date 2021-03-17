@@ -7,7 +7,7 @@ import {useCookies} from "react-cookie";
 const NewLesson = () => {
     const url = process.env.REACT_APP_URL;
     const [turns, setTurns] = useState([])
-    const [cookies, setCookies] = useCookies(["user"])
+    const [cookies] = useCookies(["user"])
 
 
 
@@ -26,7 +26,6 @@ const NewLesson = () => {
     const validateNewLesson = (e) => {
         e.preventDefault()
         let turnId = document.getElementById("1").value;
-        console.log(turnId)
         let lessonType = document.getElementById("2").value;
         let lessonName = document.getElementById("newLessonName").value;
         if (lessonName.length < 1) {
@@ -40,7 +39,6 @@ const NewLesson = () => {
             return;
         }
         let isPotlas = document.getElementById("potlas").checked;
-        console.log(isPotlas)
         let numberInput = document.getElementById("newlessonPoint").value;
         if (numberInput !== '1' && numberInput !== '2' && numberInput !== '3') {
             alert("Értéknek egyelöre csak 1-et, 2-ot vagy 3-at adhatsz meg!")
@@ -53,9 +51,6 @@ const NewLesson = () => {
              "potlas": isPotlas,
              "date": lessonDate
         }
-
-        console.log(data)
-
         switch (lessonType) {
             case "eloadas":
                 saveNewEloadas(data)
@@ -79,14 +74,12 @@ const NewLesson = () => {
            alert(res.data)
            window.location.reload();
        })
-        console.log("konzultáció")
     }
     async function saveNewEloadas(data) {
        axios.post(url + "/eloadas/add", data, {headers: authHeader(cookies.user)}).then(res => {
            alert(res.data)
            window.location.reload();
        })
-        console.log("eloadas")
     }
     async function saveNewGyakorlat(data) {
         axios.post(url + "/gyakorlat/add", data, {headers: authHeader(cookies.user)}).then(res => {
@@ -110,7 +103,7 @@ const NewLesson = () => {
                 ))}
             </select>
             <select name="type" id="2" className="newLesson__lessonType">
-                <option value="eloadas" className="type__option">Elöadás</option>
+                <option value="eloadas" className="type__option">Előadás</option>
                 <option value="gyakorlat" className="type__option">Gyakorlat</option>
                 <option value="konzultacio" className="type__option">Konzultáció</option>
             </select> <br/>

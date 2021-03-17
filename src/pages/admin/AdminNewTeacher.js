@@ -7,7 +7,7 @@ import Authenticate from "../../security/auth.service";
 
 
 const AdminNewTeacher = () => {
-    const [cookies, setCookie] = useCookies([
+    const [cookies] = useCookies([
         "user"
     ]);
     Authenticate(cookies.user, "ADMIN")

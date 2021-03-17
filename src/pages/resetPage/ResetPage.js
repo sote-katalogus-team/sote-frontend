@@ -1,12 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import "./resetPage.css"
 import axios from "axios";
 
 const ResetPage = () => {
-    const [message, setMessage] = useState("");
     const url = process.env.REACT_APP_URL;
-
-
 
     const handleReset = e => {
         e.preventDefault()
