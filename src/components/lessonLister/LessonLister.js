@@ -48,7 +48,7 @@ const LessonLister = () => {
     return <div className="lessons__main">
         <select onChange={changeTurns} name="turn" id="turner" className="newLesson__turnSelect">
             {turns.map(turn => (
-                <option value={turn.id} className="turn__option">{turn.name}</option>
+                <option value={turn.id} className="turn__option">{turn.combinedName}</option>
             ))}
         </select>
         <div className="lessons__tableContainer">

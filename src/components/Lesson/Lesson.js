@@ -65,6 +65,15 @@ const Lesson = (props) => {
 
 
 
+    const getType = () => {
+        if (props.type === "elöadás") {
+            return "előadás"
+        }
+        else return props.type;
+    }
+
+
+
 
     let potlasText = "nem"
     if (props.data.potlas === true) {
@@ -78,7 +87,7 @@ const Lesson = (props) => {
     }
 
     return <tr>
-        <td>{props?.type}</td>
+        <td>{getType()}</td>
         <td>{props.data?.name}</td>
         <td>{props.data?.date}</td>
         <td>{props.data?.point}</td>

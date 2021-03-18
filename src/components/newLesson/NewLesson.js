@@ -99,7 +99,7 @@ const NewLesson = () => {
         <div className="newLesson__selectContainer">
             <select name="turn" id="1" className="newLesson__turnSelect customMargin">
                 {turns.map(turn => (
-                    <option value={turn.id} className="turn__option">{turn.name}</option>
+                    <option value={turn.id} className="turn__option">{turn.combinedName}</option>
                 ))}
             </select>
             <select name="type" id="2" className="newLesson__lessonType">

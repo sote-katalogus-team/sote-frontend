@@ -75,7 +75,7 @@ const AdminImportTurnus = () => {
 
     const getTurnNameById = (id) => {
         const turn = turns.find(t => t.id === parseInt(id))
-        return turn.name
+        return turn.combinedName
     }
 
     function selectTurn1() {
@@ -113,14 +113,14 @@ const AdminImportTurnus = () => {
             <p>Válassza ki a Turnust amelynek az óráit szeretné másolni:</p>
             <select onChange={selectTurn1} name="turn-1" id="turner-1" className="newLesson__turnSelect">
                 {turns.map(turn => (
-                    <option value={turn.id} className="turn__option">{turn.name}</option>
+                    <option value={turn.id} className="turn__option">{turn.combinedName}</option>
                 ))}
             </select>
             <p className={"import-arrow"}><FontAwesomeIcon className={"arrow"} icon={"arrow-alt-circle-down"}/></p>
             <p>Válassza ki a Turnust ahová szeretné másolni az órákat.:</p>
             <select onChange={selectTurn2} name="turn-2" id="turner-2" className="newLesson__turnSelect">
                 {turns.map(turn => (
-                    <option value={turn.id} className="turn__option">{turn.name}</option>
+                    <option value={turn.id} className="turn__option">{turn.combinedName}</option>
                 ))}
             </select> <br/>
             <button onClick={submitImport} className={"importTurnus__copyButton"}>Másolás</button>
@@ -132,7 +132,7 @@ const AdminImportTurnus = () => {
             <select onChange={selectListTurn} name="turn" id="turner" className="newLesson__turnSelect">
                 <option selected hidden>Choose here</option>
                 {turns.map(turn => (
-                    <option value={turn.id} className="turn__option">{turn.name}</option>
+                    <option value={turn.id} className="turn__option">{turn.combinedName}</option>
                 ))}
             </select>
 

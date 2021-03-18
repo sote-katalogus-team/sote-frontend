@@ -123,7 +123,7 @@ const StatisticsFilter = () => {
             <p>turnus:</p>
             <select onChange={selectTurn} name="turn" id="turner" className="newLesson__turnSelect">
                 {turns.map(turn => (
-                    <option value={turn.id} className="turn__option">{turn.name}</option>
+                    <option value={turn.id} className="turn__option">{turn.combinedName}</option>
                 ))}
             </select>
         </div>

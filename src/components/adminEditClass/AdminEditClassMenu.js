@@ -40,10 +40,7 @@ const AdminEditClassMenu = () => {
           setActiveType(res[all[0]])
           setActiveClass("eloadas")
           setLessons(res)
-          //setActiveType(res[0])
-          // if (res[0][0].id !== undefined) {
-          ///      setActiveLesson(res[0][0].id)
-      })};
+      })}
   }
 
 
@@ -52,7 +49,6 @@ const AdminEditClassMenu = () => {
             const resp = await axios.get(url + "/turnus/all", {headers: authHeader(cookies.user)});
             return (resp.data);
         } catch (err) {
-            // Handle Error Here
             console.error(err);
         }
 
@@ -73,7 +69,7 @@ const AdminEditClassMenu = () => {
                     console.log("gyakorlat")
                     return lessons[all[1]]
                 default:
-                    alert("sthing went wrong")
+                    alert("Valami hiba történt!")
                     return result;
             }
         }
@@ -86,24 +82,9 @@ const AdminEditClassMenu = () => {
             const resp = await axios.get(url + "/classes/all/" + turnusId, {headers: authHeader(cookies.user)});
             return (resp.data);
         } catch (err) {
-            // Handle Error Here
             console.error(err);
         }
-        /*
-        if (turnusId !== null) {
-          await  axios.get().then(res => {
-                console.log(res.data)
-                setLessons(res.data)
-                let all = Object.keys(res.data);
-                setActiveType(res.data[all[0]])
-                if (res?.data[all[0]][0].id !== undefined) {
-                    setActiveLesson(res?.data[all[0]][0].id)
-                }
 
-            })
-        }
-
-         */
     }
 
     let LessonSelect = <h1>Nincsen ilyen típusú óra ehhez a turnushoz</h1>;
@@ -161,7 +142,7 @@ const AdminEditClassMenu = () => {
                 <p>Turnus:</p>
                 <select onChange={changeTurnus} name="turn" id="1" className="newLesson__turnSelect">
                     {turns.map(turn => (
-                        <option value={turn.id} className="turn__option">{turn.name}</option>
+                        <option value={turn.id} className="turn__option">{turn.combinedName}</option>
                     ))}
                 </select>
 
