@@ -19,7 +19,6 @@ const AdminEditClassMenu = () => {
 
     useEffect(() => {
         fetchTurns().then(res => {
-            console.log(res)
             setTurns(res)
             if (res.length > 0) {
                 setSelectedTurnusId(res[0].id)
@@ -35,7 +34,6 @@ const AdminEditClassMenu = () => {
   const getClasses = () => {
         if (selectedTurnusId !== null) {
       getClassesById(selectedTurnusId).then(res => {
-          console.log(res, "fetch classes")
           let all = Object.keys(res);
           setActiveType(res[all[0]])
           setActiveClass("eloadas")
@@ -113,8 +111,6 @@ const AdminEditClassMenu = () => {
     const getLessonsName = (id) => {
         let name = "No name"
         activeType.forEach(lesson => {
-            console.log(lesson, "LESSSSON")
-            console.log(id, "LESSSSON iddddd")
             if (lesson.id.toString() === id) {
                 name = lesson.name;
             }

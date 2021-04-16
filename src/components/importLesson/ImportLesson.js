@@ -43,7 +43,6 @@ const ImportLesson = (props) => {
 
 
     function changeName(e) {
-        console.log(e.target.value)
         saveNewName(e.target.value, props.type).then(res => {
             console.log(res)
         })

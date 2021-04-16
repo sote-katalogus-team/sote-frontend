@@ -25,7 +25,11 @@ const Signup = () => {
     setState(data);
     setIsValid(isDataValid(data));
   };
-  const handleNextButtonClick = () => { setStep(2); };
+  const handleNextButtonClick = () =>
+  {
+    setTimeout(() => {
+      setStep(2);
+    }, 1000)};
   const handleBackButtonClick = () => { setStep(1); };
   const handleSignupButtonClick = () => {
     //TODO send request to the server with reg data

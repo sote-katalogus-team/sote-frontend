@@ -25,7 +25,6 @@ const TeacherAttendance = ({ numOfStudents, selection, newStudentAdded }) => {
         }, {headers: authHeader(cookies.user)}).then(res => {
             setMessage("A hozzáadás sikerült!");
             newStudentAdded();
-            console.log(res.data);
 
         }).catch(error => {
             setMessage("A hozzáadás sikertelen!");

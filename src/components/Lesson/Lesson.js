@@ -40,19 +40,14 @@ const Lesson = (props) => {
     async function deleteKonzultacio() {
         axios.delete(url + "/konzultacio/" + props.data?.id +  "/delete", {headers: authHeader(cookies.user)} ).then(res => {
             alert(res.data)
-
-
-
             window.location.reload();
         })
-        console.log("konzultáció")
     }
     async function deleteEloadas() {
         axios.delete(url + "/eloadas/"+ props.data?.id +  "/delete", {headers: authHeader(cookies.user)}).then(res => {
             alert(res.data)
             window.location.reload();
         })
-        console.log("eloadas")
     }
     async function deleteGyakorlat() {
         axios.delete(url + "/gyakorlat/"+ props.data?.id +  "/delete", {headers: authHeader(cookies.user)}).then(res => {

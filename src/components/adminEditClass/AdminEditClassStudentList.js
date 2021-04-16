@@ -96,7 +96,6 @@ const AdminEditClassStudentList = (props) => {
     }
 
 
-    console.log(props.type)
 
 
     const submitNewStudent = (e) => {
@@ -137,7 +136,6 @@ const AdminEditClassStudentList = (props) => {
     if (finished === true) {
         if (lessonData !== undefined) {
             if (props?.data && props.type) {
-                console.log(lessonData)
                 content = <div className="studentList__container">
                     <div className={theme.root}>
                         <form onSubmit={submitNewStudent}>

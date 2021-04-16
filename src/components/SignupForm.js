@@ -28,7 +28,7 @@ const SignupForm = ({ data, onChangeData }) => {
   async function  fetchTurns() {
     axios.get(url+ "/turnus/all_by_year").then((res) => {
       setTurns(res.data);
-      if (state.turnusId == null) {
+      if (state.turnusId === null) {
         setState((prevState) => ({
           ...prevState,
           turnusId: data[0]?.id,
@@ -119,6 +119,7 @@ const SignupForm = ({ data, onChangeData }) => {
         />
         <label htmlFor="turnus-select" className={"form-label"}>Turn</label>
         <select name="turn" id="turnusId" className="form-select form-input" value={state.turnusId} onChange={handleChange}>
+          <option value="" selected disabled hidden>Please select a turn</option>
           {turns.map(turn => (
               <option key={turn.id} value={turn.id} className="turn__option">{turn.name}</option>
           ))}
